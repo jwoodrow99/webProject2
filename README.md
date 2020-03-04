@@ -22,10 +22,10 @@ We will be using Laravel with the [Homestead Vagrant box](https://laravel.com/do
 2. Install the Laravel Homestead Box for vagrant
 ``` vagrant box add laravel/homestead ```
 3. Clone the Homestead repo to the directory of the project
-``` git clone https://github.com/laravel/homestead.git ~/Workspace/NAME```
+``` git clone https://github.com/laravel/homestead.git ~/Workspace/webProject2```
 4. Navigate to the directory & checkout release
 ```
-cd ~/Workspace/NAME
+cd ~/Workspace/webProject2
 git checkout release 
 ```
 5. Install homestead
@@ -33,13 +33,13 @@ git checkout release
 	* Mac / Linux: ``` bash init.sh ```
 6. Generate encryption keys
 ``` ssh-keygen -t rsa -C "you@homestead.com"```
-7. Clone the following repo into the bookreso directory
+7. Clone the following repo into the webProject2 directory
 ``` 
-git clone REPO-LINK NAME-app
+git clone https://github.com/jwoodrow99/webProject2.git webProject2-app
 ```
 8. Copy the Homestead.yaml file from the app repo into the homestead folder
 ```
-cp ~/Workspace/NAME/NAME-app/Homestead.yaml.example ~/Workspace/NAME/Homestead.yaml
+cp ~/Workspace/webProject2/webProject2-app/Homestead.yaml.example ~/Workspace/webProject2/Homestead.yaml
 ```
 9. Start your Vagrant / Homestead box
 ``` 
@@ -55,10 +55,10 @@ php artisan key:generate
 php artisan migrate
 php artisan db:seed
 ```
-11. Edit your host file to map "NAME.test" to 192.168.10.10
+11. Edit your host file to map "webProject2.test" to 192.168.10.10
 	* [Edit host file OSX](https://www.imore.com/how-edit-your-macs-hosts-file-and-why-you-would-want)
 	* [Edit host file Windows](https://www.techwalla.com/articles/how-to-edit-your-windows-hosts-file)
-	* ***EXAMPLE:*** ```192.168.10.10 NAME.test```
+	* ***EXAMPLE:*** ```192.168.10.10 webProject2.test```
 12. Close your Vagrant / Homestead box
 ``` 
 exit

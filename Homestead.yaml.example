@@ -10,18 +10,18 @@ keys:
 
 folders:
     -
-        map: '~/Workspace/NAME/NAME-app'
+        map: '~/Workspace/webProject2/webProject2-app'
         to: /home/vagrant/app
 
 sites:
     -
-        map: .test
+        map: webProject2.test
         to: /home/vagrant/app/public
 
 databases:
-    - NAME
+    - webProject2
 
-name: NAME
+name: webProject2
 
-hostname: NAME
+hostname: webProject2
 
