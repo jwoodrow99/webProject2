@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+use App\Customer;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,12 +16,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Customer::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => bcrypt("secret"), // passord = "secret"
-        'remember_token' => Str::random(10),
+        'address' => $faker->address,
+        'city' => $faker->city,
+        'province' => $faker->state,
+        'postal' => $faker->regexify('[A-Z0-9]{6}'),
+        'phone' => $faker->regexify('[0-9]{10}'),
     ];
 });
