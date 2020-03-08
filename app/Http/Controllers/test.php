@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Product;
 use App\Role;
+use Illuminate\Support\Facades\Auth;
 
 
 class test extends Controller
@@ -24,13 +25,7 @@ class test extends Controller
         // $request->user()->authorizeRoles(['employee', 'manager']);
         // $request->user()->authorizeRoles(["manager"]);
 
-        //$testVar = User::find(60);
-        foreach (User::find(68)->orders as $order){
-            echo $order . "</br></br>";
-            foreach ($order->products as $product){
-                echo ".........." . $product["id"] . "</br></br>";
-            }
-        }
-
+        $currentUser = Auth::user();
+        return view('test', compact('currentUser'));
     }
 }

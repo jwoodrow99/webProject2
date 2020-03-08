@@ -1,20 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
 
-                    <div class="card-body">
+{{--    {{$user->name}}--}}
 
-                        <h1>TEST!</h1>
+{{--    <br><br>--}}
 
-                        This is the test page!
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    @foreach($user->orders as $order)--}}
+{{--        {{$order->id}}--}}
+{{--    @endforeach--}}
+
+    {{$currentUser->customer}}
+
 @endsection
