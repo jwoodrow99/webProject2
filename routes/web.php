@@ -21,4 +21,4 @@ Route::get('/test', 'test@index');
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('customer', 'CustomerController')->middleware('auth');
+Route::resource('customer', 'CustomerController');

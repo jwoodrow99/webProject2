@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
+
+    public function __construct()
+    {
+        // $this->middleware('auth')->only(['edit']);
+        // Applies auth middleware to all functions except index
+        $this->middleware('auth')->except(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
+        // $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
 
         foreach (Customer::all() as $customer){
             echo "id: " . $customer->id . "</br>";

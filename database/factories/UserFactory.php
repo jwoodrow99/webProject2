@@ -21,7 +21,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => bcrypt("secret"), // passord = "secret"
+        'password' => bcrypt("secret"), // password = "secret"
         'remember_token' => Str::random(10),
     ];
 });
