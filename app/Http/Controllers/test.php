@@ -26,6 +26,11 @@ class test extends Controller
         // $request->user()->authorizeRoles(["manager"]);
 
         $currentUser = Auth::user();
-        return view('test', compact('currentUser'));
+        $allUsers = User::all();
+        $user = User::where('email', 'customer@example.com')->first();
+
+        //echo $user->customer->id;
+
+        return view('test', compact('currentUser', 'allUsers'));
     }
 }

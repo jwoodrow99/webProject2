@@ -24,17 +24,8 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         // $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
-
-        foreach (Customer::all() as $customer){
-            echo "id: " . $customer->id . "</br>";
-            echo "user_id: " . $customer->user_id . "</br>";
-            echo "address: " . $customer->address . "</br>";
-            echo "city: " . $customer->city . "</br>";
-            echo "province: " . $customer->province . "</br>";
-            echo "postal: " . $customer->postal . "</br>";
-            echo "phone: " . $customer->phone . "</br>";
-            echo "</br>";
-        }
+        $allCustomers = Customer::all();
+        return view('customer.index', compact('allCustomers'));
     }
 
     /**

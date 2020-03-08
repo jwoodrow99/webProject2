@@ -34,6 +34,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ url('test') }}">TEST!</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ url('customer') }}">Customer</a>
                         </li>
                     </ul>
