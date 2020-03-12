@@ -119,4 +119,20 @@ class OrderController extends Controller
             abort(401, 'This action is unauthorized.');
         }
     }
+
+    public function showDeleted(){
+        $orders = Order::onlyTrashed()->get();
+        return view('orders.manage', compact('orders'));
+    }
+
+    public function restore($order){
+        Order::onlyTrashed()->where('id', $order)->restore();
+        Order::findOrFail($order)->product()->restore();
+        return redirect('order');
+    }
+
+    public function forceDelete($order){
+        Order::onlyTrashed()->where('id', $order)->forceDelete();
+        return redirect('order');
+    }
 }
