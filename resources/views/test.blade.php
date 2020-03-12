@@ -9,9 +9,8 @@
 
                     <div class="card-body">
 
-                        <h1>TEST!</h1>
+                        {{$order}}
 
-                        This is the test page!
                     </div>
                 </div>
             </div>

@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Test route to test auth!
 // Route::get('/test', 'test@index')->middleware('auth');
 Route::get('/test', 'test@index');
+
+Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
+Route::resource('order', 'OrderController');
+
