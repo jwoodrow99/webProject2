@@ -21,16 +21,6 @@ class test extends Controller
 
     public function index(Request $request)
     {
-        // Allows for role authorization on specific methods
-        // $request->user()->authorizeRoles(['employee', 'manager']);
-        // $request->user()->authorizeRoles(["manager"]);
-
-        $currentUser = Auth::user();
-        $allUsers = User::all();
-        $user = User::where('email', 'customer@example.com')->first();
-
-        //echo $user->customer->id;
-
-        return view('test', compact('currentUser', 'allUsers'));
+        return view('test');
     }
 }

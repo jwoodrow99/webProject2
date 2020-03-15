@@ -13,12 +13,20 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::get('storage/{filename}', function ($filename)
+{
+    return Image::make(storage_path('public/' . $filename))->response();
+});
+
 Auth::routes();
 
 // Test route to test auth!
 // Route::get('/test', 'test@index')->middleware('auth');
 Route::get('/test', 'test@index');
-
 Route::get('/home', 'HomeController@index');
 
 Route::resource('customer', 'CustomerController');
+Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
+Route::resource('order', 'OrderController');
+
+Route::resource('product', 'ProductController');

@@ -69,5 +69,4 @@
         @endforeach
 
     </ol>
-
 @endsection
