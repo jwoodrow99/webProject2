@@ -29,3 +29,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'test@index');
 
 Route::resource('product', 'ProductController');
+Route::resource('cart', 'CartController');
+
