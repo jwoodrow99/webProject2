@@ -25,10 +25,10 @@ class test extends Controller
         // $request->user()->authorizeRoles(["manager"]);
 
         //$testVar = User::find(60);
-        foreach (User::find(68)->orders as $order){
+        foreach (User::where('email', 'customer@example.com')->first()->orders as $order){
             echo $order . "</br></br>";
             foreach ($order->products as $product){
-                echo ".........." . $product["id"] . "</br></br>";
+                echo "-----> " . $product["id"] . "</br></br>";
             }
         }
 
