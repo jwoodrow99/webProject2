@@ -30,3 +30,5 @@ Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorde
 Route::resource('order', 'OrderController');
 
 Route::resource('product', 'ProductController');
+Route::resource('cart', 'CartController');
+
