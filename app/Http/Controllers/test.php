@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Product;
 use App\Role;
+use Illuminate\Support\Facades\Auth;
 
 
 class test extends Controller
