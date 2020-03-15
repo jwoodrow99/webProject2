@@ -13,7 +13,7 @@ class CustomerController extends Controller
     {
         // $this->middleware('auth')->only(['edit']);
         // Applies auth middleware to all functions except index
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth');
     }
 
     /**
@@ -23,9 +23,10 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        // $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
-        $allCustomers = Customer::all();
-        return view('customer.index', compact('allCustomers'));
+        $request->user()->authorizeRoles(['customer']);
+        $currentUser = Auth::user();
+        $customer = Customer::where('user_id', $currentUser->id)->first();
+        return view('customer.index', compact('customer'));
     }
 
     /**
@@ -134,7 +135,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer, Request $request)
     {
-        $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
+        $request->user()->authorizeRoles(['manager']);
         $currentUser = Auth::user();
 
         if ($currentUser->id == $customer->user_id) {
