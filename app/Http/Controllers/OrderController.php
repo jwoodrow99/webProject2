@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -20,7 +20,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        // $request->user()->authorizeRoles(["manager", "employee", "customer"]);
+        $request->user()->authorizeRoles(["customer"]);
 
         // Get current user
         $currentUser = Auth::user();
@@ -40,7 +40,7 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        // $request->user()->authorizeRoles(["manager", "employee", "customer"]);
+        $request->user()->authorizeRoles(["customer"]);
 
         // Get current user
         $currentUser = Auth::user();
@@ -74,7 +74,17 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        // $request->user()->authorizeRoles(["customer"]);
+
+        // Get current user
+        $currentUser = Auth::user();
+        $order = Order::findOrFail($id);
+
+        if ($currentUser->id == $order->user_id) {
+            return view('order.show', compact("order"));
+        } else {
+            abort(401, 'This action is unauthorized.');
+        }
     }
 
     /**
@@ -110,9 +120,9 @@ class OrderController extends Controller
     {
         $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
         $currentUser = Auth::user();
-        $order = Order::find($id)->first();
+        $order = Order::findOrFail($id);
 
-        if ($currentUser->id == $order->user->id) {
+        if ($currentUser->id == $order->user_id && $order->paid == false) {
             $order->delete();
             return redirect( 'order' );
         } else {
