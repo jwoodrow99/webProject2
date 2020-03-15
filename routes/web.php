@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('storage/{filename}', function ($filename)
+{
+    return Image::make(storage_path('public/' . $filename))->response();
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -22,3 +27,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Test route to test auth!
 // Route::get('/test', 'test@index')->middleware('auth');
 Route::get('/test', 'test@index');
+
+Route::resource('product', 'ProductController');
