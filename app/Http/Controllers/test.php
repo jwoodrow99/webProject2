@@ -20,17 +20,6 @@ class test extends Controller
 
     public function index(Request $request)
     {
-        // Allows for role authorization on specific methods
-        // $request->user()->authorizeRoles(['employee', 'manager']);
-        // $request->user()->authorizeRoles(["manager"]);
-
-        //$testVar = User::find(60);
-        foreach (User::where('email', 'customer@example.com')->first()->orders as $order){
-            echo $order . "</br></br>";
-            foreach ($order->products as $product){
-                echo "-----> " . $product["id"] . "</br></br>";
-            }
-        }
-
+        return view('test');
     }
 }
