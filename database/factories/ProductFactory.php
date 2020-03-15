@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+use App\Product;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,12 +16,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Product::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => bcrypt("secret"), // passord = "secret"
-        'remember_token' => Str::random(10),
+        'product_code' => $faker->regexify('[A-Z0-9]{6}'),
+        'name' => "product-" . $faker->word,
+        'description' => $faker->paragraph,
+        'quantity' => $faker->regexify('[0-9]{2}'),
+        'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 50),
+        'image' => "https://via.placeholder.com/150",
     ];
 });
