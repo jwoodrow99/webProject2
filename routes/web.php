@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('storage/{filename}', function ($filename)
+{
+    return Image::make(storage_path('public/' . $filename))->response();
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -26,3 +31,4 @@ Route::get('/test', 'test@index');
 Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
 Route::resource('order', 'OrderController');
 
+Route::resource('product', 'ProductController');
