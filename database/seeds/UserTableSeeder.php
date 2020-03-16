@@ -41,8 +41,8 @@ class UserTableSeeder extends Seeder
             $user->customer()->save(factory(App\Customer::class)->make());
             for ($i = 0; $i < rand(0,4); $i++){
                 $user->orders()->save(factory(App\Order::class)->make(["user_id" => $user->id]))->products()->attach([
-                    Product::find(1)->id => ["size" => 01, "quantity" => 01],
-                    Product::find(2)->id => ["size" => 01, "quantity" => 01]
+                    Product::find(1)->id => ["size" => 01, "quantity" => 01, "price" => 01],
+                    Product::find(2)->id => ["size" => 01, "quantity" => 01, "price" => 01]
                 ]);
             }
         });
@@ -85,8 +85,8 @@ class UserTableSeeder extends Seeder
         $userCustomer->customer()->save(factory(App\Customer::class)->make());
         for ($i = 0; $i < rand(0,4); $i++){
             $userCustomer->orders()->save(factory(App\Order::class)->make(["user_id" => $userCustomer->id]))->products()->attach([
-                Product::find(rand(1, Product::count()))->id => ["size" => 01, "quantity" => 01],
-                Product::find(rand(1, Product::count()))->id => ["size" => 01, "quantity" => 01]
+                Product::find(rand(1, Product::count()))->id => ["size" => 01, "quantity" => 01, "price" => 01],
+                Product::find(rand(1, Product::count()))->id => ["size" => 01, "quantity" => 01, "price" => 01]
             ]);
         }
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Order;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,18 +43,43 @@ class OrderController extends Controller
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(["customer"]);
-
-        // Get current user
         $currentUser = Auth::user();
-        //$request->all();
-        dd($request->all());
-        return redirect('order');
+        $cart = Cart::where('user_id', $currentUser->id)->get();
+        $totalPrice = 0;
 
+        foreach ($cart as $item){
+            $totalPrice += ($item->quantity * $item->product->price);
+        }
+
+        $order = new Order();
+        $order->user_id = $currentUser->id;
+        $order->price = $totalPrice;
+        $order->paid = false;
+        $order->pickup_date = now();
+        $order->save();
+
+        foreach ($cart as $item){
+            $product = Product::findOrFail($item->product_id);
+            $order->products()->attach($product, ["size" => $item->size, "quantity" => $item->quantity, "price" => $product->price*$item->quantity]);
+        }
+
+        return redirect('order');
     }
 
     public function reorder($id){
         $order = Order::findOrFail($id);
-        return view('test', compact('order'));
+        $currentUser = Auth::user();
+
+        foreach ($order->products as $product){
+            $cartItem = new Cart();
+            $cartItem->user_id = $currentUser->id;
+            $cartItem->product_id = $product->pivot->product_id;
+            $cartItem->quantity = $product->pivot->quantity;
+            $cartItem->size = $product->pivot->size;
+            $cartItem->save();
+        }
+
+        return redirect('cart');
     }
 
     /**

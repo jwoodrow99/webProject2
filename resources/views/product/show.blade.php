@@ -23,11 +23,16 @@
 
                             <input type="hidden" name="product_id" value="{{$product->id}}">
 
+                            <label for="size">Size: </label>
+                            <input name="size" type="text" required> <br>
+
                             <label for="quantity">Quantity: </label>
-                            <input name="quantity" type="text" required>
+                            <input name="quantity" type="text" required> <br>
 
                             <input type="submit" value="[ADD TO CART]">
                         </form>
+
+                        <hr>
 
                         <a href="{{ action('ProductController@edit', $product->id) }}">[EDIT]</a>
 

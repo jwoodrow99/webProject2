@@ -61,6 +61,7 @@ class CartController extends Controller
         $cartItem->user_id = $currentUser->id;
         $cartItem->product_id = $request->product_id;
         $cartItem->quantity = $request->quantity;
+        $cartItem->size = $request->size;
         $cartItem->save();
 
         return redirect('cart');
@@ -107,11 +108,14 @@ class CartController extends Controller
     {
         $request->user()->authorizeRoles(['customer']);
         $currentUser = Auth::user();
+        $formData = $request->all();
 
         if ($currentUser->id == $cart->user_id){
-            $formData = $request->all();
-            $cart = Cart::find($cart)->first();
-            $cart->update($formData);
+
+            $cart->size = $formData["size"];
+            $cart->quantity = $formData["quantity"];
+            $cart->save();
+
             return redirect( 'cart');
         } else {
             abort(401, 'This action is unauthorized.');

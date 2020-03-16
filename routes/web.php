@@ -20,15 +20,14 @@ Route::get('storage/{filename}', function ($filename)
 
 Auth::routes();
 
-// Test route to test auth!
-// Route::get('/test', 'test@index')->middleware('auth');
 Route::get('/test', 'test@index');
-Route::get('/home', 'HomeController@index');
 
 Route::resource('customer', 'CustomerController');
+
 Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
 Route::resource('order', 'OrderController');
 
 Route::resource('product', 'ProductController');
+
 Route::resource('cart', 'CartController');
 
