@@ -121,6 +121,7 @@ class CustomerController extends Controller
             $formData = $request->all();
             $customer = Customer::find($customer)->first();
             $customer->update($formData);
+            $customer->user->update(['email' => $formData['email']]);
             return redirect( 'customer');
         } else {
             abort(401, 'This action is unauthorized.');

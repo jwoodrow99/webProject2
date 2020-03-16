@@ -1,42 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Products</div>
-                    <div class="card-body">
 
-                        <form method="post" action="{{ action('ProductController@update', $product->id) }}" enctype="multipart/form-data">
+    @isset($product->image)
+        <img src="{{ asset('storage/' . $product->image) }}"><br>
+    @endisset
 
-                            {{ csrf_field() }}
-                            {{ method_field('PATCH') }}
+    <br>
 
-                            <label for="product_code">Code: </label>
-                            <input name="product_code" type="text" value="{{$product->product_code}}"><br>
+    <form method="post" action="{{ action('ProductController@update', $product->id) }}" enctype="multipart/form-data">
 
-                            <label for="name">Name: </label>
-                            <input name="name" type="text" value="{{$product->name}}"><br>
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
 
-                            <label for="description">description: </label>
-                            <input name="description" type="text" value="{{$product->description}}"><br>
+        <label for="product_code">Code: </label>
+        <input name="product_code" type="text" value="{{$product->product_code}}"><br>
 
-                            <label for="quantity">Quantity: </label>
-                            <input name="quantity" type="text" value="{{$product->quantity}}"><br>
+        <label for="name">Name: </label>
+        <input name="name" type="text" value="{{$product->name}}"><br>
 
-                            <label for="price">Price: </label>
-                            <input name="price" type="text" value="{{$product->price}}"><br>
+        <label for="description">description: </label>
+        <input name="description" type="text" value="{{$product->description}}"><br>
 
-                            <label for="image">Image: </label>
-                            <input name="image" type="file" accept="image/*"><br>
+        <label for="quantity">Quantity: </label>
+        <input name="quantity" type="text" value="{{$product->quantity}}"><br>
 
-                            <input type="submit" value="Submit!">
-                        </form>
+        <label for="price">Price: </label>
+        <input name="price" type="text" value="{{$product->price}}"><br>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <label for="image">Image: </label>
+        <input name="image" type="file" accept="image/*"><br>
+
+        <input type="submit" value="Submit!">
+    </form>
+
 @endsection

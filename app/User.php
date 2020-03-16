@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -73,7 +74,9 @@ class User extends Authenticatable
      */
     public function hasAnyRole($roles)
     {
-        return null !== $this->roles()->whereIn("name", $roles)->first();
+        if (Auth::check()) {
+            return null !== $this->roles()->whereIn("name", $roles)->first();
+        }
     }
 
     /**
@@ -82,6 +85,8 @@ class User extends Authenticatable
      */
     public function hasRole($role)
     {
-        return null !== $this->roles()->where("name", $role)->first();
+        if (Auth::check()){
+            return null !== $this->roles()->where("name", $role)->first();
+        }
     }
 }

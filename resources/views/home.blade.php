@@ -2,16 +2,25 @@
 
 @section('content')
 
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
-
-    @if (Auth::check())
-        You are logged in!
-    @else
-        You are NOT logged in!
-    @endif
+    <ol>
+        @foreach($products as $product)
+            <a href=" {{ action('ProductController@show', $product->id) }} ">
+                <li>
+                    @isset($product->image)
+                        <img src="{{ asset('storage/' . $product->image) }}"><br>
+                    @endisset
+                    <br>
+                    Name: {{$product->name}}<br>
+                    Price: {{$product->price}}<br>
+                </li>
+            </a>
+            @if(Auth::check())
+                @if(Auth::user()->hasRole('manager'))
+                    <a href="{{ action('ProductController@edit', $product->id) }}">[EDIT]</a>
+                @endif
+            @endif
+            <br><br><br>
+        @endforeach
+    </ol>
 
 @endsection

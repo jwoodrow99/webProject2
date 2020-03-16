@@ -23,6 +23,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'description' => $faker->paragraph,
         'quantity' => $faker->regexify('[0-9]{2}'),
         'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 50),
-        'image' => "https://via.placeholder.com/150",
+        'image' => "product/150.png",
     ];
 });

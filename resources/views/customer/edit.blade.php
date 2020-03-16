@@ -10,6 +10,9 @@
         <label for="name">Name: </label>
         <input name="name" type="text" value="{{ $customer->name }}"><br>
 
+        <label for="email">Email: </label>
+        <input name="email" type="email" value="{{ $customer->user->email }}"><br>
+
         <label for="address">Address: </label>
         <input name="address" type="text" value="{{ $customer->address }}"><br>
 

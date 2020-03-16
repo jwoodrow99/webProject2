@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,12 +58,16 @@ class CartController extends Controller
         $request->user()->authorizeRoles(['customer']);
         $currentUser = Auth::user();
 
-        $cartItem = new Cart();
-        $cartItem->user_id = $currentUser->id;
-        $cartItem->product_id = $request->product_id;
-        $cartItem->quantity = $request->quantity;
-        $cartItem->size = $request->size;
-        $cartItem->save();
+        $product = Product::findOrFail($request->product_id);
+
+        if ($product->quantity >= $request->quantity){
+            $cartItem = new Cart();
+            $cartItem->user_id = $currentUser->id;
+            $cartItem->product_id = $request->product_id;
+            $cartItem->quantity = $request->quantity;
+            $cartItem->size = $request->size;
+            $cartItem->save();
+        }
 
         return redirect('cart');
     }
@@ -112,11 +117,16 @@ class CartController extends Controller
 
         if ($currentUser->id == $cart->user_id){
 
-            $cart->size = $formData["size"];
-            $cart->quantity = $formData["quantity"];
-            $cart->save();
+            $product = Product::findOrFail($cart->product_id);
 
-            return redirect( 'cart');
+            if ($formData["quantity"] <= $product->quantity) {
+                $cart->size = $formData["size"];
+                $cart->quantity = $formData["quantity"];
+                $cart->save();
+            }
+
+            return redirect('cart');
+
         } else {
             abort(401, 'This action is unauthorized.');
         }

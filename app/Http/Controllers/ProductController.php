@@ -95,14 +95,16 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $request->user()->authorizeRoles(['manager']);
-        $formData = $request->all();
         $product = Product::findOrFail($id);
+
+        $product->update($request->all());
 
         if ($request->hasFile('image') && $request->file('image')->isValid()){
             $path = $request->image->storePublicly('product', 'public');
-            $formData->image = $path;
+            $product->update(['image' => $path]);
         }
-        $product->update($formData);
+
+        // $product->save();
 
         return view('product.show', compact('product'));
     }
