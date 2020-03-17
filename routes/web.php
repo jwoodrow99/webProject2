@@ -31,3 +31,12 @@ Route::resource('product', 'ProductController');
 
 Route::resource('cart', 'CartController');
 
+Route::get('admin', 'AdminController@index');
+Route::get('admin/orders', 'AdminController@orders');
+Route::get('admin/user', 'AdminController@user');
+Route::patch('admin/addstock/{id}', 'AdminController@addStock');
+Route::patch('admin/removestock/{id}', 'AdminController@removeStock');
+Route::patch('admin/pickup/{id}', 'AdminController@pickedUp');
+Route::post('admin/roles/add/{id}', 'AdminController@addRole');
+Route::post('admin/roles/remove/{id}', 'AdminController@removeRole');
+

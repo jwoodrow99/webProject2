@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -78,7 +79,7 @@ class CustomerController extends Controller
         $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
         $currentUser = Auth::user();
 
-        if ($currentUser->id == $customer->user_id){
+        if ($currentUser->id == $customer->user_id || Auth::user()->hasRole('manager')){
             $customer = Customer::find($customer)->first();
             return view('customer.show', compact("customer"));
         } else {
@@ -97,7 +98,7 @@ class CustomerController extends Controller
         $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
         $currentUser = Auth::user();
 
-        if ($currentUser->id == $customer->user_id){
+        if ($currentUser->id == $customer->user_id || Auth::user()->hasRole('manager')){
             $customer = Customer::find($customer)->first();
             return view('customer.edit', compact('customer'));
         } else {
@@ -117,12 +118,16 @@ class CustomerController extends Controller
         $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
         $currentUser = Auth::user();
 
-        if ($currentUser->id == $customer->user_id) {
+        if ($currentUser->id == $customer->user_id || Auth::user()->hasRole('manager')) {
             $formData = $request->all();
             $customer = Customer::find($customer)->first();
             $customer->update($formData);
-            $customer->user->update(['email' => $formData['email']]);
-            return redirect( 'customer');
+            $customer->user->update(['email' => $formData['email'], 'name' => $formData['name']]);
+            if (Auth::user()->hasRole('manager')){
+                return redirect('customer/' . $customer->id);
+            } else {
+                return redirect( 'customer');
+            }
         } else {
             abort(401, 'This action is unauthorized.');
         }
@@ -139,9 +144,23 @@ class CustomerController extends Controller
         $request->user()->authorizeRoles(['manager']);
         $currentUser = Auth::user();
 
-        if ($currentUser->id == $customer->user_id) {
+        $openOrders = false;
+
+        foreach ($currentUser->orders as $order){
+            if ($order->picked_up == false){
+                $openOrders = true;
+            }
+        }
+
+        if (($currentUser->id == $customer->user_id || Auth::user()->hasRole('manager')) && !$openOrders) {
+            $user = User::findOrFail($customer->user_id);
+            $user->delete();
             $customer->delete();
-            return redirect( 'customer' );
+            if (Auth::user()->hasRole('manager')){
+                return redirect('admin/user');
+            } else {
+                return redirect( 'customer');
+            }
         } else {
             abort(401, 'This action is unauthorized.');
         }

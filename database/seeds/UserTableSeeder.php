@@ -24,14 +24,20 @@ class UserTableSeeder extends Seeder
 
         // Manager Factory
         factory(App\User::class, 5)->create()->each(function ($user) {
+            $rolec = Role::where("name", "customer")->first();
             $role = Role::where("name", "manager")->first();
+            $user->roles()->attach($rolec, ['created_at' => now(), 'updated_at' => now()]);
             $user->roles()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
+            $user->customer()->save(factory(App\Customer::class)->make());
         });
 
         // Employee Factory
         factory(App\User::class, 10)->create()->each(function ($user) {
+            $rolec = Role::where("name", "customer")->first();
             $role = Role::where("name", "employee")->first();
+            $user->roles()->attach($rolec, ['created_at' => now(), 'updated_at' => now()]);
             $user->roles()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
+            $user->customer()->save(factory(App\Customer::class)->make());
         });
 
         // customer Factory
@@ -58,6 +64,7 @@ class UserTableSeeder extends Seeder
         $userManager->remember_token = Str::random(10);
         $userManager->save();
         $userManager->roles()->attach($roles["manager"], ['created_at' => now(), 'updated_at' => now()]);
+        $userManager->customer()->save(factory(App\Customer::class)->make());
 
         // Create test user with employee role
         // Username: employee@example.com
@@ -70,6 +77,7 @@ class UserTableSeeder extends Seeder
         $userEmployee->remember_token = Str::random(10);
         $userEmployee->save();
         $userEmployee->roles()->attach($roles["employee"], ['created_at' => now(), 'updated_at' => now()]);
+        $userEmployee->customer()->save(factory(App\Customer::class)->make());
 
         // Create test user with customer role
         // Username: customer@example.com
@@ -83,12 +91,6 @@ class UserTableSeeder extends Seeder
         $userCustomer->save();
         $userCustomer->roles()->attach($roles["customer"], ['created_at' => now(), 'updated_at' => now()]);
         $userCustomer->customer()->save(factory(App\Customer::class)->make());
-        for ($i = 0; $i < rand(0,4); $i++){
-            $userCustomer->orders()->save(factory(App\Order::class)->make(["user_id" => $userCustomer->id]))->products()->attach([
-                Product::find(rand(1, Product::count()))->id => ["size" => 01, "quantity" => 01, "price" => 01],
-                Product::find(rand(1, Product::count()))->id => ["size" => 01, "quantity" => 01, "price" => 01]
-            ]);
-        }
 
     }
 }

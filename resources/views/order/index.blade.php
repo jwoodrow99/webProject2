@@ -4,7 +4,11 @@
 
     <ol>
         @foreach($user_orders as $order)
-            <li>
+                @if($order->deleted_at != null)
+                    <li style="color: tomato">
+                @else
+                    <li>
+                @endif
                 Order Id: {{$order->id}}<br>
                 Price: {{$order->price}}<br>
                 Paid: {{$order->paid}}<br>
@@ -28,7 +32,7 @@
                     <input type="submit" value="[RE-ORDER]">
                 </form>
 
-                @if($order->pickup_date > now())
+                @if($order->pickup_date >= now())
                     <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}

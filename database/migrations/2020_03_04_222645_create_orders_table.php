@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->float('price');
             $table->boolean('paid');
+            $table->boolean('picked_up')->default(false);
             $table->date('pickup_date');
             $table->timestamps();
 

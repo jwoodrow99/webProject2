@@ -89,7 +89,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request , $id)
+    public function edit(Request $request, $id)
     {
         $request->user()->authorizeRoles(['customer']);
         $currentUser = Auth::user();
