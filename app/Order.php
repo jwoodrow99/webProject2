@@ -12,6 +12,10 @@ class Order extends Model
 
     protected $table = "orders";
 
+    protected $fillable = [
+        "picked_up"
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

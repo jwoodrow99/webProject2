@@ -44,6 +44,21 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
+                        @if(Auth::check())
+                            @if(Auth::user()->hasAnyRole(['manager', 'employee']))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('admin') }}">Admin</a>
+                                </li>
+                            @endif
+                        @endif
+
+                        @if(Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('cart') }}">Cart</a>
+                            </li>
+                        @endif
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -72,10 +87,6 @@
                                 </div>
                             </li>
                         @endguest
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('cart') }}">Cart</a>
-                        </li>
 
                     </ul>
                 </div>

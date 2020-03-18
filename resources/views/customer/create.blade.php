@@ -6,9 +6,6 @@
 
         {{ csrf_field() }}
 
-        <label for="name">Name: </label>
-        <input name="name" type="text"><br>
-
         <label for="address">Address: </label>
         <input name="address" type="text"><br>
 

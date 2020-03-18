@@ -28,7 +28,7 @@ class OrderController extends Controller
         $currentUser = Auth::user();
 
         if ($currentUser) {
-            $user_orders = $currentUser->orders;
+            $user_orders = Order::withTrashed()->where('user_id', $currentUser->id)->get();
             return view('order.index', compact("user_orders"));
         } else {
             abort(401, 'This action is unauthorized.');
@@ -56,7 +56,7 @@ class OrderController extends Controller
         $order->user_id = $currentUser->id;
         $order->price = $totalPrice;
         $order->paid = false;
-        $order->pickup_date = now();
+        $order->pickup_date = now(); // For testing pickup will be same day
 
         if ($order->products){
             $order->save();
@@ -76,7 +76,8 @@ class OrderController extends Controller
         return redirect('order');
     }
 
-    public function reorder($id){
+    public function reorder(Request $request, $id){
+        $request->user()->authorizeRoles(["customer"]);
         $order = Order::findOrFail($id);
         $currentUser = Auth::user();
 
@@ -111,15 +112,15 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        // $request->user()->authorizeRoles(["customer"]);
+        $request->user()->authorizeRoles(["customer", "employee", "manager"]);
 
         // Get current user
         $currentUser = Auth::user();
-        $order = Order::findOrFail($id);
+        $order = Order::withTrashed()->findOrFail($id);
 
-        if ($currentUser->id == $order->user_id) {
+        if ($currentUser->id == $order->user_id || Auth::user()->hasRole('manager')) {
             return view('order.show', compact("order"));
         } else {
             abort(401, 'This action is unauthorized.');
@@ -161,9 +162,13 @@ class OrderController extends Controller
         $currentUser = Auth::user();
         $order = Order::findOrFail($id);
 
-        if ($currentUser->id == $order->user_id && $order->paid == false) {
+        if (($currentUser->id == $order->user_id || Auth::user()->hasRole('manager')) && $order->paid == false && $order->pickup_date >= now()->toDateString() && $order->picked_up == false) {
             $order->delete();
-            return redirect( 'order' );
+            if (Auth::user()->hasRole('manager')){
+                return redirect('admin');
+            } else {
+                return redirect( 'order' );
+            }
         } else {
             abort(401, 'This action is unauthorized.');
         }
@@ -171,7 +176,7 @@ class OrderController extends Controller
 
     public function showDeleted(){
         $orders = Order::onlyTrashed()->get();
-        return view('orders.manage', compact('orders'));
+        return view('admin.orders', compact('orders'));
     }
 
     public function restore($order){

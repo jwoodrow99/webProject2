@@ -27,10 +27,10 @@ class CartController extends Controller
         $request->user()->authorizeRoles(['customer']);
         $currentUser = Auth::user();
 
-        $cart = Cart::all();
+        $cart = $currentUser->carts;
         $totalPrice = 0;
 
-        foreach ($cart as $item){
+        foreach ($currentUser->carts as $item){
             $totalPrice += $item->product->price * $item->quantity;
         }
 
@@ -89,7 +89,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request , $id)
+    public function edit(Request $request, $id)
     {
         $request->user()->authorizeRoles(['customer']);
         $currentUser = Auth::user();
