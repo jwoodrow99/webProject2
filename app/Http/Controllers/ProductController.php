@@ -56,7 +56,7 @@ class ProductController extends Controller
             $product->save();
         }
 
-        return redirect('product');
+        return redirect('admin');
     }
 
     /**
@@ -104,8 +104,6 @@ class ProductController extends Controller
             $product->update(['image' => $path]);
         }
 
-        // $product->save();
-
         return view('product.show', compact('product'));
     }
 
@@ -120,6 +118,6 @@ class ProductController extends Controller
         $request->user()->authorizeRoles(['manager']);
         $product = Product::findOrFail($id);
         $product->delete();
-        return redirect('product');
+        return redirect('admin');
     }
 }

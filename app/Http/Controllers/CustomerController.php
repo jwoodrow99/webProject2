@@ -62,7 +62,8 @@ class CustomerController extends Controller
         if ($currentUser->customer == null){
             $customer = new Customer($request->all());
             $customer->user_id = $currentUser->id;
-            $customer->save();
+            $customer->name = $currentUser->name;
+            $currentUser->customer()->save($customer);
         }
 
         return redirect('customer');
@@ -141,7 +142,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer, Request $request)
     {
-        $request->user()->authorizeRoles(['manager']);
+        $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
         $currentUser = Auth::user();
 
         $openOrders = false;

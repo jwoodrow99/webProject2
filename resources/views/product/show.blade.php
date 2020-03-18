@@ -27,18 +27,4 @@
 
         <input type="submit" value="[ADD TO CART]">
     </form>
-
-    <hr>
-
-    @if(Auth::check())
-        @if(Auth::user()->hasRole('manager'))
-            <a href="{{ action('ProductController@edit', $product->id) }}">[EDIT]</a>
-
-            <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}">
-                {{ method_field('DELETE') }}
-                {{ csrf_field() }}
-                <input type="submit" value="[DELETE]">
-            </form>
-        @endif
-    @endif
 @endsection

@@ -46,7 +46,7 @@
                         <!-- Authentication Links -->
 
                         @if(Auth::check())
-                            @if(Auth::user()->hasRole('manager'))
+                            @if(Auth::user()->hasAnyRole(['manager', 'employee']))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('admin') }}">Admin</a>
                                 </li>

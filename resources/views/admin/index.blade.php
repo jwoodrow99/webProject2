@@ -32,6 +32,13 @@
                     <td>
                         <a href="{{ action('ProductController@edit', $product->id) }}">[UPDATE]</a>
                     </td>
+                    <td>
+                        <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <input type="submit" value="[DELETE]">
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </table>

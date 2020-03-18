@@ -22,28 +22,28 @@ class AdminController extends Controller
     }
 
     public function index(Request $request){
-        $request->user()->authorizeRoles(['manager']);
+        $request->user()->authorizeRoles(['manager', 'employee']);
         $products = Product::all();
         $orders = Order::where('pickup_date', today())->where('picked_up', false)->get();
         return view('admin.index', compact('products', 'orders'));
     }
 
     public function addStock(Request $request, $id){
-        $request->user()->authorizeRoles(['manager']);
+        $request->user()->authorizeRoles(['manager', 'employee']);
         $product = Product::findOrFail($id);
         $product->update(['quantity' => $product->quantity + 1]);
         return redirect('admin');
     }
 
     public function removeStock(Request $request, $id){
-        $request->user()->authorizeRoles(['manager']);
+        $request->user()->authorizeRoles(['manager', 'employee']);
         $product = Product::findOrFail($id);
         $product->update(['quantity' => $product->quantity - 1]);
         return redirect('admin');
     }
 
     public function pickedUp(Request $request, $id){
-        $request->user()->authorizeRoles(['manager']);
+        $request->user()->authorizeRoles(['manager', 'employee']);
         $order = Order::findOrFail($id);
         $order->update(['picked_up' => true]);
         return redirect('admin');

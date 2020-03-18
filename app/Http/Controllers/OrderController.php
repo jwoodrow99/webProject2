@@ -56,7 +56,7 @@ class OrderController extends Controller
         $order->user_id = $currentUser->id;
         $order->price = $totalPrice;
         $order->paid = false;
-        $order->pickup_date = now();
+        $order->pickup_date = now(); // For testing pickup will be same day
 
         if ($order->products){
             $order->save();
@@ -76,7 +76,8 @@ class OrderController extends Controller
         return redirect('order');
     }
 
-    public function reorder($id){
+    public function reorder(Request $request, $id){
+        $request->user()->authorizeRoles(["customer"]);
         $order = Order::findOrFail($id);
         $currentUser = Auth::user();
 
@@ -175,7 +176,7 @@ class OrderController extends Controller
 
     public function showDeleted(){
         $orders = Order::onlyTrashed()->get();
-        return view('orders.manage', compact('orders'));
+        return view('admin.orders', compact('orders'));
     }
 
     public function restore($order){

@@ -13,13 +13,7 @@
                     Price: {{$product->price}}<br>
                 </li>
             </a>
-            @if(Auth::check())
-                @if(Auth::user()->hasRole('manager'))
-                    <a href="{{ action('ProductController@edit', $product->id) }}">[EDIT]</a>
-                @endif
-            @endif
-            <br><br><br>
+            <br><br>
         @endforeach
     </ol>
-
 @endsection

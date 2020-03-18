@@ -63,6 +63,7 @@ class UserTableSeeder extends Seeder
         $userManager->email_verified_at = now();
         $userManager->remember_token = Str::random(10);
         $userManager->save();
+        $userManager->roles()->attach($roles["customer"], ['created_at' => now(), 'updated_at' => now()]);
         $userManager->roles()->attach($roles["manager"], ['created_at' => now(), 'updated_at' => now()]);
         $userManager->customer()->save(factory(App\Customer::class)->make());
 
@@ -77,6 +78,7 @@ class UserTableSeeder extends Seeder
         $userEmployee->remember_token = Str::random(10);
         $userEmployee->save();
         $userEmployee->roles()->attach($roles["employee"], ['created_at' => now(), 'updated_at' => now()]);
+        $userManager->roles()->attach($roles["customer"], ['created_at' => now(), 'updated_at' => now()]);
         $userEmployee->customer()->save(factory(App\Customer::class)->make());
 
         // Create test user with customer role
