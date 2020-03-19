@@ -7,108 +7,98 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Home') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
+    <script src="{{ asset('js/layout/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/layouts/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav>
+        <!-- Left Side Of Navbar -->
+             <ul class="left">
+                 <li>
+                     <a class="logo" href="{{ url('/') }}">Home</a>
+                 </li>
+             </ul>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('product') }}">Products</a>
+        <!-- Right Side Of Navbar -->
+            <ul class="right">
+                <li class="">
+                    <a class="currentNavItem" href="#">Home</a>
+                </li>
+                <li>
+                    <a class="" href="{{ url('product') }}">Products</a>
+                </li>
+                <li>
+                    <a class="" href="#">About</a>
+                </li>
+                <li>
+                    <a class="" href="#">FAQ</a>
+                </li>
+                <li>
+                    <a class="" href="#">Contact Us</a>
+                </li>
+
+            <!-- Authentication Links -->
+                @if(Auth::check())
+                    @if(Auth::user()->hasAnyRole(['manager', 'employee']))
+                        <li>
+                            <a class="" href="{{ url('admin') }}">Admin</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('customer') }}">Customer</a>
-                        </li>
-                    </ul>
+                    @endif
+                @endif
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                @if(Auth::check())
+                    <li>
+                        <a class="" href="{{ url('cart') }}">Cart</a>
+                    </li>
+                @endif
 
-                        @if(Auth::check())
-                            @if(Auth::user()->hasAnyRole(['manager', 'employee']))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('admin') }}">Admin</a>
-                                </li>
-                            @endif
-                        @endif
-
-                        @if(Auth::check())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('cart') }}">Cart</a>
-                            </li>
-                        @endif
-
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                @guest
+                    <li>
+                        <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                @if (Route::has('register'))
+                    <li>
+                        <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                @else
+                    <li class="dropdown-c">
+                        <span>
+                            {{Auth::user()->name }}
+                        </span>
+                        <ul class="dropdown-c-content">
+                            <li><a class="" href="{{ url('customer') }}">Profile</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
                             </li>
-                        @endguest
-
-                    </ul>
-                </div>
-            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                                @csrf
+                            </form>
+                        </ul>
+                    </li>
+                @endguest
+            </ul>
         </nav>
+        <main class="">
 
-        <main class="py-4">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">Dashboard</div>
-                            <div class="card-body">
+            @yield('content')
 
-                                @yield('content')
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
-    </div>
+        <footer>
+            Contact Us <br>
+            Zaccaginini Meats <br>
+            111-111-1111
+        </footer>
 </body>
 </html>
