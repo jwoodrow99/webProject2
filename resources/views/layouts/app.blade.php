@@ -11,23 +11,24 @@
 
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
-    <script src="{{ asset('js/layout/app.js') }}" defer></script>
+    <script src="{{ asset('js/layouts/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Fonts -->
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
-        <nav>
+        <nav class="main-nav">
         <!-- Left Side Of Navbar -->
              <ul class="left">
                  <li>
                      <a class="logo" href="{{ url('/') }}">Home</a>
                  </li>
              </ul>
-
         <!-- Right Side Of Navbar -->
             <ul class="right">
                 <li class="">
@@ -90,15 +91,88 @@
                 @endguest
             </ul>
         </nav>
-        <main class="">
+        <nav class="mobile-nav">
+            <!-- Left Side Of Navbar -->
+            <ul class="left">
+                <li>
+                    <a class="logo" href="{{ url('/') }}">Home</a>
+                </li>
+                <li>
+                    <button class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </li>
+            </ul>
+            <!-- Right Side Of Navbar -->
+            <ul class="dropdown-mobile">
+                <li class="">
+                    <a class="currentNavItem" href="#">Home</a>
+                </li>
+                <li>
+                    <a class="" href="{{ url('product') }}">Products</a>
+                </li>
+                <li>
+                    <a class="" href="#">About</a>
+                </li>
+                <li>
+                    <a class="" href="#">FAQ</a>
+                </li>
+                <li>
+                    <a class="" href="#">Contact Us</a>
+                </li>
+                <!-- Authentication Links -->
+                @if(Auth::check())
+                    @if(Auth::user()->hasAnyRole(['manager', 'employee']))
+                        <li>
+                            <a class="" href="{{ url('admin') }}">Admin</a>
+                        </li>
+                    @endif
+                @endif
+
+                @if(Auth::check())
+                    <li>
+                        <a class="" href="{{ url('cart') }}">Cart</a>
+                    </li>
+                @endif
+
+                @guest
+                    <li>
+                        <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li>
+                            <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li><a class="" href="{{ url('customer') }}">Profile</a></li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                        @csrf
+                    </form>
+                @endguest
+            </ul>
+        </nav>
+        <main>
 
             @yield('content')
 
         </main>
         <footer>
-            Contact Us <br>
-            Zaccaginini Meats <br>
-            111-111-1111
+            <div>
+                <p>Contact Us</p>
+                <p>Zaccaginini Meats</p>
+                <a href="tel:1111111111">111-111-1111</a>
+            </div>
+            <div>
+                <p>&copy; 2020 - K.A.W.S & Zaccagnini Meats </p>
+            </div>
         </footer>
 </body>
 </html>

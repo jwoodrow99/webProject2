@@ -123,7 +123,7 @@ nav > ul.right > li > a:hover {
 .dropdown-c-content a:hover {
 
     background-color: var(--zmblue);
-    color: white;
+    color: var(--zmwhite);
     text-decoration: none;
 }
 
@@ -132,13 +132,142 @@ nav > ul.right > li > a:hover {
     display: block;
 }
 
+.mobile-nav {
+
+     display: none;
+ }
+
+main {
+
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
 footer {
 
+    display: flex;
     background-color: var(--zmdarkblue);
     color: white;
     font-size: 1.2em;
     padding-left: 20px;
     padding-right: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+
+    margin-bottom: 5px;
+}
+
+@media (max-width: 1000px) {
+
+
+    .main-nav {
+
+        display: none;
+    }
+
+    .mobile-nav {
+
+        display: block;
+        padding: 0px;
+    }
+
+    .mobile-nav > .dropdown-mobile {
+
+        display: none;
+        transition: 1.5s ease;
+    }
+
+    .mobile-nav > .left {
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hamburger {
+
+        border: none;
+        width: 50px;
+        height: 50px;
+        background-color: var(--zmred);
+        align-self: center;
+        margin-right: 10px;
+    }
+
+    .mobile-nav button .bar{
+        display: block;
+        transition: all .3s ease-in;
+        background-color: var(--zmdarkblue);
+        color: white;
+        width: 100%;
+        height: 10%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 0px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .hamburger .first {
+
+        transition: all .5s ease;
+        transform: rotate(315deg) translate(-4px, 5px);
+        background-color: var(--zmmediumblue);
+    }
+
+    .hamburger .second {
+
+        transition: all .4s ease;
+        opacity: 0;
+    }
+
+    .hamburger .third {
+
+        transition: all .5s ease;
+        transform: rotate(-320deg) translate(-10px, -11px);
+        background-color: var(--zmmediumblue);
+    }
+
+    .dropdown-mobile a:hover {
+
+        background-color: var(--zmblue);
+        color: var(--zmwhite);
+        text-decoration: none;
+    }
+
+    .dropdown-mobile li {
+
+        text-align: center;
+        width: 100%;
+    }
+
+    .dropdown-mobile li a {
+
+        text-align: center;
+        width: 100%;
+    }
+
+    .logo {
+
+        margin-left: 15px;
+    }
+
+    main {
+
+        margin: 0;
+    }
+
+    footer {
+
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
 
 }
 
