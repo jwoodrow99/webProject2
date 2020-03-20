@@ -108,7 +108,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="dropdown-mobile">
                 <li class="">
-                    <a class="currentNavItem" href="#">Home</a>
+                    <a class="currentNavItem" href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
                     <a class="" href="{{ url('product') }}">Products</a>
