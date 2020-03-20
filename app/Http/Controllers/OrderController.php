@@ -42,6 +42,8 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        $request->user()->authorizeRoles(["customer"]);
+
         $currentUser = Auth::user();
 
         return view('order.create', compact('currentUser'));

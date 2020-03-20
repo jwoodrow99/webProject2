@@ -44,7 +44,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        return view('checkout.create', compact('cart', 'totalPrice'));
+        //
     }
 
     /**
