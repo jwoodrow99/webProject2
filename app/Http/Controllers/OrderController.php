@@ -42,6 +42,38 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        $currentUser = Auth::user();
+
+        return view('order.create', compact('currentUser'));
+    }
+
+    public function reorder(Request $request, $id){
+        $request->user()->authorizeRoles(["customer"]);
+        $order = Order::findOrFail($id);
+        $currentUser = Auth::user();
+
+        foreach ($order->products as $product){
+            if ($product->pivot->quantity <= $product->quantity){
+                $cartItem = new Cart();
+                $cartItem->user_id = $currentUser->id;
+                $cartItem->product_id = $product->pivot->product_id;
+                $cartItem->quantity = $product->pivot->quantity;
+                $cartItem->size = $product->pivot->size;
+                $cartItem->save();
+            }
+        }
+
+        return redirect('cart');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $request->user()->authorizeRoles(["customer"]);
         $currentUser = Auth::user();
         $cart = Cart::where('user_id', $currentUser->id)->get();
@@ -74,36 +106,6 @@ class OrderController extends Controller
         }
 
         return redirect('order');
-    }
-
-    public function reorder(Request $request, $id){
-        $request->user()->authorizeRoles(["customer"]);
-        $order = Order::findOrFail($id);
-        $currentUser = Auth::user();
-
-        foreach ($order->products as $product){
-            if ($product->pivot->quantity <= $product->quantity){
-                $cartItem = new Cart();
-                $cartItem->user_id = $currentUser->id;
-                $cartItem->product_id = $product->pivot->product_id;
-                $cartItem->quantity = $product->pivot->quantity;
-                $cartItem->size = $product->pivot->size;
-                $cartItem->save();
-            }
-        }
-
-        return redirect('cart');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
