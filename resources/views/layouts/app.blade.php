@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- Move so it wont be loaded on every page --}}
+    <link href="{{ asset('css/checkout.css') }}" rel="stylesheet"/>
 </head>
 <body>
     <div id="app">
@@ -110,5 +112,7 @@
             </div>
         </main>
     </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ asset('js/checkout.js') }}"></script>
 </body>
 </html>

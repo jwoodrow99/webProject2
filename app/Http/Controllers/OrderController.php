@@ -79,6 +79,8 @@ class OrderController extends Controller
         $request->user()->authorizeRoles(["customer"]);
         $currentUser = Auth::user();
         $cart = Cart::where('user_id', $currentUser->id)->get();
+        \Stripe\Stripe::setApiKey('sk_test_v6zcVH1771BtKSK6xpi7Vobf00aydWsfLJ');
+
 
         $totalPrice = 0;
 
@@ -103,6 +105,13 @@ class OrderController extends Controller
                     $product->update(['quantity', $reducedAmmount]);
                 }
             }
+
+            $intent = \Stripe\PaymentIntent::create([
+                'amount' => $totalPrice * 100,
+                'currency' => 'cad',
+                // Optional?
+                'metadata' => ['integration_check' => 'accept_a_payment']
+            ]);
 
             Cart::where('user_id', $currentUser->id)->delete();
         }

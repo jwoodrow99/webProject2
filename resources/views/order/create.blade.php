@@ -13,7 +13,7 @@
     </form>
 
     <h3>Prepay Online</h3>
-    <form method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
+    <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <h4>Billing Address</h4>
         <label for="name">Name</label>
@@ -41,7 +41,12 @@
         <h4>Payment Information</h4>
         <div id="stripe-element"></div>
 
+        <div id="card-element">
+            <!-- Stripe Element/Form Field will be inserted here -->
+        </div>
 
+        <!-- Used to display form errors. -->
+        <div id="card-errors" role="alert"></div>
 
         <button type="submit">Order</button>
     </form>
