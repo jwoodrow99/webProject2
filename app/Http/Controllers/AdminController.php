@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function __construct()
     {
         // Auth middleware
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     public function index(Request $request){

@@ -11,14 +11,14 @@
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', 'HomeController@index');
 
 Route::get('storage/{filename}', function ($filename)
 {
     return Image::make(storage_path('public/' . $filename))->response();
 });
-
-Auth::routes();
 
 Route::get('/test', 'test@index');
 
