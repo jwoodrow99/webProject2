@@ -7,6 +7,7 @@ use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
 
 class OrderController extends Controller
 {
@@ -44,36 +45,8 @@ class OrderController extends Controller
     {
         $request->user()->authorizeRoles(["customer"]);
         $currentUser = Auth::user();
-        $cart = Cart::where('user_id', $currentUser->id)->get();
 
-        $totalPrice = 0;
-
-        foreach ($cart as $item){
-            $totalPrice += ($item->quantity * $item->product->price);
-        }
-
-        $order = new Order();
-        $order->user_id = $currentUser->id;
-        $order->price = $totalPrice;
-        $order->paid = false;
-        $order->pickup_date = now(); // For testing pickup will be same day
-
-        if ($order->products){
-            $order->save();
-
-            foreach ($cart as $item){
-                $product = Product::findOrFail($item->product_id);
-                if ($product->quantity >= $item->quantity){
-                    $order->products()->attach($product, ["size" => $item->size, "quantity" => $item->quantity, "price" => $product->price*$item->quantity]);
-                    $reducedAmmount = $product->ammount - $item->quantity;
-                    $product->update(['quantity', $reducedAmmount]);
-                }
-            }
-
-            Cart::where('user_id', $currentUser->id)->delete();
-        }
-
-        return redirect('order');
+        return view('order.create', compact("currentUser"));
     }
 
     public function reorder(Request $request, $id){
@@ -103,7 +76,44 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->user()->authorizeRoles(["customer"]);
+        $currentUser = Auth::user();
+        $cart = Cart::where('user_id', $currentUser->id)->get();
+
+        $totalPrice = 0;
+
+        foreach ($cart as $item){
+            $totalPrice += ($item->quantity * $item->product->price);
+        }
+
+        $order = new Order();
+        $order->user_id = $currentUser->id;
+        $order->price = $totalPrice;
+        $order->paid = false;
+        $order->pickup_date = now(); // For testing pickup will be same day
+
+        if ($order->products){
+            $order->save();
+
+            foreach ($cart as $item){
+                $product = Product::findOrFail($item->product_id);
+                if ($product->quantity >= $item->quantity){
+                    $order->products()->attach($product, ["size" => $item->size, "quantity" => $item->quantity, "price" => $product->price*$item->quantity]);
+                    $reducedAmmount = $product->ammount - $item->quantity;
+                    $product->update(['quantity', $reducedAmmount]);
+                }
+            }
+
+            try {
+                $stripeCharge = $currentUser->charge($totalPrice * 100, $paymentMethod);
+            } catch (Exception $e) {
+
+            }
+
+            Cart::where('user_id', $currentUser->id)->delete();
+        }
+
+        return redirect('order');
     }
 
     /**
