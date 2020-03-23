@@ -15,6 +15,7 @@
     <h3>Prepay Online</h3>
     <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
 {{--    <form id="payment-form" enctype="multipart/form-data">--}}
+{{--        {{ method_field('PATCH') }}--}}
         {{ csrf_field() }}
         <h4>Billing Address</h4>
         <label for="name">Name</label>

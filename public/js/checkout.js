@@ -10,7 +10,7 @@ const cardButton = document.getElementById('card-button');
 const form = document.querySelector('#payment-form');
 
 cardButton.addEventListener('click', async (e) => {
-    const { paymentMethod, error } = await stripe.createPaymentMethod(
+    const { paymentMethod, error } = stripe.createPaymentMethod(
         'card', cardElement, {
             billing_details: { name: cardHolderName.value }
         }
@@ -18,19 +18,16 @@ cardButton.addEventListener('click', async (e) => {
 
     console.log(error);
     console.log(paymentMethod);
-    alert('Form has been submitted');
 
     if (error) {
 
         console.log(error);
         console.log(paymentMethod);
-        alert('Form has been submitted');
         document.querySelector('#card-errors').textContent = error.message;
     } else {
 
         console.log(error);
         console.log(paymentMethod);
-        alert('Form has been submitted');
         document.querySelector('#card-errors').textContent = '';
 
         // $.ajaxSetup({
@@ -42,9 +39,12 @@ cardButton.addEventListener('click', async (e) => {
         $.ajax({
             type: "POST",
             url: '/order',
-            data: { paymentMethod },
+            data: { id: paymentMethod },
             success: function (response) {
                 console.log(response)
+            },
+            error: function (response) {
+                alert('Error' + response);
             }
         });
 

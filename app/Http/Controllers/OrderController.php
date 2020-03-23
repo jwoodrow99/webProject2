@@ -76,8 +76,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request);
+//        dd($request->all());
         $request->user()->authorizeRoles(["customer"]);
         $currentUser = Auth::user();
         $cart = Cart::where('user_id', $currentUser->id)->get();
@@ -110,7 +109,7 @@ class OrderController extends Controller
                 // NOT RIGHT CANT GET PAYMENT METHOD
                 $stripeCharge = $currentUser->charge($totalPrice * 100, $paymentMethod);
             } catch (Exception $e) {
-
+                echo "Error" . $e;
             }
 
             Cart::where('user_id', $currentUser->id)->delete();
