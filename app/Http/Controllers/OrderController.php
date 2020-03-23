@@ -105,6 +105,7 @@ class OrderController extends Controller
             }
 
             try {
+                // NOT RIGHT CANT GET PAYMENT METHOD
                 $stripeCharge = $currentUser->charge($totalPrice * 100, $paymentMethod);
             } catch (Exception $e) {
 

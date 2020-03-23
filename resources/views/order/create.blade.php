@@ -14,7 +14,8 @@
 
     <h3>Prepay Online</h3>
     <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
-        {{ csrf_field() }}
+{{--    <form id="payment-form" enctype="multipart/form-data">--}}
+{{--        {{ csrf_field() }}--}}
         <h4>Billing Address</h4>
         <label for="name">Name</label>
         <input id="name" name="name" type="text" value="{{ $currentUser->customer->name }}"><br/>
