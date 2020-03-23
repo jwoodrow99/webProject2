@@ -38,7 +38,7 @@
 
         <h4>Pickup Date</h4>
         <label for="pickupDate">Date</label>
-        <input name="pickupDate" type="date"><br/>
+        <input id="pickupDate" name="pickupDate" type="date"><br/>
 
         <h4>Payment Information</h4>
 
