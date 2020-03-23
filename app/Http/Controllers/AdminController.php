@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 // All frameworks
+use App\Mail\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 // All models
 use App\Customer;
@@ -76,5 +78,21 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->roles()->detach($role);
         return redirect('admin/user');
+    }
+
+    public function makeLetter(Request $request){
+        $request->user()->authorizeRoles(['manager']);
+        return view('admin.newsletter');
+    }
+
+    public function sendLetter(Request $request){
+        $formData = $request->all();
+        $users = User::all();
+
+        foreach ($users as $user){
+            Mail::to($user)->send(new Newsletter($formData));
+        }
+
+        return redirect('admin/newsletter');
     }
 }
