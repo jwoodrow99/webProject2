@@ -19,26 +19,26 @@
         {{ csrf_field() }}
         <h4>Billing Address</h4>
         <label for="name">Name</label>
-        <input id="name" name="name" type="text" value="{{ $currentUser->customer->name }}"><br/>
+        <input id="name" name="name" type="text" value="{{ $currentUser->customer->name }}" required><br/>
 
         <label for="address">Address</label>
-        <input id="address" name="address" type="text" value="{{ $currentUser->customer->address }}"><br/>
+        <input id="address" name="address" type="text" value="{{ $currentUser->customer->address }}" required><br/>
 
         <label for="city">City</label>
-        <input id="city" name="city" type="text" value="{{ $currentUser->customer->city }}"><br/>
+        <input id="city" name="city" type="text" value="{{ $currentUser->customer->city }}" required><br/>
 
         <label for="province">Province</label>
-        <input id="province" name="province" type="text" value="{{ $currentUser->customer->province }}"><br/>
+        <input id="province" name="province" type="text" value="{{ $currentUser->customer->province }}" required><br/>
 
         <label for="postal">Postal Code</label>
-        <input id="postal" name="postal" type="text" value="{{ $currentUser->customer->postal }}"><br/>
+        <input id="postal" name="postal" type="text" value="{{ $currentUser->customer->postal }}" required><br/>
 
         <label for="phone">Phone Number</label>
-        <input id="phone" name="phone" type="tel" value="{{ $currentUser->customer->phone }}"><br/>
+        <input id="phone" name="phone" type="tel" value="{{ $currentUser->customer->phone }}" required><br/>
 
         <h4>Pickup Date</h4>
         <label for="pickupDate">Date</label>
-        <input id="pickupDate" name="pickupDate" type="date"><br/>
+        <input id="pickupDate" name="pickupDate" type="date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required><br/>
 
         <h4>Payment Information</h4>
 

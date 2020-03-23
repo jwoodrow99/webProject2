@@ -30,25 +30,24 @@ cardButton.addEventListener('click', async (e) => {
                 }
             },
             metadata: {
-                pickupDate: cardHolderPickupDate
+                pickupDate: cardHolderPickupDate.value
             }
         }
-    ).then(function (result) {
+    ).then(result => {
         const paymentId = result.paymentMethod.id;
         postPaymentId(paymentId)
+    }, reason => {
+        console.log(reason);
     });
 
     console.log(error);
     console.log(paymentMethod);
 
     if (error) {
-
         console.log(error);
         console.log(paymentMethod);
         document.querySelector('#card-errors').textContent = error.message;
     } else {
-
-        console.log(error);
         console.log(paymentMethod);
         document.querySelector('#card-errors').textContent = '';
     }
