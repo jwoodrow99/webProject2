@@ -31,11 +31,8 @@ cardButton.addEventListener('click', async (e) => {
             type: "POST",
             url: '/order',
             data: { paymentMethod },
-            beforeSend: function(request) {
-                return request.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
-            },
             success: function (response) {
-                console.log(response);
+                console.log(response)
             }
         });
     }
