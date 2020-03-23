@@ -1,4 +1,4 @@
-const stripe = Stripe('stripe-public-key');
+const stripe = Stripe('pk_test_V9nW4E2CaQuSm5SAzU2lgMD7009LQTGCnM');
 
 const elements = stripe.elements();
 const cardElement = elements.create('card');
@@ -16,9 +16,21 @@ cardButton.addEventListener('click', async (e) => {
         }
     );
 
+    console.log(error);
+    console.log(paymentMethod);
+    alert('Form has been submitted');
+
     if (error) {
+
+        console.log(error);
+        console.log(paymentMethod);
+        alert('Form has been submitted');
         document.querySelector('#card-errors').textContent = error.message;
     } else {
+
+        console.log(error);
+        console.log(paymentMethod);
+        alert('Form has been submitted');
         document.querySelector('#card-errors').textContent = '';
 
         // $.ajaxSetup({
@@ -35,5 +47,6 @@ cardButton.addEventListener('click', async (e) => {
                 console.log(response)
             }
         });
+
     }
 });

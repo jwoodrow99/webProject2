@@ -76,6 +76,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request);
         $request->user()->authorizeRoles(["customer"]);
         $currentUser = Auth::user();
         $cart = Cart::where('user_id', $currentUser->id)->get();
