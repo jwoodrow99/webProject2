@@ -28,6 +28,8 @@ Route::resource('customer', 'CustomerController');
 Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
 Route::resource('order', 'OrderController');
 
+Route::post('/checkout', 'CheckoutController@index');
+
 Route::resource('product', 'ProductController');
 
 Route::resource('cart', 'CartController');

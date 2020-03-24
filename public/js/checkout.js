@@ -16,6 +16,33 @@ const cardHolderPostal = document.querySelector('#postal');
 const cardHolderPhone = document.querySelector('#phone');
 const cardHolderPickupDate = document.querySelector('#pickupDate');
 
+function postPaymentId(paymentId) {
+    $.ajax({
+        type: "POST",
+        url: "/order",
+        // url: '/checkout',
+        data: {
+            'id': paymentId,
+            'name': cardHolderName.value,
+            'phone': 'ajax',
+            'address': cardHolderAddress.value,
+            'city': cardHolderCity.value,
+            'postal': cardHolderPostal.value,
+            'province': cardHolderProvince.value,
+            'pickupDate': cardHolderPickupDate.value
+        },
+        // data: { id: paymentId },
+        success: function (response) {
+            console.log(paymentId);
+            console.log(response);
+            alert('idk');
+        },
+        error: function (response) {
+            alert('Error' + response);
+        }
+    });
+}
+
 cardButton.addEventListener('click', async (e) => {
     const { paymentMethod, error } = await stripe.createPaymentMethod(
         'card', cardElement, {
@@ -51,18 +78,6 @@ cardButton.addEventListener('click', async (e) => {
         console.log(paymentMethod);
         document.querySelector('#card-errors').textContent = '';
     }
-
-    const postPaymentId = function(paymentId) {
-        $.ajax({
-            type: "POST",
-            url: '/order',
-            data: { id: paymentId },
-            success: function (response) {
-                console.log(response)
-            },
-            error: function (response) {
-                alert('Error' + response);
-            }
-        });
-    }
 });
+
+
