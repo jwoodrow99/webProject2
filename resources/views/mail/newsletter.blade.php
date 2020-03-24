@@ -6,3 +6,5 @@
 <article>
     {{$msg}}
 </article>
+
+<a href="{{ url($userLink) }}">unsubscribe</a>

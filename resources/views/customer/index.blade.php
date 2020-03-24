@@ -13,6 +13,7 @@
     Province: {{ $customer->province }} <br>
     Postal: {{ $customer->postal }} <br>
     Phone: {{ $customer->phone }} <br>
+    Subscribed to the newsletter: {{ $customer->user->newsletter ? 'TRUE' : 'FALSE' }}<br><br>
 
     <a href="{{ action('CustomerController@edit', $customer->id) }}">[EDIT]</a>
 

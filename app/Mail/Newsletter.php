@@ -14,17 +14,19 @@ class Newsletter extends Mailable
     public $subject;
     public $message;
     public $formData;
+    public $userLink;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($formData)
+    public function __construct($formData, $user)
     {
         $this->subject = $formData['subject'];
         $this->message = $formData['message'];
         $this->formData = $formData;
+        $this->userLink = "customer/" . $user->customer->id . "/edit";
     }
 
     /**
@@ -36,7 +38,8 @@ class Newsletter extends Mailable
     {
         return $this->view('mail.newsletter')->subject($this->subject)->with([
             'sub' => $this->subject,
-            'msg' => $this->message
+            'msg' => $this->message,
+            'userLink' => $this->userLink
         ]);
     }
 }

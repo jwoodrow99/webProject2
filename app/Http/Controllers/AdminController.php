@@ -89,10 +89,13 @@ class AdminController extends Controller
         $formData = $request->all();
         $users = User::all();
 
-        foreach ($users as $user){
-            Mail::to($user)->send(new Newsletter($formData));
-        }
+        $testUser = [User::findOrFail("69")];
 
+        foreach ($testUser as $user){
+            if ($user->newsletter == true){
+                Mail::to($user)->send(new Newsletter($formData, $user));
+            }
+        }
         return redirect('admin/newsletter');
     }
 }

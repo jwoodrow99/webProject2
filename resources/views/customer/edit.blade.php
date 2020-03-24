@@ -13,6 +13,20 @@
         <label for="email">Email: </label>
         <input name="email" type="email" value="{{ $customer->user->email }}"><br>
 
+        @if($customer->user->newsletter == true)
+            <label for="nltrue">I would like to get the newsletter </label>
+            <input checked type="radio" id="nltrue" name="newsletter" value="true"><br>
+
+            <label for="nlfalse">I dont want to get the newsletter </label>
+            <input type="radio" id="nlfalse" name="newsletter" value="false"><br>
+        @else
+            <label for="nltrue">I would like to get the newsletter </label>
+            <input type="radio" id="nltrue" name="newsletter" value="true"><br>
+
+            <label for="nlfalse">I dont want to get the newsletter </label>
+            <input checked type="radio" id="nlfalse" name="newsletter" value="false"><br>
+        @endif
+
         <label for="address">Address: </label>
         <input name="address" type="text" value="{{ $customer->address }}"><br>
 
