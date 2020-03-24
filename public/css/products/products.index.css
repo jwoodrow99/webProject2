@@ -1,0 +1,24 @@
+@import "../layouts/app.css";
+
+main {
+    background-color: white;
+}
+h1 {
+    text-align: center;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2fa360;
+}
+.prod-list {
+    background-color: var(--zmlightblue);
+    border: 1px solid;
+    padding: 20px;
+    font-size: 30px;
+    height: 400px;
+    width: 350px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid black;
+}
