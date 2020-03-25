@@ -1,1 +1,36 @@
 @import "../layouts/app.css";
+
+.prod-container{
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    overflow: auto;
+}
+.prod-img{
+    text-align: center;
+    font-size: 1.2em;
+    background-color: #2fa360;
+    padding: 10px;
+    width: 40%;
+    height: 50vh;
+    margin-right: 5px;
+}
+.form-info{
+    padding: 10px;
+    font-size: 1.2em;
+    width: 60%;
+    margin-left: 50px;
+}
+input[type=submit] {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 35px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+input[type=number] {
+    width:8%;
+}

@@ -12,6 +12,7 @@ main {
      width: 306px;
      height: 86px;
      font-size: 1.5em;
+     cursor: pointer;
  }
  .shopNow {
      width: 100%;
