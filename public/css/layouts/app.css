@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     background-color: var(--zmwhite);
     font-family: 'Baloo Chettan 2', cursive;
+    min-height: 100vh;
 }
 
 body > nav {
@@ -138,11 +139,11 @@ nav > ul.right > li > a:hover {
  }
 
 main {
-
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding: 15px;
+    min-height: 80vh;
 }
 
 footer {
