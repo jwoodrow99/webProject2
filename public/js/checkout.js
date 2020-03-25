@@ -17,33 +17,39 @@ const cardHolderPhone = document.querySelector('#phone');
 const cardHolderPickupDate = document.querySelector('#pickupDate');
 
 function postPaymentId(paymentId) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/order",
-        // url: '/checkout',
         data: {
-            'id': paymentId,
             'name': cardHolderName.value,
-            'phone': 'ajax',
+            'phone': cardHolderPhone.value,
             'address': cardHolderAddress.value,
             'city': cardHolderCity.value,
             'postal': cardHolderPostal.value,
             'province': cardHolderProvince.value,
-            'pickupDate': cardHolderPickupDate.value
-        },
-        // data: { id: paymentId },
-        success: function (response) {
-            console.log(paymentId);
-            console.log(response);
-            alert('idk');
-        },
-        error: function (response) {
-            alert('Error' + response);
+            'pickupDate': cardHolderPickupDate.value,
+            'id': paymentId,
         }
+    })
+    .done(function (data, response) {
+        console.log(paymentId);
+        console.log(data);
+        console.log(response);
+    })
+    .fail(function (response, jqXHR, textStatus, errorThrown) {
+        alert('Error ' + response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
+        console.log('Error '+ response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
     });
 }
 
 cardButton.addEventListener('click', async (e) => {
+    e.preventDefault();
     const { paymentMethod, error } = await stripe.createPaymentMethod(
         'card', cardElement, {
             billing_details: {
@@ -60,10 +66,10 @@ cardButton.addEventListener('click', async (e) => {
                 pickupDate: cardHolderPickupDate.value
             }
         }
-    ).then(result => {
+    ).then((result) => {
         const paymentId = result.paymentMethod.id;
         postPaymentId(paymentId)
-    }, reason => {
+    }, (reason) => {
         console.log(reason);
     });
 

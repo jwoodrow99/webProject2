@@ -24,11 +24,8 @@ Route::get('/test', 'test@index');
 
 Route::resource('customer', 'CustomerController');
 
-//Route::post('order', 'OrderController@store')->name('order.store');
 Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
 Route::resource('order', 'OrderController');
-
-Route::post('/checkout', 'CheckoutController@index');
 
 Route::resource('product', 'ProductController');
 

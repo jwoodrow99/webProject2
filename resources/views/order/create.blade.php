@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 @section('content')
 
     <h2>Choose Payment Option</h2>
@@ -15,7 +15,7 @@
     <h3>Prepay Online</h3>
     <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
 {{--    <form id="payment-form" method="POST" action="{{ action('CheckoutController@index') }}" enctype="multipart/form-data">--}}
-{{--    <form id="payment-form" enctype="multipart/form-data">--}}
+{{--    <form id="payment-form">--}}
 {{--        {{ method_field('PATCH') }}--}}
         {{ csrf_field() }}
         <h4>Billing Address</h4>
