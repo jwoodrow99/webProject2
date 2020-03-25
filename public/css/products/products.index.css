@@ -10,23 +10,35 @@
     grid-template-columns: auto auto auto;
     list-style-type: none;
 }
-.prod-item {
-    background-color: var(--zmlightblue);
+.prod-list {
+    /*background-color: var(--zmlightblue);*/
     border: 1px solid;
     padding: 20px;
     font-size: 30px;
-    height: 400px;
-    width: 350px;
+    height: 375px;
+    width: 325px;
     margin-bottom: 10px;
     margin-top: 10px;
     border: 1px solid black;
+    transition: width 0.2s, height 0.2s;
 }
-.prod-item > a:link{
+ .prod-item:link{
+    background-color: var(--zmlightblue);
     text-decoration: none;
     color: black;
-    font-size: 0.8em;
+    font-size: 1.2em;
 }
-.prod-item > a:visited, a:hover, a:active {
+ .prod-item:visited{
+    text-decoration: none;
+    color: black;
+}
+ .prod-item:hover {
+    background-color: var(--zmblue);
+    color: black;
+    width: 350px;
+     height: 400px;
+}
+ .prod-item:active {
     text-decoration: none;
     color: black;
 }

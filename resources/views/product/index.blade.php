@@ -5,17 +5,17 @@
     <h1 class="title">Products</h1>
     <ol class="grid-container">
         @foreach($products as $product)
-            <div class="prod-item">
-                <a href=" {{ action('ProductController@show', $product->id) }} ">
-                    <li>
-                        @isset($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}"><br>
-                        @endisset
-                        {{$product->name}}<br>
-                        &#36;{{$product->price}}<br>
-                    </li>
+                <a class="prod-list prod-item" href=" {{ action('ProductController@show', $product->id) }} ">
+                    <div>
+                        <li>
+                            @isset($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}"><br>
+                            @endisset
+                            {{$product->name}}<br>
+                            &#36;{{$product->price}}<br>
+                        </li>
+                    </div>
                 </a>
-            </div>
         @endforeach
     </ol>
 @endsection
