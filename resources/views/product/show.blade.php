@@ -11,8 +11,8 @@
         <div class="form-info prod-info">
         {{--    Product Id: {{$product->id}}<br>--}}
         {{--    Product Code: {{$product->product_code}}<br>--}}
-            <strong>{{$product->name}}</strong><br>
-            &dollar;{{$product->price}} per 10lb. box<br>
+            <span class="prod-name">{{$product->name}}</span><br>
+            <span class="prod-price">&dollar;{{$product->price}}</span> per 10lb. box<br>
             Product Description: {{$product->description}}<br>
         {{--    Product Quantity: {{$product->quantity}}<br>--}}
 

@@ -30,7 +30,15 @@ input[type=submit] {
     font-size: 1em;
     cursor: pointer;
 }
-
 input[type=number] {
     width:8%;
+}
+.prod-name {
+    font-weight: bold;
+    font-size: 1.9em;
+}
+.prod-price{
+    font-weight: bold;
+    color: var(--zmmediumblue);
+    font-size: 1.3em;
 }
