@@ -10,7 +10,7 @@
     grid-template-columns: auto auto auto;
     list-style-type: none;
 }
-.prod-list {
+.prod-item {
     /*background-color: var(--zmlightblue);*/
     border: 1px solid;
     padding: 20px;

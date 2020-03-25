@@ -5,8 +5,8 @@
     <h1 class="title">Products</h1>
     <ol class="grid-container">
         @foreach($products as $product)
-                <a class="prod-list prod-item" href=" {{ action('ProductController@show', $product->id) }} ">
-                    <div>
+                <a class="prod-item" href=" {{ action('ProductController@show', $product->id) }} ">
+                    <div class="">
                         <li>
                             @isset($product->image)
                                 <img src="{{ asset('storage/' . $product->image) }}"><br>
