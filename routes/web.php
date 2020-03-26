@@ -25,6 +25,7 @@ Route::get('/test', 'test@index');
 Route::resource('customer', 'CustomerController');
 
 Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
+Route::post('order/checkout', 'OrderController@paypalCheckout');
 Route::resource('order', 'OrderController');
 
 Route::resource('product', 'ProductController');

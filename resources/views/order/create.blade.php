@@ -25,9 +25,6 @@
 
 
 
-
-
-
     {{--    <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">--}}
 {{--        --}}{{--    <form id="payment-form" method="POST" action="{{ action('CheckoutController@index') }}" enctype="multipart/form-data">--}}
 {{--        --}}{{--    <form id="payment-form" enctype="multipart/form-data">--}}
