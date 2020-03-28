@@ -14,18 +14,20 @@
                                 <img src="{{ asset('storage/' . $item->image) }}">
                             </div>
                             <div class="prod-info">
-                                <p class="para"><span class="prod-name"> {{$item->product->name}}</span></p>
-                                <p class="para"><span class="prod-price">&dollar;{{$item->product->price}}</span> per 10lb. box</p>
-
-                                <p class="para">Number of Boxes {{$item->quantity}}
-                                    <button class="prod-edit">
-                                        <a href="{{ action('CartController@edit', $item->id) }}">Edit</a>
-                                    </button>
-                                </p>
-                                <p class="para">Number of pieces for <strong> each box </strong>{{$item->size}}
-                                    <button class="prod-edit">
-                                        <a href="{{ action('CartController@edit', $item->id) }}">Edit</a>
-                                    </button>
+                                <p class="para"><span class="prod-name"> {{$item->product->name}}</span><br/>
+                                <span class="prod-price">&dollar;{{$item->product->price}}</span> per 10lb. box<br/>
+                                    <span class="prod-info-seg">
+                                        <span class="para">Number of Boxes {{$item->quantity}}
+                                            <button class="prod-edit">
+                                                <a href="{{ action('CartController@edit', $item->id) }}">Edit</a>
+                                            </button>
+                                        </span><br/>
+                                        <span class="para">Number of pieces for <strong> each box </strong>{{$item->size}}
+                                            <button class="prod-edit">
+                                                <a href="{{ action('CartController@edit', $item->id) }}">Edit</a>
+                                            </button>
+                                        </span>
+                                    </span>
                                 </p>
 
                 {{--                Total Price: ${{$item->product->price * $item->quantity}}<br>--}}
@@ -42,7 +44,12 @@
         </ul>
         <div class="prod-sum">
             <h2>Order Summary</h2>
-            <p class="para">Total Price: ${{$totalPrice}}</p>
+            <p class="para">
+                Subtotal: &dollar;{{$totalPrice}}<br/>
+                Taxes: &dollar;{{$totalPrice * 0.13}}<br/>
+                Total Price:[SUBTOTAL = TAXES] <br/>
+
+            </p>
 
             <button class="prod-checkout">
                 <a href="{{ action('OrderController@create') }}">Checkout</a>
