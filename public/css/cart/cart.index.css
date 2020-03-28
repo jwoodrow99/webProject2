@@ -1,0 +1,44 @@
+@import "../layouts/app.css";
+
+.para{
+    padding: 0;
+    margin: 0;
+    background-color: #2fa360;
+}
+.prod-price{
+    font-weight: bold;
+    color: var(--zmmediumblue);
+    font-size: 1.3em;
+    background-color: blue;
+}
+.prod-name {
+    font-weight: bold;
+    font-size: 1.9em;
+    background-color: red;
+}
+ul{
+    list-style-type: none;
+}
+input[type=submit] {
+    background-color: var(--zmwhite);
+    color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    padding: 0;
+    font-size: 1em;
+    cursor: pointer;
+}
+.prod-checkout {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 35px;
+    font-size: 1em;
+    cursor: pointer;
+    color: #000000;
+}
+.prod-checkout > a:link, a:visited, a:hover, a:active{
+    text-decoration: none;
+    color: #000000;
+}
