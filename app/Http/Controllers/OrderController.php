@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+require '../vendor/autoload.php';
 use App\PayPalClient;
 use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 
@@ -82,22 +83,27 @@ class OrderController extends Controller
     public function paypalCheckout(Request $request, $debug=true) {
         $orderRequest = new OrdersCreateRequest();
         $orderRequest->prefer('return=representation');
-        $request->body = [
+
+        $orderRequest->body = array(
             'intent' => 'CAPTURE',
-            'application_context' => [
-                'shipping_preferences' => 'NO_SHIPPING',
-                'return_url' => 'https://example.com/return',
-                'cancel_url' => 'https://example.com/cancel'
-            ],
-            'purchase_units' => [
-                0 => [
-                    'amount' => [
-                        'currency_code' => 'CAD',
-                        'value' => '220.00'
-                    ]
-                ]
-            ]
-        ];
+            'application_context' =>
+                array(
+                    'return_url' => 'https://example.com/return',
+                    'cancel_url' => 'https://example.com/cancel'
+                ),
+            'purchase_units' =>
+                array(
+                    0 =>
+                        array(
+                            'amount' =>
+                                array(
+                                    'currency_code' => 'CAD',
+                                    'value' => '220.00'
+                                )
+                        )
+                )
+        );
+
         $client = PayPalClient::client();
         $response = $client->execute($orderRequest);
 
@@ -110,8 +116,8 @@ class OrderController extends Controller
             foreach ($response->result->links as $link) {
                 print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
             }
+            echo json_encode($response->result, JSON_PRETTY_PRINT);
         }
-         echo json_encode($response->result, JSON_PRETTY_PRINT);
 
         return $response;
     }
@@ -244,4 +250,9 @@ class OrderController extends Controller
         Order::onlyTrashed()->where('id', $order)->forceDelete();
         return redirect('order');
     }
+}
+
+if (!count(debug_backtrace()))
+{
+    Order::paypalCheckout(true);
 }

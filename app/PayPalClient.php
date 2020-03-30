@@ -19,8 +19,8 @@ class PayPalClient extends Model
 
     public static function environment()
     {
-        $clientId = env('PAYPAL_CLIENT_ID');
-        $clientSecret = env('PAYPAL_SECRET');
+        $clientId = getenv('PAYPAL_CLIENT_ID');
+        $clientSecret = getenv('PAYPAL_SECRET');
 
         return new SandboxEnvironment($clientId, $clientSecret);
 //        return new ProductionEnvironment($clientId, $clientSecret);
