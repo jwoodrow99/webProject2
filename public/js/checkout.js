@@ -67,6 +67,7 @@ cardButton.addEventListener('click', async (e) => {
             }
         }
     ).then((result) => {
+        console.log(result);
         const paymentId = result.paymentMethod.id;
         postPaymentId(paymentId)
     }, (reason) => {

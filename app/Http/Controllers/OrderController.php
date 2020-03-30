@@ -106,8 +106,9 @@ class OrderController extends Controller
             }
 
             try {
+                $totalPriceStripe = $totalPrice * 100;
                 // NOT RIGHT CANT GET PAYMENT METHOD
-                $stripeCharge = $currentUser->charge($totalPrice * 100, $request->all()->id);
+                $stripeCharge = $currentUser->charge($totalPriceStripe, $request->id);
             } catch (Exception $e) {
                 echo "Error" . $e;
             }
@@ -118,6 +119,7 @@ class OrderController extends Controller
         $response = array(
             'status' => 'success',
             'msg' => $request->all(),
+            'another' => $totalPriceStripe
         );
         return response()->json($response);
 
