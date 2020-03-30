@@ -1,0 +1,38 @@
+@import "../layouts/app.css";
+
+.cust-container {
+    display: flex;
+    flex-direction: row;
+}
+input[type=submit] {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 153px;
+    height: 43px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: 125px;
+}
+.acc-info{
+    margin-left: 200px;
+}
+.update-info{
+    padding-top: 150px;
+}
+.update-info > button {
+    width: 100%;
+    text-align: left;
+    background-color: var(--zmblue);
+    margin-bottom: 10px;
+    border: none;
+}
+.update-info > button > a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
+}
+.cust-info {
+    background-color: #3f9ae5;
+    margin-left: 20px;
+    text-align: left;
+}
