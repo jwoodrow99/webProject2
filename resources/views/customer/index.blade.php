@@ -14,20 +14,33 @@
         <button><a href="{{ action('CustomerController@edit', $customer->id) }}">Update Your Information</a></button>
     </div>
 
-    <div class="acc-info">
-        <h1>Your Account</h1>
-        <h3>Account Information</h3>
-            <p>
+    <div class="acc-container">
+        <div  class="acc-header">
+            <h1>Your Account</h1>
+            <h3>Account Information</h3>
+        </div>
+        <div class="user-info">
+            <div class="cust-label">
         {{--        Customer Id: {{ $customer->id }} <br>--}}
         {{--        User Id: {{ $customer->user_id }} <br>--}}
-                Name: <span class="cust-info">{{ $customer->name }}</span> <br>
-                Address: <span class="cust-info">{{ $customer->address }}</span> <br>
-                City: <span class="cust-info">{{ $customer->city }}</span> <br>
-                Province: <span class="cust-info">{{ $customer->province }}</span> <br>
-                Postal: <span class="cust-info">{{ $customer->postal }}</span> <br>
-                Email: <span class="cust-info">{{ $customer->user->email }}</span> <br>
-                Phone: <span class="cust-info">{{ $customer->phone }}</span> <br>
-            </p>
+                <span class="cust-label">Name:</span>
+                <span class="cust-label">Address:</span>
+                <span class="cust-label">City:</span>
+                <span class="cust-label">Province:</span>
+                <span class="cust-label">Postal:</span>
+                <span class="cust-label">Email:</span>
+                <span class="cust-label">Phone:</span>
+            </div>
+            <div class="cust-info">
+                <span class="cust-info">{{ $customer->name }}</span>
+                <span class="cust-info">{{ $customer->address }}</span>
+                <span class="cust-info">{{ $customer->city }}</span>
+                <span class="cust-info">{{ $customer->province }}</span>
+                <span class="cust-info">{{ $customer->postal }}</span>
+                <span class="cust-info">{{ $customer->user->email }}</span>
+                <span class="cust-info">{{ $customer->phone }}</span>
+            </div>
+        </div>
             <p>You can only delete your account if you do not have any open orders!</p>
             <form method="POST" action="{{ action('CustomerController@destroy', $customer->id) }}">
                 {{ method_field('DELETE') }}
