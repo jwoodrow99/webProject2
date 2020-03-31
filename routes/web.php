@@ -25,6 +25,7 @@ Route::get('/test', 'test@index');
 Route::resource('customer', 'CustomerController');
 
 Route::post('order/{id}/reorder', 'OrderController@reorder')->name('order.reorder');
+Route::get('order/confirmed/{id}', 'OrderController@confirmed')->name('order.confirmed');
 Route::resource('order', 'OrderController');
 
 Route::resource('product', 'ProductController');

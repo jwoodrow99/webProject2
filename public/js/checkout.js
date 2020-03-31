@@ -16,13 +16,15 @@ const cardHolderPostal = document.querySelector('#postal');
 const cardHolderPhone = document.querySelector('#phone');
 const cardHolderPickupDate = document.querySelector('#pickupDate');
 
-function postPaymentId(paymentId) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+const payInStore = document.querySelector('#payInStore');
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+function postPaymentId(paymentId) {
     $.ajax({
         method: "POST",
         url: "/order",
@@ -34,13 +36,14 @@ function postPaymentId(paymentId) {
             'postal': cardHolderPostal.value,
             'province': cardHolderProvince.value,
             'pickupDate': cardHolderPickupDate.value,
-            'id': paymentId,
+            'paymentId': paymentId,
         }
     })
     .done(function (data, response) {
         console.log(paymentId);
         console.log(data);
-        console.log(response);
+        console.log(response.order);
+        window.location.replace(`confirmed/${data.order.id}`);
     })
     .fail(function (response, jqXHR, textStatus, errorThrown) {
         alert('Error ' + response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
@@ -87,4 +90,24 @@ cardButton.addEventListener('click', async (e) => {
     }
 });
 
+payInStore.addEventListener('click', async (e) => {
+    e.preventDefault();
 
+    $.ajax({
+        method: "POST",
+        url: "/order",
+        data: {
+            'name': cardHolderName.value,
+            'pickupDate': cardHolderPickupDate.value,
+        }
+    })
+    .done(function (data, response) {
+        console.log(data);
+        console.log(response.order);
+        window.location.replace(`confirmed/${data.order.id}`);
+    })
+    .fail(function (response, jqXHR, textStatus, errorThrown) {
+        alert('Error ' + response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
+        console.log('Error ' + response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
+    });
+});

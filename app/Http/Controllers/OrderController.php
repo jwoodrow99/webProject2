@@ -90,8 +90,23 @@ class OrderController extends Controller
         $order = new Order();
         $order->user_id = $currentUser->id;
         $order->price = $totalPrice;
-        $order->paid = false;
-        $order->pickup_date = now(); // For testing pickup will be same day
+
+        // Check if customer has paid
+        if($request->has('paymentId')) {
+            try {
+                // Charge customer's card if provided
+                $totalPriceStripe = $totalPrice * 100;
+                $stripeCharge = $currentUser->charge($totalPriceStripe, $request->paymentId);
+            } catch (Exception $e) {
+                echo "Error" . $e;
+            }
+            $order->paid = true;
+
+        } else {
+            // Customer did not pay ahead
+            $order->paid = false;
+        }
+        $order->pickup_date = $request->pickupDate;
 
         if ($order->products){
             $order->save();
@@ -105,25 +120,30 @@ class OrderController extends Controller
                 }
             }
 
-            try {
-                $totalPriceStripe = $totalPrice * 100;
-                // NOT RIGHT CANT GET PAYMENT METHOD
-                $stripeCharge = $currentUser->charge($totalPriceStripe, $request->id);
-            } catch (Exception $e) {
-                echo "Error" . $e;
-            }
-
             Cart::where('user_id', $currentUser->id)->delete();
         }
 
         $response = array(
-            'status' => 'success',
-            'msg' => $request->all(),
-            'another' => $totalPriceStripe
+            'success' => true,
+            'order' => $order
         );
         return response()->json($response);
 
-        return redirect('order');
+//        return redirect('order');
+    }
+
+    public function confirmed(Request $request, $id) {
+        $request->user()->authorizeRoles(["customer", "employee", "manager"]);
+
+        // Get current user
+        $currentUser = Auth::user();
+        $order = Order::withTrashed()->findOrFail($id);
+
+        if ($currentUser->id == $order->user_id || Auth::user()->hasRole('manager')) {
+            return view('order.confirmed', compact("order"));
+        } else {
+            abort(401, 'This action is unauthorized.');
+        }
     }
 
     /**
