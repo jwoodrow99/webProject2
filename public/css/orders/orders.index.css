@@ -1,0 +1,50 @@
+@import "../layouts/app.css";
+main {
+    background-color: rgba(124, 126, 163, 0.1);
+}
+
+.update-info {
+    display: block;
+    background-color: #636b6f;
+    flex: 15%;
+}
+.order-content {
+    /*padding-left: 20px;*/
+    flex: 85%;
+}
+.order-container {
+    background-color: #D65D5D;
+    display: flex;
+    margin: 0;
+}
+ol > li, ul > li{
+    list-style: none;
+}
+ol > li {
+    border-bottom: 1px solid black;
+    width: 100%;
+    background-color: #f7c6c5;
+}
+.order-id{
+    font-weight: bold;
+}
+input[type=submit] {
+    background-color: var(--zmmediumblue);
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 10%;
+}
+ol {
+    background-color: #2fa360;
+    width: 100%;
+    padding: 0;
+}
+.btn-rep {
+    padding-left: 10px;
+}
+.order-item {
+    display: flex;
+}
