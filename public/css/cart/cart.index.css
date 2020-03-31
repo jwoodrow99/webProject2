@@ -1,0 +1,85 @@
+@import "../layouts/app.css";
+
+.prod-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.item-container{
+    display: flex;
+    flex-direction: row;
+}
+.prod-image {
+    display: block;
+    /*padding: 50px;*/
+    margin: 10px 0px;
+    background-color: #3f9ae5;
+    width: 250px;
+    height: 25vh;
+}
+.prod-info{
+    width: 100%;
+    margin: 10px 0px;
+    padding-left: 10px;
+}
+.prod-sum{
+    border-left: 1px solid #000000;
+    padding: 0 20px 0 20px;
+}
+.para{
+    padding: 0;
+    margin: 0;
+}
+.prod-price{
+    font-weight: bold;
+    color: var(--zmmediumblue);
+    font-size: 1.3em;
+}
+.prod-name {
+    font-weight: bold;
+    font-size: 1.9em;
+}
+ul{
+    list-style-type: none;
+}
+li {
+    border-bottom: 1px solid #000000;
+}
+input[type=submit] {
+    background-color: var(--zmwhite);
+    color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    padding: 0;
+    font-size: 1em;
+    cursor: pointer;
+}
+.prod-checkout {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 35px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #000000;
+}
+.prod-edit {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 50px;
+    height: 17px;
+    font-size: .8em;
+    cursor: pointer;
+    color: #000000;
+    text-align: center;
+}
+.prod-checkout, .prod-edit > a:link, a:visited, a:hover, a:active{
+    text-decoration: none;
+    color: #000000;
+}
+.prod-info-seg{
+    padding-top: 75px;
+    display: block;
+}
