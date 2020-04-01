@@ -21,9 +21,7 @@ Route::get('storage/{filename}', function ($filename)
 Auth::routes();
 
 Route::get('/test', 'test@index');
-Route::get('/', function () {
-    return view('aboutus');
-});
+Route::get('/aboutus', 'Aboutus@index');
 
 Route::resource('customer', 'CustomerController');
 
