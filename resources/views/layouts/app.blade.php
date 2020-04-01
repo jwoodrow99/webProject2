@@ -39,7 +39,7 @@
                     <a class="" href="{{ url('product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="" href="#">About</a>
+                    <a class="" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
                     <a class="" href="#">FAQ</a>
