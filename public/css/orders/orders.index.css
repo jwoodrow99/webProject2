@@ -1,19 +1,15 @@
 @import "../layouts/app.css";
-main {
-    background-color: rgba(124, 126, 163, 0.1);
-}
+
 
 .update-info {
     display: block;
-    background-color: #636b6f;
     flex: 15%;
 }
 .order-content {
-    /*padding-left: 20px;*/
+    padding-left: 40px;
     flex: 85%;
 }
 .order-container {
-    background-color: #D65D5D;
     display: flex;
     margin: 0;
 }
@@ -23,7 +19,7 @@ ol > li, ul > li{
 ol > li {
     border-bottom: 1px solid black;
     width: 100%;
-    background-color: #f7c6c5;
+    padding-left: 10px;
 }
 .order-id{
     font-weight: bold;
@@ -38,13 +34,29 @@ input[type=submit] {
     width: 10%;
 }
 ol {
-    background-color: #2fa360;
     width: 100%;
     padding: 0;
 }
-.btn-rep {
-    padding-left: 10px;
-}
 .order-item {
     display: flex;
+    flex-direction: row;
+}
+.price {
+    font-weight: bold;
+    padding-left: 50px;
+}
+.total {
+    font-weight: bold;
+}
+.update-info > button {
+    width: 100%;
+    text-align: left;
+    background-color: var(--zmmediumblue);
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+}
+.update-info > button > a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
 }

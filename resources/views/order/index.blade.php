@@ -13,8 +13,8 @@
     {{--    <br/>--}}
     {{--    <button><a href="{{ action('CustomerController@edit', $customer->id) }}">Update Your Information</a></button>--}}
     {{--        @endforeach--}}
-        <p>Your Order</p>
-        <p>Account Information</p>
+        <button>Your Order</button>
+        <button>Account Information</button>
     </div>
     <div class="order-content">
 
@@ -28,24 +28,28 @@
                         <li>
                     @endif
                             <span class="order-info order-id">Order #{{$order->id}}</span><br>
-                    Price: {{$order->price}}<br>
-                    Paid: {{$order->paid}}<br>
-                    Order Placed: {{$order->created_at}}<br>
-                        Pickup Date: {{$order->pickup_date}}<br>
-                    Products:
+
+{{--                    Paid: {{$order->paid}}<br>--}}
+{{--                    Order Placed: {{$order->created_at}}<br>--}}
+                    Pickup Date: {{$order->pickup_date}}<br>
                     <ul>
+                        Products:
                         @foreach($order->products as $product)
                             <li class="order-item">
-                                {{$product->pivot->size}} Box of {{$product->name}}<br>
-                                {{$product->pivot->quantity}} Boxes of {{$product->name}}<br>
-                                Pickup Date: {{$order->pickup_date}}<br>
-                                Unit Price: {{$product->price}}<br>
-                                Total Price: {{$product->pivot->price}}<br>
+                                <div class="item-unit">
+                                    {{$product->pivot->size}} Box of {{$product->name}}<br>
+                                    {{$product->pivot->quantity}} Boxes of {{$product->name}}<br>
+                                </div>
+{{--                                Pickup Date: {{$order->pickup_date}}<br>--}}
+                                <div class="price">
+                                    <!--Total Price:-->&dollar;{{$product->pivot->price}}<br/>
+                                    <!--Unit Price:-->&dollar;{{$product->price}}<br/>
+                                </div>
                             </li>
                             <br/>
                         @endforeach
                     </ul>
-
+                    <span class="total">Total: &dollar;{{$order->price}}</span><br>
                     <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
                         {{ csrf_field() }}
                         <span class="btn-rep"><input type="submit" value="Re-Purchase"></span>
