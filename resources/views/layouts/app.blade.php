@@ -45,7 +45,7 @@
                     <a class="" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
-                    <a class="" href="#">Contact Us</a>
+                    <a class="" href="{{url('contactus')}}">Contact Us</a>
                 </li>
 
             <!-- Authentication Links -->
