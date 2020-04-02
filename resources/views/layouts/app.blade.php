@@ -42,7 +42,7 @@
                     <a class="" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
-                    <a class="" href="#">FAQ</a>
+                    <a class="" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
                     <a class="" href="#">Contact Us</a>
