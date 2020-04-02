@@ -1,1 +1,63 @@
 @import "../layouts/app.css";
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+}
+.gmap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.email-content {
+    margin-left: auto;
+    margin-right: auto;
+    /*background-color: #3f9ae5;*/
+}
+iframe {
+    width: 300px;
+    height: 300px;
+}
+ol {
+    font-size: 1.5em;
+}
+ol > li {
+    list-style: none;
+}
+input[type=text], input[type=email] {
+    width: 200px;
+    border-radius: 3px;
+    transition: width .35s ease-in-out;
+}
+input[type=text]:focus, input[type=email]:focus {
+    border-color: VAR(--zmmediumblue);
+    width: 400px;
+}
+textarea {
+    width: 400px;
+    height: 100px;
+    border-radius: 5px;
+}
+textarea:focus{
+    border-color: var(--zmmediumblue);
+}
+.email-content > p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+input[type=submit] {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 200px;
+    height: 40px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.submit {
+    display: block;
+    margin-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    /*background-color: #4c110f;*/
+}
