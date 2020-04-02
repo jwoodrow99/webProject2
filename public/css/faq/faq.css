@@ -1,10 +1,5 @@
 @import "../layouts/app.css";
 
-.faq-container {
-    /*background-color: #f7c6c5;*/
-    /*display: flex;*/
-}
-
 .accordion {
     background-color: var(--zmwhite);
     /*color: #3f9ae5;*/
@@ -13,13 +8,14 @@
     width: 100%;
     border: none;
     text-align: left;
-    /*outline: none;*/
+    outline: none;
     font-size: 1.1em;
     transition: 0.4s;
 }
 
-.active, .accordion {
-    /*background-color: #4c110f;*/
+.active, .accordion:hover {
+    background-color: var(--zmmediumblue);
+    outline: none;
 }
 
 .panel {
@@ -28,7 +24,12 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-}
-h3 {
     border-bottom: 1px solid gray;
+}
+.contact {
+    width: 100%;
+    text-align: center;
+    /*background-color: #3f9ae5;*/
+    display: block;
+    padding: 20px 0;
 }
