@@ -1,8 +1,8 @@
 @extends('layouts.admin')
-
+<link href="{{ asset('css/admin/admin.index.css') }}" rel="stylesheet">
 @section('content2')
     <section class="products">
-        <h3>Products</h3>
+        <h1>Inventory</h1>
         <a href="{{ action('ProductController@create') }}">NEW PRODUCT</a>
         <table>
             <tr>
