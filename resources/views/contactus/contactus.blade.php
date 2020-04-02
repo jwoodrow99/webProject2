@@ -10,13 +10,13 @@
                 Email us below or visit our storefront!
             </p>
             <form action="mailto:someone@example.com" method="post" enctype="text/plain">
-                <label for="email"> Email: </label> <br/>
+                <label for="email">Email: </label> <br/>
                 <input type="email" name="email" required="required" placeholder="Enter valid email" > <br/>
 
-                <label for="subject"> Subject:</label><br/>
+                <label for="subject">Subject:</label><br/>
                 <input type="text" name="subject" placeholder="Enter subject of email" required="required"><br/>
 
-                <label for="message"> Message: </label> <br/>
+                <label for="message">Message: </label> <br/>
                 <textarea name="message" required="required"></textarea> <br/>
 
                 <span class="submit"><input type="submit" value="Send"></span>
