@@ -62,3 +62,8 @@
 
     {{--    <a href="{{ action('OrderController@store') }}">[CHECKOUT]</a>--}}
 @endsection
+
+@section('stripeScripts')
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ asset('js/checkout.js') }}" defer></script>
+@endsection

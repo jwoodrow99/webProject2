@@ -110,8 +110,6 @@
             </div>
         </main>
     </div>
-    <script src="https://js.stripe.com/v3/"></script>
-
-    <script src="{{ asset('js/checkout.js') }}" defer></script>
+    @yield('stripeScripts')
 </body>
 </html>

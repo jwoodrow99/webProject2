@@ -51,8 +51,15 @@ function postPaymentId(paymentId) {
     });
 }
 
+function disableButton() {
+    cardButton.disabled = true;
+    payInStore.disabled = true;
+    return;
+}
+
 cardButton.addEventListener('click', async (e) => {
     e.preventDefault();
+    disableButton();
     const { paymentMethod, error } = await stripe.createPaymentMethod(
         'card', cardElement, {
             billing_details: {
@@ -92,6 +99,7 @@ cardButton.addEventListener('click', async (e) => {
 
 payInStore.addEventListener('click', async (e) => {
     e.preventDefault();
+    disableButton();
 
     $.ajax({
         method: "POST",
