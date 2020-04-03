@@ -17,25 +17,22 @@
                     <span class="prod-item">{{$product->quantity}}</span>
 
                     <div class="inv-btn">
-                    <form method="post" action="{{ action('AdminController@addStock', $product->id) }}" enctype="multipart/form-data" class="prod-item">
-                        {{ csrf_field() }}
-                        {{ method_field('PATCH') }}
-                        <input type="submit" value="+">
-                    </form>
-
-                    <form method="post" action="{{ action('AdminController@removeStock', $product->id) }}" enctype="multipart/form-data" class="prod-item">
-                        {{ csrf_field() }}
-                        {{ method_field('PATCH') }}
-                        <input type="submit" value="-">
-                    </form>
-
-
-                    <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item">[UPDATE]</a>
-                    <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}" class="prod-item">
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
-                        <input type="submit" value="[DELETE]">
-                    </form>
+                        <form method="post" action="{{ action('AdminController@addStock', $product->id) }}" enctype="multipart/form-data" class="add-inv">
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <input type="submit" value="+">
+                        </form>
+                        <form method="post" action="{{ action('AdminController@removeStock', $product->id) }}" enctype="multipart/form-data" class="min-inv">
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <input type="submit" value="-">
+                        </form>
+                            <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button>UPDATE</button></a>
+                        <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}" class="prod-item">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <input type="submit" value="DELETE">
+                        </form>
                     </div>
                 </div>
             @endforeach
