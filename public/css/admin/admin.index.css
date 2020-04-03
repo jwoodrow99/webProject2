@@ -13,10 +13,21 @@
     background-color: var(--zmmediumblue);
     width: 100%;
     font-size: 1.5em;
+    border: 1px solid black;
+    text-align: center;
 }
 .prod {
     display: flex;
 }
 .prod-item {
-width: 100%;
+width: 25%;
+    border: 1px solid black;
+    text-align: center;
+    /*margin-right: 50px;*/
+    /*padding-right: 100px;*/
+}
+.inv-btn {
+    width: 25%;
+    background-color: #98e1b7;
+    display: flex;
 }
