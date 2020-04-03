@@ -27,17 +27,20 @@
                             {{ method_field('PATCH') }}
                             <input type="submit" value="-">
                         </form>
-                            <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button>UPDATE</button></a>
-                        <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}" class="prod-item">
+
+                        <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button class="upd-prod-btn">UPDATE</button></a>
+
+                        <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}" >
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <input type="submit" value="DELETE">
+                            <input class="del-btn" type="submit" value="DELETE">
                         </form>
                     </div>
                 </div>
             @endforeach
 {{--        </div>--}}
     </section>
+    <a href="{{ action('ProductController@create') }}"><button class="add-prod-btn">Add New Product</button></a>
 
 {{--    <section class="todayOrder">--}}
 {{--        <h3>Todays Orders</h3>--}}
@@ -76,5 +79,5 @@
 {{--            @endforeach--}}
 {{--        </table>--}}
 {{--    </section>--}}
-    <a href="{{ action('ProductController@create') }}">NEW PRODUCT</a>
+
 @endsection
