@@ -14,7 +14,7 @@ class CustomerController extends Controller
     {
         // $this->middleware('auth')->only(['edit']);
         // Applies auth middleware to all functions except index
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
@@ -121,9 +121,19 @@ class CustomerController extends Controller
 
         if ($currentUser->id == $customer->user_id || Auth::user()->hasRole('manager')) {
             $formData = $request->all();
+            $newsLetter = null;
+            if ($formData['newsletter'] == "false"){
+                $newsLetter = false;
+            } else {
+                $newsLetter = true;
+            }
             $customer = Customer::find($customer)->first();
             $customer->update($formData);
-            $customer->user->update(['email' => $formData['email'], 'name' => $formData['name']]);
+            $customer->user->update([
+                'email' => $formData['email'],
+                'name' => $formData['name'],
+                'newsletter' => $newsLetter
+                ]);
             if (Auth::user()->hasRole('manager')){
                 return redirect('customer/' . $customer->id);
             } else {

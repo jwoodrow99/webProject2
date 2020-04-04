@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Mail\OrderConfirmed;
+use App\Mail\OrderDeleted;
 use App\Order;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
+
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
@@ -121,6 +126,7 @@ class OrderController extends Controller
             }
 
             Cart::where('user_id', $currentUser->id)->delete();
+            Mail::to($request->user())->send(new OrderConfirmed($order));
         }
 
         $response = array(
@@ -201,9 +207,11 @@ class OrderController extends Controller
         $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
         $currentUser = Auth::user();
         $order = Order::findOrFail($id);
+        $user = User::findOrFail($order->user_id);
 
         if (($currentUser->id == $order->user_id || Auth::user()->hasRole('manager')) && $order->paid == false && $order->pickup_date >= now()->toDateString() && $order->picked_up == false) {
             $order->delete();
+            Mail::to($user)->send(new OrderDeleted($order));
             if (Auth::user()->hasRole('manager')){
                 return redirect('admin');
             } else {

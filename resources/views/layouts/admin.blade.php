@@ -6,6 +6,7 @@
         <a href="{{ url('admin') }}">Admin</a>
         <a href="{{ url('admin/orders') }}">All Orders</a>
         <a href="{{ url('admin/user') }}">Users</a>
+        <a href="{{ url('admin/newsletter') }}">Send Newsletter</a>
     </nav>
 
     <main>
