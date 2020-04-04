@@ -48,26 +48,23 @@
         @endforeach
     </div>
 </div>
-
-{{--    <h2>Removed Orders</h2>--}}
-{{--    <table>--}}
-{{--        <tr>--}}
-{{--            <th>Order Id</th>--}}
-{{--            <th>Customer</th>--}}
-{{--            <th>Pickup Date</th>--}}
-{{--            <th>Total</th>--}}
-{{--            <th>View Button</th>--}}
-{{--        </tr>--}}
-{{--        @foreach($trashedOrders as $order)--}}
-{{--            <tr>--}}
-{{--                <td>{{$order->id}}</td>--}}
-{{--                <td>{{$order->user->name}}</td>--}}
-{{--                <td>{{$order->pickup_date}}</td>--}}
-{{--                <td>{{$order->price}}</td>--}}
-{{--                <td>--}}
-{{--                    <a href="{{ action('OrderController@show', $order->id) }}">VIEW ORDER</a>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--        @endforeach--}}
-{{--    </table>--}}
+<div class="removed-orders">
+    <h2>Removed Orders</h2>
+    <div class="removed-orders-heading">
+        <span class="rm-heading"> Order Number</span>
+        <span class="rm-heading">Customer</span>
+        <span class="rm-heading"> Pickup Date</span>
+        <span class="rm-heading"> Total</span>
+        <span class="rm-heading"> View Button</span>
+    </div>
+    <div class="rm-order-list">
+        @foreach($trashedOrders as $order)
+                <span class="rm-order-item"> {{$order->id}}</span>
+                <span class="rm-order-item"> {{$order->user->name}}</span>
+                <span class="rm-order-item"> {{$order->pickup_date}}</span>
+                <span class="rm-order-item"> {{$order->price}}</span>
+                    <a href="{{ action('OrderController@show', $order->id) }}">VIEW ORDER</a>
+    @endforeach
+    </div>
+</div>
 @endsection

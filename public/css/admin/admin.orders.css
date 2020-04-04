@@ -1,6 +1,6 @@
 @import "../layouts/app.css";
 
-.order-heading {
+.order-heading, .removed-orders-heading {
     display: flex;
     flex-direction: row;
 }
@@ -41,5 +41,13 @@
      color: var(--zmgreen);
      font-weight: bold;
      font-size: 1.3em;
+ }
+ .rm-heading {
+     padding: 20px 0 20px 10px;
+     background-color: var(--zmmediumblue);
+     width: 100%;
+     font-size: 1.5em;
+     /*border: 1px solid black;*/
+     text-align: center;
  }
 
