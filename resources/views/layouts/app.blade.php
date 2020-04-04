@@ -110,5 +110,6 @@
             </div>
         </main>
     </div>
+    @yield('stripeScripts')
 </body>
 </html>
