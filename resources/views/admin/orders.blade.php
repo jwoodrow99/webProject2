@@ -3,13 +3,15 @@
 @section('content2')
 <div class="order-container">
     <h2>All Orders</h2>
-    <div class="order-heading">
-            <span class="heading"> Order Id</span>
-            <span class="heading"> Customer</span>
-            <span class="heading"> Pickup Date</span>
-            <span class="heading"> Total</span>
-            <span class="heading"> Paid</span>
-            <span class="heading"> Picked Up</span>
+    <div class="heading-container">
+        <div class="order-heading">
+                <span class="heading"> Order Number</span>
+                <span class="heading"> Customer</span>
+                <span class="heading"> Pickup Date</span>
+                <span class="heading"> Total</span>
+                <span class="heading"> Paid</span>
+                <span class="heading"> Picked Up</span>
+        </div>
     </div>
     <div class="order-list">
         @foreach($orders as $order)
@@ -32,7 +34,7 @@
                 @endif
 
 
-                <span class="order-item"> <a href="{{ action('OrderController@show', $order->id) }}"><button>VIEW ORDER</button></a></span>
+                <span class="order-item"> <a href="{{ action('OrderController@show', $order->id) }}"><button class="order-btn">View Order</button></a></span>
 
 
                 @if($order->pickup_date >= now()->toDateString())
