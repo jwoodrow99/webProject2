@@ -1,12 +1,13 @@
 @import "../layouts/app.css";
 
-.order-heading, .removed-orders-heading {
-    display: flex;
-    flex-direction: row;
-}
+
 .heading-container {
     background-color: var(--zmmediumblue);
     width: 100%;
+}
+.order-heading, .removed-orders-heading {
+    display: flex;
+    flex-direction: row;
 }
 .heading {
     padding: 20px 0 20px 10px;
@@ -49,5 +50,9 @@
      font-size: 1.5em;
      /*border: 1px solid black;*/
      text-align: center;
+ }
+
+ .order-list {
+     background-color: #4c110f;
  }
 

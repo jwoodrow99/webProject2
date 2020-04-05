@@ -5,7 +5,7 @@
         <h2>All Users</h2>
         <div class="heading-container">
             <div class="user-heading">
-{{--            <span class="heading"> Id</span>--}}
+{{--                <span class="heading"> Id</span>--}}
                 <span class="heading"> Name</span>
                 <span class="heading"> Email</span>
                 <span class="heading"> Phone</span>
@@ -23,8 +23,6 @@
                 <span class="user-item"> {{$customer->phone}}</span>
 
                     <span class="user-item"> <a href="{{ action('CustomerController@show', $customer->id) }}"><button class="view-user-btn"> View User</button></a></span>
-
-
 
                     @if($customer->user->hasRole('manager'))
                         <span class="user-item">

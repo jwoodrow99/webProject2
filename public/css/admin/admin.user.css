@@ -10,7 +10,7 @@
 .heading {
     padding: 20px 0 20px 10px;
     /*background-color: var(--zmmediumblue);*/
-    width: 14.2%;
+    width: 14.2%; /*change to 12.4 if ID fields are needed*/
     font-size: 1.5em;
     /*border: 1px solid black;*/
     text-align: center;
@@ -23,7 +23,15 @@
     width: 14.5%;
     text-align: center;
     border-bottom: 1px solid black;
-    padding: 2px 0;
+    padding: 2px 3px;
+
+    /*Un comment if ID fields are needed*/
+    /*width: 100%;*/
+    /*display: inline-block;*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+
 }
 .view-user-btn{
     background-color: var(--zmblue);
@@ -35,8 +43,6 @@
 input[type=submit] {
     /*background-color: var(--zmmediumblue);*/
     color: black;
-
-
 }
 
 .rmv-role-btn, .del-usr-btn {
