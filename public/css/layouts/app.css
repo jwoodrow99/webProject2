@@ -44,6 +44,14 @@ body > nav > ul {
     margin: 0;
     height: 100%;
 }
+.admin-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin-nav > a {
+    padding-right: 20px;
+}
 
 nav li {
 
