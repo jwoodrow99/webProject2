@@ -14,7 +14,7 @@ class CartController extends Controller
     {
         // $this->middleware('auth')->only(['edit']);
         // Applies auth middleware to all functions except index
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
