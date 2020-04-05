@@ -1,0 +1,54 @@
+@import "../layouts/app.css";
+
+
+.heading-container {
+    background-color: var(--zmmediumblue);
+    width: 100%;
+}
+.order-heading, .removed-orders-heading {
+    display: flex;
+    flex-direction: row;
+}
+.heading {
+    padding: 20px 0 20px 10px;
+    /*background-color: var(--zmmediumblue);*/
+    width: 14.2%;
+    font-size: 1.5em;
+    /*border: 1px solid black;*/
+    text-align: center;
+}
+.order {
+    display: flex;
+    flex-direction: row;
+}
+.order-item {
+    width: 16.6%;
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding: 2px 0;
+}
+ .order-btn {
+     background-color: var(--zmblue);
+     border-radius: 5px;
+     border: none;
+     cursor: pointer;
+     padding-top: 5px;
+ }
+ .order-not-paid {
+     color: var(--zmred);
+     font-weight: bold;
+ }
+ .order-paid {
+     color: var(--zmgreen);
+     font-weight: bold;
+     font-size: 1.3em;
+ }
+ .rm-heading {
+     padding: 20px 0 20px 10px;
+     background-color: var(--zmmediumblue);
+     width: 100%;
+     font-size: 1.5em;
+     /*border: 1px solid black;*/
+     text-align: center;
+ }
+

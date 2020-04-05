@@ -1,0 +1,289 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans%7CRoboto%7CTitillium+Web&display=swap%27');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap');
+
+
+/*Colors*/
+:root {
+
+    --zmwhite: #FFFFF4;
+    --zmlightblue: #A3D9EF;
+    /*--zmmediumblue: #53C3EF;*/
+    --zmmediumblue: #B2F6FF;
+    /*--zmblue: #5A7ABF;*/
+    --zmblue: #67C8FF;
+    --zmdarkblue: #3B5998;
+    --zmred: #D65D5D;
+    --zmgreen: #00FFB2
+}
+
+body {
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--zmwhite);
+    font-family: 'Baloo Chettan 2', cursive;
+}
+
+body > nav {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--zmred);
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+body > nav > ul {
+
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.admin-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin-nav > a {
+    padding-right: 20px;
+}
+
+nav li {
+
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+
+}
+
+nav a {
+
+    font-size: 1.5em;
+    color: black;
+    display: block;
+
+}
+
+nav > ul.right a {
+
+    padding: 15px;
+    transition: .5s ease;
+}
+
+
+.currentNavItem {
+
+    background-color: var(--zmmediumblue);
+}
+
+nav > ul.right > li > a:hover {
+
+    color: white;
+    background-color: var(--zmdarkblue);
+    text-decoration: none;
+    transition: .5s ease;
+}
+
+.dropdown-c {
+
+    position: relative;
+    font-size: 1.5em;
+    color: black;
+    transition: .5s ease;
+    padding: 15px;
+}
+
+.dropdown-c:hover {
+
+    background-color: var(--zmdarkblue);
+    color: white;
+    transition: .5s ease;
+}
+
+.dropdown-c-content {
+
+    display: none;
+    position: absolute;
+    padding: 0px;
+    top: 50px;
+    right: 0px;
+    background-color: white;
+    min-width: 100%;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    text-align: center;
+
+}
+
+.dropdown-c-content li {
+
+     width: 100%;
+}
+
+.dropdown-c-content a {
+
+    width: 100%;
+    font-size: 1em;
+}
+
+.dropdown-c-content a:hover {
+
+    background-color: var(--zmblue);
+    color: var(--zmwhite);
+    text-decoration: none;
+}
+
+.dropdown-c:hover .dropdown-c-content {
+
+    display: block;
+}
+
+.mobile-nav {
+
+     display: none;
+ }
+
+main {
+
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+footer {
+
+    display: flex;
+    background-color: var(--zmdarkblue);
+    color: white;
+    font-size: 1.2em;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+
+    margin-bottom: 5px;
+}
+
+@media (max-width: 1000px) {
+
+
+    .main-nav {
+
+        display: none;
+    }
+
+    .mobile-nav {
+
+        display: block;
+        padding: 0px;
+    }
+
+    .mobile-nav > .dropdown-mobile {
+
+        display: none;
+        transition: 1.5s ease;
+    }
+
+    .mobile-nav > .left {
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hamburger {
+
+        border: none;
+        width: 50px;
+        height: 50px;
+        background-color: var(--zmred);
+        align-self: center;
+        margin-right: 10px;
+    }
+
+    .mobile-nav button .bar{
+        display: block;
+        transition: all .3s ease-in;
+        background-color: var(--zmdarkblue);
+        color: white;
+        width: 100%;
+        height: 10%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 0px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .hamburger .first {
+
+        transition: all .5s ease;
+        transform: rotate(315deg) translate(-4px, 5px);
+        background-color: var(--zmmediumblue);
+    }
+
+    .hamburger .second {
+
+        transition: all .4s ease;
+        opacity: 0;
+    }
+
+    .hamburger .third {
+
+        transition: all .5s ease;
+        transform: rotate(-320deg) translate(-10px, -11px);
+        background-color: var(--zmmediumblue);
+    }
+
+    .dropdown-mobile a:hover {
+
+        background-color: var(--zmblue);
+        color: var(--zmwhite);
+        text-decoration: none;
+    }
+
+    .dropdown-mobile li {
+
+        text-align: center;
+        width: 100%;
+    }
+
+    .dropdown-mobile li a {
+
+        text-align: center;
+        width: 100%;
+    }
+
+    .logo {
+
+        margin-left: 15px;
+    }
+
+    main {
+
+        margin: 0;
+    }
+
+    footer {
+
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+
+
+
+
+

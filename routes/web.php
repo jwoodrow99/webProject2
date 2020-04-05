@@ -21,6 +21,9 @@ Route::get('storage/{filename}', function ($filename)
 });
 
 Route::get('/test', 'test@index');
+Route::get('/aboutus', 'AboutUsController@index');
+Route::get('/faq', 'FaqController@index');
+Route::get('/contactus', 'ContactUsController@index');
 
 Route::resource('customer', 'CustomerController');
 

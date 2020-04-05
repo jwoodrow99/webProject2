@@ -1,0 +1,54 @@
+@import "../layouts/app.css";
+
+.cust-container {
+    display: flex;
+    flex-direction: row;
+}
+input[type=submit] {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 153px;
+    height: 43px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: 125px;
+}
+.acc-container{
+    margin-left: 200px;
+    /*background-color: #98e1b7;*/
+    position: relative;
+}
+.update-info{
+    padding-top: 150px;
+    /*background-color: #3f9ae5;*/
+}
+.update-info > button {
+    width: 100%;
+    text-align: left;
+    background-color: var(--zmmediumblue);
+    margin-bottom: 10px;
+    border: none;
+}
+.update-info > button > a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
+}
+.cust-info {
+    margin-left: 20px;
+    text-align: left;
+    display: block;
+}
+.cust-label {
+    display: block;
+}
+.user-info {
+    display: flex;
+    flex-direction: row;
+}
+.acc-header {
+    padding-left: 10px;
+}
+.acc-header > h1, .cust-label {
+    font-weight: bold;
+}
