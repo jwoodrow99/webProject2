@@ -5,17 +5,21 @@
     <h2>Choose Payment Option</h2>
 
     <h3>Pay In-Store</h3>
-        <form method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <label for="pickupName">Pickup Name</label>
-            <input name="pickupName" type="text" value="{{ $currentUser->customer->name }}"><br/>
+    <form method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <label for="pickupName">Pickup Name</label>
+        <input name="pickupName" type="text" value="{{ $currentUser->customer->name }}"><br/>
 
-            <h4>Pickup Date</h4>
-            <label for="pickupDate">Date</label>
-            <input id="pickupDate" name="pickupDate" type="date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required><br/>
+        <h4>Pickup Date</h4>
+        <label for="pickupDate">Date</label>
+        <input id="pickupDate" name="pickupDate" type="date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required><br/>
 
-            <button id="payInStore" type="submit">Order</button>
-        </form>
+        <button id="payInStore" type="submit">Order</button>
+    </form>
+
+    <div id="inStore-error">
+        {{-- Error messages from payment should appear here --}}
+    </div>
 
     <h3>Prepay Online</h3>
     <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
@@ -60,6 +64,9 @@
         </button>
     </form>
 
+    <div id="payment-error">
+    {{-- Error messages from payment should appear here --}}
+    </div>
     {{--    <a href="{{ action('OrderController@store') }}">[CHECKOUT]</a>--}}
 @endsection
 
