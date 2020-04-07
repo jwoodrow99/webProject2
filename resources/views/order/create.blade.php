@@ -1,12 +1,15 @@
 @extends('layouts.app')
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--}}
+<link href="{{ asset('css/orders/order.create.css') }}" rel="stylesheet">
 @section('content')
 
-    <h2>Choose Payment Option</h2>
+    <h1>Choose Payment Option</h1>
 
-    <h3>Pay In-Store</h3>
+    <h2>Pay In-Store</h2>
+    <hr>
         <form method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <p>Enter the name of who will pick up the dog food</p>
             <label for="pickupName">Pickup Name</label>
             <input name="pickupName" type="text" value="{{ $currentUser->customer->name }}"><br/>
 
@@ -17,7 +20,7 @@
             <button id="payInStore" type="submit">Order</button>
         </form>
 
-    <h3>Prepay Online</h3>
+    <h2>Prepay Online</h2>
     <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
 {{--    <form id="payment-form" method="POST" action="{{ action('CheckoutController@index') }}" enctype="multipart/form-data">--}}
 {{--    <form id="payment-form">--}}
