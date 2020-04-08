@@ -46,7 +46,7 @@ function postPaymentId(paymentId) {
         window.location.replace(`confirmed/${data.order.id}`);
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-        document.querySelector('#payment-error').textContent = jqXHR.responseJSON.message;
+        document.querySelector('#payment-error').textContent = jqXHR.responseJSON.message + ' Please refresh if you wish to try again.';
     });
 }
 
@@ -58,7 +58,7 @@ function disableButton() {
 
 cardButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    // disableButton();
+    disableButton();
     const { paymentMethod, error } = await stripe.createPaymentMethod(
         'card', cardElement, {
             billing_details: {
@@ -98,7 +98,7 @@ cardButton.addEventListener('click', async (e) => {
 
 payInStore.addEventListener('click', async (e) => {
     e.preventDefault();
-    // disableButton();
+    disableButton();
 
     $.ajax({
         method: "POST",
@@ -114,6 +114,6 @@ payInStore.addEventListener('click', async (e) => {
         window.location.replace(`confirmed/${data.order.id}`);
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-        document.querySelector('#inStore-error').textContent = jqXHR.responseJSON.message;
+        document.querySelector('#inStore-error').textContent = jqXHR.responseJSON.message + ' Please refresh if you wish to try again.';
     });
 });
