@@ -1,7 +1,4 @@
 @import "layouts/app.css";
-main {
-    background-color: var(--zmwhite);
-}
 .banner img {
     max-width: 100%;
 }
