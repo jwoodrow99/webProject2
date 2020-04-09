@@ -126,7 +126,7 @@ class OrderController extends Controller
             }
 
             Cart::where('user_id', $currentUser->id)->delete();
-//            Mail::to($request->user())->send(new OrderConfirmed($order));
+            Mail::to($request->user())->send(new OrderConfirmed($order));
         }
 
         $response = array(
