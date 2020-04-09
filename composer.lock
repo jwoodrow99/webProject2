@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f7dd46ef4b72f9ff84c8f5d1fd1a026",
+    "content-hash": "5cd11afa87b995d8602acafcc5148d68",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -725,6 +725,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -771,20 +772,21 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
             "name": "laravel/cashier",
-            "version": "v10.7.1",
+            "version": "v10.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier.git",
-                "reference": "80eac34ae0db3dcd922278f981c403f1e271bd25"
+                "reference": "7f3837131fec83f4224418ee6fc7d37b16e07f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier/zipball/80eac34ae0db3dcd922278f981c403f1e271bd25",
-                "reference": "80eac34ae0db3dcd922278f981c403f1e271bd25",
+                "url": "https://api.github.com/repos/laravel/cashier/zipball/7f3837131fec83f4224418ee6fc7d37b16e07f94",
+                "reference": "7f3837131fec83f4224418ee6fc7d37b16e07f94",
                 "shasum": ""
             },
             "require": {
@@ -845,7 +847,7 @@
                 "laravel",
                 "stripe"
             ],
-            "time": "2020-03-24T16:10:05+00:00"
+            "time": "2020-03-03T15:32:55+00:00"
         },
         {
             "name": "laravel/framework",
