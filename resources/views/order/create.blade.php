@@ -17,7 +17,7 @@
             <label for="pickupDate">Date</label>
             <input id="pickupDate" name="pickupDate" type="date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required><br/>
 
-            <button id="payinStore" type="submit">Pay in store</button>
+            <button class="store-pmt-btn" type="submit">Pay in store</button>
         </form>
 
     <h3>Prepay Online</h3>
