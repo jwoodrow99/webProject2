@@ -35,7 +35,7 @@
             <a href="{{ action('AdminController@orders') }}"><button>View Orders</button></a>
         @endif
 
-        <p>You can only delete your account if you do not have any open orders!</p>
+        <p>You can only delete an account if there isn't any open orders!</p>
         <form method="POST" action="{{ action('CustomerController@destroy', $customer->id) }}">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
