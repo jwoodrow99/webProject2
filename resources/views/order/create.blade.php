@@ -5,7 +5,7 @@
 
     <h1>Choose Payment Option</h1>
 
-    <h2>Pay In-Store</h2>
+    <h3>Pay In-Store</h3>
     <hr>
         <form method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -13,52 +13,67 @@
             <label for="pickupName">Pickup Name</label>
             <input name="pickupName" type="text" value="{{ $currentUser->customer->name }}"><br/>
 
-            <h4>Pickup Date</h4>
+            <h5>Pickup Date</h5>
             <label for="pickupDate">Date</label>
             <input id="pickupDate" name="pickupDate" type="date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required><br/>
 
-            <button id="payInStore" type="submit">Order</button>
+            <button class="store-pmt-btn" type="submit">Pay in store</button>
         </form>
 
-    <h2>Prepay Online</h2>
+    <h3>Prepay Online</h3>
+    <hr/>
     <form id="payment-form" method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
 {{--    <form id="payment-form" method="POST" action="{{ action('CheckoutController@index') }}" enctype="multipart/form-data">--}}
 {{--    <form id="payment-form">--}}
 {{--        {{ method_field('PATCH') }}--}}
         {{ csrf_field() }}
-        <h4>Billing Address</h4>
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" value="{{ $currentUser->customer->name }}" required><br/>
+        <div class="online-pmt-container">
 
-        <label for="address">Address</label>
-        <input id="address" name="address" type="text" value="{{ $currentUser->customer->address }}" required><br/>
+            <div class="bill-info">
+                <span class="bill-labels">
+{{--                    <h4>Billing Address</h4>--}}
+                     <label for="name">Name</label><br/>
+                    <label for="address">Address</label><br/>
+                     <label for="city">City</label><br/>
+                    <label for="province">Province</label><br/>
+                    <label for="postal">Postal Code</label><br/>
+                    <label for="phone">Phone Number</label><br/>
+                </span>
 
-        <label for="city">City</label>
-        <input id="city" name="city" type="text" value="{{ $currentUser->customer->city }}" required><br/>
+                <span class="bill-inputs">
+                    <input id="name" name="name" type="text" value="{{ $currentUser->customer->name }}" required><br/>
+                    <input id="address" name="address" type="text" value="{{ $currentUser->customer->address }}" required><br/>
+                    <input id="city" name="city" type="text" value="{{ $currentUser->customer->city }}" required><br/>
+                    <input id="province" name="province" type="text" value="{{ $currentUser->customer->province }}" required><br/>
+                    <input id="postal" name="postal" type="text" value="{{ $currentUser->customer->postal }}" required><br/>
+                    <input id="phone" name="phone" type="tel" value="{{ $currentUser->customer->phone }}" required><br/>
+                </span>
+            </div>
+            <div class="online-pmt-info">
+{{--                <h4>Payment Information</h4>--}}
+{{--                <span class="online-pmt-labels">--}}
+{{--                    <label for="cardName">Name on card</label><br/>--}}
+{{--                    <label for="cardNum">Card Number</label><br/>--}}
+{{--                    <label for="CCV">CCV</label><br/>--}}
+{{--                </span>--}}
+{{--                <span class="online-pmt-inputs">--}}
+{{--                    <input id="cardName" name="cardName" type="text" required="required"><br/>--}}
+{{--                    <input id="cardNum" name="cardNum" type="number" required="required"><br/>--}}
+{{--                    <input id="CCV" name="CCV" type="number" required="required"><br/>--}}
+                    <div id="card-element">
+                    <!-- Stripe Element/Form Field will be inserted here -->
+                    </div>
 
-        <label for="province">Province</label>
-        <input id="province" name="province" type="text" value="{{ $currentUser->customer->province }}" required><br/>
+                <span class="pickupDate">
+                    <label for="pickupDate">Pick up date</label>
+                    <input id="pickupDate" name="pickupDate" type="date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required><br/>
+                </span>
 
-        <label for="postal">Postal Code</label>
-        <input id="postal" name="postal" type="text" value="{{ $currentUser->customer->postal }}" required><br/>
-
-        <label for="phone">Phone Number</label>
-        <input id="phone" name="phone" type="tel" value="{{ $currentUser->customer->phone }}" required><br/>
-
-        <h4>Pickup Date</h4>
-        <label for="pickupDate">Date</label>
-        <input id="pickupDate" name="pickupDate" type="date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required><br/>
-
-        <h4>Payment Information</h4>
-
-        <div id="card-element">
-            <!-- Stripe Element/Form Field will be inserted here -->
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
+            </div>
         </div>
-
-        <!-- Used to display form errors. -->
-        <div id="card-errors" role="alert"></div>
-
-        <button id="card-button">
+        <button class="online-pmt-btn">
             Process Payment
         </button>
     </form>

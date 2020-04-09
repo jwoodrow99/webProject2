@@ -1,3 +1,35 @@
 @import "../layouts/app.css";
 
-
+.store-pmt-btn, .online-pmt-btn {
+    background-color: var(--zmblue);
+    border-radius: 5px;
+    border: none;
+    width: 120px;
+    height: 36px;
+    font-size: 1em;
+    cursor: pointer;
+}
+div > h4 {
+    font-weight: bold;
+}
+.online-pmt-container {
+    display: flex;
+    flex-direction: row;
+}
+.bill-info {
+    display: flex;
+    flex-direction: row;
+}
+.bill-inputs > input {
+    margin: 0px 0px 10px 30px;
+}
+.bill-labels > label{
+    margin-top: 7px;
+}
+.online-pmt-info {
+    margin-left: 30px;
+}
+.pickupDate {
+    padding-top: 20px;
+    display: block;
+}
