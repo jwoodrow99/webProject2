@@ -8,6 +8,7 @@ use App\Product;
 use App\Role;
 use App\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class test extends Controller
@@ -15,23 +16,32 @@ class test extends Controller
 
     public function __construct()
     {
-        // This line allows for the use of the auth middlewear,
-        // middlewear is implemented in route file.
-        $this->middleware('auth');
+
     }
 
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(["customer"]);
+        $sendTos = [
+            'jackwoodrow@protonmail.com',
+            'jackwoodrow99@gmail.com',
+            'jack.woodrow01@stclairconnect.ca'
+        ];
 
-        // Get current user
-        $currentUser = Auth::user();
+        Mail::raw('TEST EMAIL!', function ($message) {
+            $message->from('test@sandbox87c0d58c23e84c39a234d0af217dd384.mailgun.org', 'TEST');
+            $message->to("jackwoodrow@protonmail.com");
+        });
 
-        if ($currentUser) {
-            $user_orders = $currentUser->orders;
-            return view('test', compact("user_orders"));
-        } else {
-            abort(401, 'This action is unauthorized.');
-        }
+        Mail::raw('TEST EMAIL!', function ($message) {
+            $message->from('test@sandbox87c0d58c23e84c39a234d0af217dd384.mailgun.org', 'TEST');
+            $message->to('jackwoodrow99@gmail.com');
+        });
+
+        Mail::raw('TEST EMAIL!', function ($message) {
+            $message->from('test@sandbox87c0d58c23e84c39a234d0af217dd384.mailgun.org', 'TEST');
+            $message->to('jack.woodrow01@stclairconnect.ca');
+        });
+
+        echo "Mail Sent!";
     }
 }

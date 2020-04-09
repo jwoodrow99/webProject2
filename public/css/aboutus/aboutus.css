@@ -1,0 +1,36 @@
+@import "../layouts/app.css";
+
+.cont-img {
+    display: flex;
+    flex-direction: row;
+}
+.cont-img > p {
+    padding-right: 50px;
+}
+p {
+    text-align: justify;
+}
+img {
+    width: 573px;
+    height: 340px;
+}
+.FAQ {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+button {
+    background-color: var(--zmmediumblue);
+    border-radius: 5px;
+    border: none;
+    width: 206px;
+    height: 46px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+button > a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
+}

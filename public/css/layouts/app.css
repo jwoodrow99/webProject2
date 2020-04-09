@@ -8,10 +8,13 @@
 
     --zmwhite: #FFFFF4;
     --zmlightblue: #A3D9EF;
-    --zmmediumblue: #53C3EF;
-    --zmblue: #5A7ABF;
+    /*--zmmediumblue: #53C3EF;*/
+    --zmmediumblue: #B2F6FF;
+    /*--zmblue: #5A7ABF;*/
+    --zmblue: #67C8FF;
     --zmdarkblue: #3B5998;
     --zmred: #D65D5D;
+    --zmgreen: #00FFB2
 }
 
 body {
@@ -40,6 +43,14 @@ body > nav > ul {
     padding: 0;
     margin: 0;
     height: 100%;
+}
+.admin-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin-nav > a {
+    padding-right: 20px;
 }
 
 nav li {

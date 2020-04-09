@@ -1,0 +1,65 @@
+@import "../layouts/app.css";
+
+.products {
+    /*background-color: #f7c6c5;*/
+    display: flex;
+    flex-direction: column;
+}
+.prod-heading, .order-heading {
+    display: flex;
+}
+.heading {
+    padding: 20px 0 20px 10px;
+    background-color: var(--zmmediumblue);
+    width: 100%;
+    font-size: 1.5em;
+    /*border: 1px solid black;*/
+    text-align: center;
+}
+.prod, .order {
+    display: flex;
+}
+.prod-item, .order-item {
+    width: 25%;
+    text-align: center;
+    border-bottom: 1px solid black;
+    /*margin-top: 10px;*/
+}
+.inv-btn, .order-btn {
+    width: 25%;
+    background-color: var(--zmdarkblue);
+    border-bottom: 1px solid black;
+    display: flex;
+    /*margin-top: 5px;*/
+    padding: 8px 15px 0 55px;
+}
+.min-inv {
+    padding-right: 0px;
+}
+.add-inv {
+    padding-left: 25px;
+}
+input[type=submit], a {
+    font-size: 0.7em;
+}
+.add-prod-btn {
+    background-color: var(--zmgreen);
+    border-radius: 5px;
+    border: none;
+    width: 153px;
+    height: 43px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+.upd-prod-btn, .del-btn, .view-order-btn {
+    background-color: var(--zmgreen);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    padding-top: 5px;
+}
+.del-btn{
+    background-color: var(--zmred);
+}

@@ -1,0 +1,62 @@
+@import "../layouts/app.css";
+
+
+.update-info {
+    display: block;
+    flex: 15%;
+}
+.order-content {
+    padding-left: 40px;
+    flex: 85%;
+}
+.order-container {
+    display: flex;
+    margin: 0;
+}
+ol > li, ul > li{
+    list-style: none;
+}
+ol > li {
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding-left: 10px;
+}
+.order-id{
+    font-weight: bold;
+}
+input[type=submit] {
+    background-color: var(--zmmediumblue);
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 10%;
+}
+ol {
+    width: 100%;
+    padding: 0;
+}
+.order-item {
+    display: flex;
+    flex-direction: row;
+}
+.price {
+    font-weight: bold;
+    padding-left: 50px;
+}
+.total {
+    font-weight: bold;
+}
+.update-info > button {
+    width: 100%;
+    text-align: left;
+    background-color: var(--zmmediumblue);
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+}
+.update-info > button > a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
+}

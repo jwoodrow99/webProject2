@@ -1,0 +1,35 @@
+@import "../layouts/app.css";
+
+.accordion {
+    background-color: var(--zmwhite);
+    /*color: #3f9ae5;*/
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.1em;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: var(--zmmediumblue);
+    outline: none;
+}
+
+.panel {
+    padding: 0 18px;
+    /*background-color: white;*/
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-bottom: 1px solid gray;
+}
+.contact {
+    width: 100%;
+    text-align: center;
+    /*background-color: #3f9ae5;*/
+    display: block;
+    padding: 20px 0;
+}

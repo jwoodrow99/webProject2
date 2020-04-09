@@ -39,13 +39,13 @@
                     <a class="" href="{{ url('product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="" href="#">About</a>
+                    <a class="" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
-                    <a class="" href="#">FAQ</a>
+                    <a class="" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
-                    <a class="" href="#">Contact Us</a>
+                    <a class="" href="{{url('contactus')}}">Contact Us</a>
                 </li>
 
             <!-- Authentication Links -->
@@ -175,5 +175,8 @@
                 <p>&copy; 2020 - K.A.W.S & Zaccagnini Meats </p>
             </div>
         </footer>
+    </div>
+    @yield('stripeScripts')
+
 </body>
 </html>
