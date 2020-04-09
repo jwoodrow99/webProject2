@@ -45,9 +45,8 @@ function postPaymentId(paymentId) {
         console.log(response.order);
         window.location.replace(`confirmed/${data.order.id}`);
     })
-    .fail(function (response, jqXHR, textStatus, errorThrown) {
-        alert('Error ' + response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
-        console.log('Error '+ response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        document.querySelector('#payment-error').textContent = jqXHR.responseJSON.message + ' Please refresh if you wish to try again.';
     });
 }
 
@@ -114,8 +113,7 @@ payInStore.addEventListener('click', async (e) => {
         console.log(response.order);
         window.location.replace(`confirmed/${data.order.id}`);
     })
-    .fail(function (response, jqXHR, textStatus, errorThrown) {
-        alert('Error ' + response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
-        console.log('Error ' + response.message + ' ' + jqXHR + ' ' + errorThrown + ' ' + textStatus);
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        document.querySelector('#inStore-error').textContent = jqXHR.responseJSON.message + ' Please refresh if you wish to try again.';
     });
 });

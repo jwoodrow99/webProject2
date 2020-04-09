@@ -6,6 +6,7 @@
     <h1>Choose Payment Option</h1>
 
     <h3>Pay In-Store</h3>
+
     <hr>
         <form method="POST" action="{{ action('OrderController@store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -19,6 +20,10 @@
 
             <button class="store-pmt-btn" type="submit">Pay in store</button>
         </form>
+         <div id="inStore-error">
+        {{-- Error messages from payment should appear here --}}
+    </div>
+
 
     <h3>Prepay Online</h3>
     <hr/>
@@ -78,6 +83,9 @@
         </button>
     </form>
 
+    <div id="payment-error">
+    {{-- Error messages from payment should appear here --}}
+    </div>
     {{--    <a href="{{ action('OrderController@store') }}">[CHECKOUT]</a>--}}
 @endsection
 
