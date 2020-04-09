@@ -1,0 +1,25 @@
+@import "../layouts/app.css";
+
+.update-container {
+    padding: 10px 0 10px 400px;
+}
+input[type=submit] {
+    background-color: var(--zmblue);
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 10%;
+}
+input[type=text], input[type=email], input[type=number]  {
+    margin-left: 50px;
+    margin-bottom: 3px;
+}
+span {
+    display: block;
+    padding-bottom: 2px;
+}
+.usr-info {
+    display: flex;
+}
