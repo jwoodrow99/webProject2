@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Mail\OrderConfirmed;
+use App\Mail\OrderDeleted;
 use App\Order;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
+
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
@@ -44,36 +50,8 @@ class OrderController extends Controller
     {
         $request->user()->authorizeRoles(["customer"]);
         $currentUser = Auth::user();
-        $cart = Cart::where('user_id', $currentUser->id)->get();
 
-        $totalPrice = 0;
-
-        foreach ($cart as $item){
-            $totalPrice += ($item->quantity * $item->product->price);
-        }
-
-        $order = new Order();
-        $order->user_id = $currentUser->id;
-        $order->price = $totalPrice;
-        $order->paid = false;
-        $order->pickup_date = now(); // For testing pickup will be same day
-
-        if ($order->products){
-            $order->save();
-
-            foreach ($cart as $item){
-                $product = Product::findOrFail($item->product_id);
-                if ($product->quantity >= $item->quantity){
-                    $order->products()->attach($product, ["size" => $item->size, "quantity" => $item->quantity, "price" => $product->price*$item->quantity]);
-                    $reducedAmmount = $product->ammount - $item->quantity;
-                    $product->update(['quantity', $reducedAmmount]);
-                }
-            }
-
-            Cart::where('user_id', $currentUser->id)->delete();
-        }
-
-        return redirect('order');
+        return view('order.create', compact("currentUser"));
     }
 
     public function reorder(Request $request, $id){
@@ -103,7 +81,75 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request);
+        $request->user()->authorizeRoles(["customer"]);
+        $currentUser = Auth::user();
+        $cart = Cart::where('user_id', $currentUser->id)->get();
+
+        $totalPrice = 0;
+
+        foreach ($cart as $item){
+            $totalPrice += ($item->quantity * $item->product->price);
+        }
+
+        $order = new Order();
+        $order->user_id = $currentUser->id;
+        $order->price = $totalPrice;
+
+        // Check if customer has paid
+        if($request->has('paymentId')) {
+            try {
+                // Charge customer's card if provided
+                $totalPriceStripe = $totalPrice * 100;
+                $stripeCharge = $currentUser->charge($totalPriceStripe, $request->paymentId);
+            } catch (Exception $e) {
+                echo "Error" . $e;
+            }
+            $order->paid = true;
+
+        } else {
+            // Customer did not pay ahead
+            $order->paid = false;
+        }
+        $order->pickup_date = $request->pickupDate;
+
+        if ($order->products){
+            $order->save();
+
+            foreach ($cart as $item){
+                $product = Product::findOrFail($item->product_id);
+                if ($product->quantity >= $item->quantity){
+                    $order->products()->attach($product, ["size" => $item->size, "quantity" => $item->quantity, "price" => $product->price*$item->quantity]);
+                    $reducedAmmount = $product->ammount - $item->quantity;
+                    $product->update(['quantity', $reducedAmmount]);
+                }
+            }
+
+            Cart::where('user_id', $currentUser->id)->delete();
+            Mail::to($request->user())->send(new OrderConfirmed($order));
+        }
+
+        $response = array(
+            'success' => true,
+            'order' => $order
+        );
+        return response()->json($response);
+
+//        return redirect('order');
+    }
+
+    public function confirmed(Request $request, $id) {
+        $request->user()->authorizeRoles(["customer", "employee", "manager"]);
+
+        // Get current user
+        $currentUser = Auth::user();
+        $order = Order::withTrashed()->findOrFail($id);
+
+        if ($currentUser->id == $order->user_id || Auth::user()->hasRole('manager')) {
+            return view('order.confirmed', compact("order"));
+        } else {
+            abort(401, 'This action is unauthorized.');
+        }
     }
 
     /**
@@ -161,9 +207,11 @@ class OrderController extends Controller
         $request->user()->authorizeRoles(['manager', 'employee', 'customer']);
         $currentUser = Auth::user();
         $order = Order::findOrFail($id);
+        $user = User::findOrFail($order->user_id);
 
         if (($currentUser->id == $order->user_id || Auth::user()->hasRole('manager')) && $order->paid == false && $order->pickup_date >= now()->toDateString() && $order->picked_up == false) {
             $order->delete();
+            Mail::to($user)->send(new OrderDeleted($order));
             if (Auth::user()->hasRole('manager')){
                 return redirect('admin');
             } else {

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<link href="{{ asset('css/products/products.index.css') }}" rel="stylesheet">
+<link href="{{ asset('css/products/product.index.css') }}" rel="stylesheet">
 
 @section('content')
     <h1 class="title">Products</h1>

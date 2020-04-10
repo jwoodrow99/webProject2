@@ -6,7 +6,7 @@
     <div class="heading-container">
         <div class="order-heading">
                 <span class="heading"> Order Number</span>
-                <span class="heading"> Customer</span>
+{{--                <span class="heading"> Customer</span>--}}
                 <span class="heading"> Pickup Date</span>
                 <span class="heading"> Total</span>
                 <span class="heading"> Paid</span>
@@ -17,7 +17,7 @@
         @foreach($orders as $order)
             <div class="order">
                 <span class="order-item"> {{$order->id}}</span>
-                <span class="order-item"> {{$order->user->name}}</span>
+{{--                <span class="order-item"> {{$order->user->name}}</span>--}}
                 <span class="order-item"> {{$order->pickup_date}}</span>
                 <span class="order-item"> {{$order->price}}</span>
 

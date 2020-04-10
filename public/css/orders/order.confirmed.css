@@ -1,0 +1,26 @@
+@import "../layouts/app.css";
+
+h1 + p {
+    font-size: 1.5em;
+}
+/*p + p {*/
+/*    font-style: italic;*/
+/*}*/
+.bold-font {
+    font-weight: bold;
+}
+
+.prod-container {
+    display: flex;
+    flex-direction: row;
+}
+.price {
+    padding-left: 50px;
+}
+.product {
+    display: block;
+    width: 15%;
+}
+ .bold-font ~ p {
+     margin-top: 20px;
+ }

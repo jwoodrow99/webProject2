@@ -175,5 +175,8 @@
                 <p>&copy; 2020 - K.A.W.S & Zaccagnini Meats </p>
             </div>
         </footer>
+    </div>
+    @yield('stripeScripts')
+
 </body>
 </html>

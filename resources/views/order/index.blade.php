@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<link href="{{ asset('css/orders/orders.index.css') }}" rel="stylesheet">
+<link href="{{ asset('css/orders/order.index.css') }}" rel="stylesheet">
 @section('content')
 <h1>Your Orders</h1>
 <div class="order-container">
@@ -29,6 +29,7 @@
                     @endif
                             <span class="order-info order-id">Order #{{$order->id}}</span><br>
 
+
 {{--                    Paid: {{$order->paid}}<br>--}}
 {{--                    Order Placed: {{$order->created_at}}<br>--}}
                     Pickup Date: {{$order->pickup_date}}<br>
@@ -51,6 +52,10 @@
                     </ul>
                     <span class="total">Total: &dollar;{{$order->price}}</span><br>
                     <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
+
+                @if($order->pickup_date >= now()->toDateString())
+                    <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
+                        {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         <span class="btn-rep"><input type="submit" value="Re-Purchase"></span>
                     </form>

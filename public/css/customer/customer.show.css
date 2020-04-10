@@ -1,0 +1,28 @@
+@import "../layouts/app.css";
+
+
+.usr-info-container {
+    padding-left: 35%;
+}
+.usr-info {
+    display: flex;
+}
+.usr-data {
+    margin: 0 0 10px 30px;
+}
+input[type=submit] {
+    background-color: var(--zmred);
+    color: black;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 12%;
+}
+button {
+    background-color: var(--zmblue);
+    color: black;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 15%;
+}
