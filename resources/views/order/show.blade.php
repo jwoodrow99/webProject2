@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<link href="{{ asset('css/orders/order.show.css') }}" rel="stylesheet">
 @section('content')
 
     Order Id: {{$order->id}}<br>
