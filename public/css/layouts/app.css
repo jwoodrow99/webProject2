@@ -17,6 +17,11 @@
     --zmgreen: #00FFB2
 }
 
+.admin-container {
+    display: flex;
+    flex-direction: row;
+}
+
 body {
 
     display: flex;
@@ -47,10 +52,21 @@ body > nav > ul {
 .admin-nav {
     display: flex;
     flex-direction: row;
+    margin-left: 10px;
 }
 
 .admin-nav > a {
-    padding-right: 20px;
+    padding: 15px 10px 0 0;
+    font-size: 0.8em;
+}
+a > button {
+    background-color: var(--zmblue);
+    color: black;
+    /*border-radius: 5px;*/
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
 }
 
 nav li {
