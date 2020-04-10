@@ -5,7 +5,7 @@
 {{--    Status: Picked Up <br/>          --}}
 
 {{--    Products:--}}
-    <h1>Order Id: {{$order->id}}</h1>
+    <h1>Order #{{$order->id}}</h1>
         Order Placed: {{$order->created_at}}<br>
         Pickup Date: {{$order->pickup_date}}<br>
         Paid: {{$order->paid}}<br>
