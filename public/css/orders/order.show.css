@@ -1,3 +1,23 @@
 @import "../layouts/app.css";
 
+li {
+    list-style-type: none;
+}
+.re-order-btn, .del-order-btn {
+    background-color: var(--zmblue);
+    color: black;
+    /*border-radius: 5px;*/
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+.del-order-btn {
+    background-color: var(--zmred);
+    margin-left: 20px;
+}
+.order-btns {
+    display: flex;
+}
 
