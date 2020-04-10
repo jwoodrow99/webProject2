@@ -44,7 +44,6 @@ input[type=submit], a {
 }
 .add-prod-btn {
     background-color: var(--zmgreen);
-    border-radius: 5px;
     border: none;
     width: 153px;
     height: 43px;
@@ -53,13 +52,21 @@ input[type=submit], a {
     margin-top: 5px;
     margin-bottom: 30px;
 }
-.upd-prod-btn, .del-btn, .view-order-btn {
+.upd-prod-btn, .del-btn, .view-order-btn, .pickUp-btn {
     background-color: var(--zmgreen);
-    border-radius: 5px;
     border: none;
     cursor: pointer;
     padding-top: 5px;
+    margin-left: 2.5px;
 }
 .del-btn{
     background-color: var(--zmred);
+    margin-left: 5px;
+}
+.view-order-btn {
+    font-size: 1em;
+    margin-left: 2.5px;
+}
+.pickUp-btn {
+background-color: var(--zmblue);
 }

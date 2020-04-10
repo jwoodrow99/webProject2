@@ -28,12 +28,12 @@
                             <input type="submit" value="-">
                         </form>
 
-                        <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button class="upd-prod-btn">UPDATE</button></a>
+                        <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button class="upd-prod-btn">Update</button></a>
 
                         <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}" >
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <input class="del-btn" type="submit" value="DELETE">
+                            <input class="del-btn" type="submit" value="Delete">
                         </form>
                     </div>
                 </div>
@@ -63,15 +63,15 @@
                         <form method="post" action="{{ action('AdminController@pickedUp', $order->id) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
-                            <input type="submit" value="Picked Up">
+                            <input class="pickUp-btn" type="submit" value="Picked Up">
                         </form>
 
-                        <a href="{{ action('OrderController@show', $order->id) }}"><button class="view-order-btn">VIEW ORDER</button></a>
+                        <a href="{{ action('OrderController@show', $order->id) }}"><button class="view-order-btn">View Order</button></a>
 
                         <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <input class="del-btn" type="submit" value="DELETE">
+                            <input class="del-btn" type="submit" value="Delete">
                         </form>
                     </div>
                 </div>
