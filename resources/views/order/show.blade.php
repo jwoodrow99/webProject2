@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<script src="{{ asset('js/packingSlip.js') }}" defer></script>
+
 @section('content')
 
     Order Id: {{$order->id}}<br>
@@ -20,6 +22,12 @@
         @endforeach
     </ul>
 
+    @if(Auth::check())
+        @if(Auth::user()->hasAnyRole(['manager', 'employee']))
+            <button id="packingSlip">Print Packing Slip</button>
+        @endif
+    @endif
+
     <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
         {{ csrf_field() }}
         <input type="submit" value="[RE-ORDER]">
@@ -34,3 +42,4 @@
     @endif
 
 @endsection
+

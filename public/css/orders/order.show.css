@@ -1,0 +1,9 @@
+@media print {
+    .main-nav, .mobile-nav, button, form, footer p:first-of-type {
+        display: none;
+    }
+    @page {
+        size: auto;
+        margin: 0;
+    }
+}

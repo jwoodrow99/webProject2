@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts/app.css') }}" rel="stylesheet">
 {{--    <link href="{{ asset('css/layouts/index.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/orders/order.show.css') }}" rel="stylesheet" media="print"/>
 
 </head>
 <body>
