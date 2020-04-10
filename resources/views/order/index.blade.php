@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<link href="{{ asset('css/orders/orders.index.css') }}" rel="stylesheet">
+<link href="{{ asset('css/orders/order.index.css') }}" rel="stylesheet">
 @section('content')
 <h1>Your Orders</h1>
 <div class="order-container">
