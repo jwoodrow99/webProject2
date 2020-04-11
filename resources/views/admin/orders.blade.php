@@ -5,12 +5,13 @@
     <h2>All Orders</h2>
     <div class="heading-container">
         <div class="order-heading">
-                <span class="heading"> Order Number</span>
+                <span class="heading"> Order #</span>
 {{--                <span class="heading"> Customer</span>--}}
                 <span class="heading"> Pickup Date</span>
                 <span class="heading"> Total</span>
                 <span class="heading"> Paid</span>
                 <span class="heading"> Picked Up</span>
+                <span class="heading"> View Order</span>
         </div>
     </div>
     <div class="order-list">
@@ -41,7 +42,7 @@
                     <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
-                        <input type="submit" value="[DELETE]">
+                        <input type="submit" value="Delete">
                     </form>
                 @endif
             </div>
@@ -63,7 +64,7 @@
                 <span class="rm-order-item"> {{$order->user->name}}</span>
                 <span class="rm-order-item"> {{$order->pickup_date}}</span>
                 <span class="rm-order-item"> {{$order->price}}</span>
-                    <a href="{{ action('OrderController@show', $order->id) }}">VIEW ORDER</a>
+                <a href="{{ action('OrderController@show', $order->id) }}">VIEW ORDER</a>
     @endforeach
     </div>
 </div>

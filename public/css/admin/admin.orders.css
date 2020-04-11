@@ -2,17 +2,18 @@
 
 
 .heading-container {
-    background-color: var(--zmmediumblue);
-    width: 100%;
+    /*background-color: var(--zmmediumblue);*/
+    width: 85.5%;
 }
 .order-heading, .removed-orders-heading {
     display: flex;
     flex-direction: row;
+    background-color: var(--zmmediumblue);
 }
 .heading {
     padding: 20px 0 20px 10px;
     /*background-color: var(--zmmediumblue);*/
-    width: 14.2%;
+    width: 16.5%;
     font-size: 1.5em;
     /*border: 1px solid black;*/
     text-align: center;
@@ -22,17 +23,18 @@
     flex-direction: row;
 }
 .order-item {
-    width: 16.6%;
+    width: 14.3%;
     text-align: center;
     border-bottom: 1px solid black;
     padding: 2px 0;
 }
  .order-btn {
      background-color: var(--zmblue);
-     border-radius: 5px;
+     /*border-radius: 5px;*/
      border: none;
      cursor: pointer;
      padding-top: 5px;
+     width: 95%;
  }
  .order-not-paid {
      color: var(--zmred);
@@ -50,5 +52,13 @@
      font-size: 1.5em;
      /*border: 1px solid black;*/
      text-align: center;
+ }
+ input[type=submit] {
+     background-color: var(--zmred);
+     border: none;
+     cursor: pointer;
+     margin-top: 3px;
+     margin-left: 2px;
+     width: 100%;
  }
 
