@@ -5,10 +5,10 @@
     display: flex;
     flex-direction: column;
 }
-.prod-heading, .order-heading {
+.prod-heading {
     display: flex;
 }
-.heading {
+.heading, .order-head {
     padding: 20px 0 20px 10px;
     background-color: var(--zmmediumblue);
     width: 100%;
@@ -32,6 +32,9 @@
     display: flex;
     /*margin-top: 5px;*/
     padding: 8px 15px 0 55px;
+}
+.order-btn {
+    padding-right: 100px;
 }
 .min-inv {
     padding-right: 0px;
@@ -70,3 +73,15 @@ input[type=submit], a {
 .pickUp-btn {
 background-color: var(--zmblue);
 }
+.heading-container {
+    background-color: var(--zmmediumblue);
+    width: 100%;
+}
+.order-heading {
+    display: flex;
+    flex-direction: row;
+}
+.order-head {
+    width: 18.6%;
+}
+

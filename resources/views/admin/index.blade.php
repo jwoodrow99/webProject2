@@ -42,14 +42,17 @@
     </section>
     <a href="{{ action('ProductController@create') }}"><button class="add-prod-btn">Add New Product</button></a>
 
-    <section class="todayOrder">
+    <div class="todayOrder">
         <h2>Current Orders</h2>
+
         <p>These are the orders that are due to be picked up today!</p>
-        <div class="order-heading">
-                <span class="heading"> Order Id</span>
-                <span class="heading"> Customer</span>
-                <span class="heading"> Pickup Date</span>
-                <span class="heading"> Total</span>
+        <div class="heading-container">
+            <div class="order-heading">
+                    <span class="order-head"> Order Id</span>
+                    <span class="order-head"> Customer</span>
+                    <span class="order-head"> Pickup Date</span>
+                    <span class="order-head"> Total</span>
+            </div>
         </div>
         <div class="order-list">
             @foreach($orders as $order)
@@ -77,6 +80,5 @@
                 </div>
             @endforeach
         </div>
-    </section>
-
+    </div>
 @endsection
