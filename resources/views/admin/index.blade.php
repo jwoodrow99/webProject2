@@ -28,12 +28,12 @@
                             <input type="submit" value="-">
                         </form>
 
-                        <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button class="upd-prod-btn">UPDATE</button></a>
+                        <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button class="upd-prod-btn">Update</button></a>
 
                         <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}" >
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <input class="del-btn" type="submit" value="DELETE">
+                            <input class="del-btn" type="submit" value="Delete">
                         </form>
                     </div>
                 </div>
@@ -42,14 +42,17 @@
     </section>
     <a href="{{ action('ProductController@create') }}"><button class="add-prod-btn">Add New Product</button></a>
 
-    <section class="todayOrder">
+    <div class="todayOrder">
         <h2>Current Orders</h2>
+
         <p>These are the orders that are due to be picked up today!</p>
-        <div class="order-heading">
-                <span class="heading"> Order Id</span>
-                <span class="heading"> Customer</span>
-                <span class="heading"> Pickup Date</span>
-                <span class="heading"> Total</span>
+        <div class="heading-container">
+            <div class="order-heading">
+                    <span class="order-head"> Order Id</span>
+                    <span class="order-head"> Customer</span>
+                    <span class="order-head"> Pickup Date</span>
+                    <span class="order-head"> Total</span>
+            </div>
         </div>
         <div class="order-list">
             @foreach($orders as $order)
@@ -63,20 +66,19 @@
                         <form method="post" action="{{ action('AdminController@pickedUp', $order->id) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
-                            <input type="submit" value="Picked Up">
+                            <input class="pickUp-btn" type="submit" value="Picked Up">
                         </form>
 
-                        <a href="{{ action('OrderController@show', $order->id) }}"><button class="view-order-btn">VIEW ORDER</button></a>
+                        <a href="{{ action('OrderController@show', $order->id) }}"><button class="view-order-btn">View Order</button></a>
 
                         <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <input class="del-btn" type="submit" value="DELETE">
+                            <input class="del-btn" type="submit" value="Delete">
                         </form>
                     </div>
                 </div>
             @endforeach
         </div>
-    </section>
-
+    </div>
 @endsection

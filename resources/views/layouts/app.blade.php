@@ -23,6 +23,8 @@
 
 </head>
 <body>
+<div class="page-container">
+    <div class="content-wrapper">
         <nav class="main-nav">
         <!-- Left Side Of Navbar -->
              <ul class="left">
@@ -32,20 +34,20 @@
              </ul>
         <!-- Right Side Of Navbar -->
             <ul class="right">
-                <li class="">
-                    <a class="currentNavItem" href="{{ url('/') }}">Home</a>
+                <li>
+                    <a class="current @if(Request::is('Home')) active @endif"   href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
-                    <a class="" href="{{ url('product') }}">Products</a>
+                    <a  href="{{ url('product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('aboutus')}}">About</a>
+                    <a class="current" onclick="openMenu(event, 'item')" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('faq')}}">FAQ</a>
+                    <a class="current" onclick="openMenu(event, 'item')" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('contactus')}}">Contact Us</a>
+                    <a class="current" onclick="openMenu(event, 'item')" href="{{url('contactus')}}">Contact Us</a>
                 </li>
 
             <!-- Authentication Links -->
@@ -165,7 +167,8 @@
             @yield('content')
 
         </main>
-        <footer>
+    </div>
+        <footer class="footer">
             <div>
                 <p>Contact Us</p>
                 <p>Zaccaginini Meats</p>
@@ -177,6 +180,5 @@
         </footer>
     </div>
     @yield('stripeScripts')
-
 </body>
 </html>

@@ -17,6 +17,11 @@
     --zmgreen: #00FFB2
 }
 
+.admin-container {
+    display: flex;
+    flex-direction: row;
+}
+
 body {
 
     display: flex;
@@ -25,9 +30,9 @@ body {
     font-family: 'Baloo Chettan 2', cursive;
 }
 
-body > nav {
+.content-wrapper > nav {
 
-    display: flex;
+    /*display: flex;*/
     flex-direction: row;
     justify-content: space-between;
     background-color: var(--zmred);
@@ -36,7 +41,7 @@ body > nav {
     padding-right: 20px;
 }
 
-body > nav > ul {
+.content-wrapper > nav > ul {
 
     display: flex;
     flex-direction: row;
@@ -47,10 +52,21 @@ body > nav > ul {
 .admin-nav {
     display: flex;
     flex-direction: row;
+    margin-left: 10px;
 }
 
 .admin-nav > a {
-    padding-right: 20px;
+    padding: 15px 10px 0 0;
+    font-size: 0.8em;
+}
+a > button {
+    background-color: var(--zmblue);
+    color: black;
+    /*border-radius: 5px;*/
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
 }
 
 nav li {
@@ -76,10 +92,12 @@ nav > ul.right a {
 }
 
 
-.currentNavItem {
+/*.currentNavItem {*/
 
-    background-color: var(--zmmediumblue);
-}
+/*    background-color: var(--zmmediumblue);*/
+/*}*/
+
+
 
 nav > ul.right > li > a:hover {
 
@@ -88,7 +106,6 @@ nav > ul.right > li > a:hover {
     text-decoration: none;
     transition: .5s ease;
 }
-
 .dropdown-c {
 
     position: relative;
@@ -155,6 +172,9 @@ main {
     margin: 0 auto;
     padding: 15px;
 }
+.main-nav {
+    display: flex;
+}
 
 footer {
 
@@ -172,7 +192,22 @@ footer p {
 
     margin-bottom: 5px;
 }
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
 
+.content-wrapper {
+    padding-bottom: 2.5rem;    /* Footer height */
+    margin-bottom: 2.5rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /*height: 2.5rem;            !* Footer height *!*/
+}
 @media (max-width: 1000px) {
 
 
@@ -281,9 +316,12 @@ footer p {
     }
 
 }
+ .current.active {
+    background-color: var(--zmgreen);
+}
 
 
 
-
-
-
+/*<li class="nav-item">*/
+/*<a class="nav-link @if(Request::is('about')) active @endif" href="{{ route('frontend.about') }}">About</a>*/
+/*</li>*/
