@@ -47,7 +47,7 @@
             <p class="para">
                 Subtotal: &dollar;{{$totalPrice}}<br/>
                 Taxes: &dollar;{{$totalPrice * 0.13}}<br/>
-                Total Price:[SUBTOTAL + TAXES] <br/>
+                <span>Total Price: [SUBTOTAL + TAXES]</span> <br/>
 
             </p>
 
