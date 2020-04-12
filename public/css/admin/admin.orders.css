@@ -1,11 +1,11 @@
 @import "../layouts/app.css";
 
 
-.heading-container {
+.heading-container, .rmv-orders-head-containter {
     /*background-color: var(--zmmediumblue);*/
-    width: 85.5%;
+    width: 90%;
 }
-.order-heading, .removed-orders-heading {
+.order-heading, .rmv-orders-heading {
     display: flex;
     flex-direction: row;
     background-color: var(--zmmediumblue);
@@ -13,20 +13,27 @@
 .heading {
     padding: 20px 0 20px 10px;
     /*background-color: var(--zmmediumblue);*/
-    width: 16.5%;
+    width: 20%;
     font-size: 1.5em;
     /*border: 1px solid black;*/
     text-align: center;
 }
-.order {
+.order, .rmv-order {
     display: flex;
     flex-direction: row;
 }
-.order-item {
-    width: 14.3%;
+.order-item, .rm-order-item {
+    width: 13%;
     text-align: center;
     border-bottom: 1px solid black;
     padding: 2px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+.rm-order-item {
+    width: 100%;
 }
  .order-btn {
      background-color: var(--zmblue);
@@ -34,14 +41,14 @@
      border: none;
      cursor: pointer;
      padding-top: 5px;
-     width: 95%;
+     width: 55%;
  }
  .order-not-paid {
      color: var(--zmred);
      font-weight: bold;
  }
  .order-paid {
-     color: var(--zmgreen);
+     color: var(--zmdarkgreen);
      font-weight: bold;
      font-size: 1.3em;
  }
