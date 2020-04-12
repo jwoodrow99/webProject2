@@ -33,3 +33,31 @@ div > h4 {
     padding-top: 20px;
     display: block;
 }
+
+@media (max-width: 1000px) {
+    .online-pmt-container{
+        display: flex;
+        flex-direction: column;
+    }
+    #pickupDate {
+        margin-left: 15px;
+    }
+    #payment-form::before {
+        content: "Billing Information";
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    #card-element::before {
+        content: "Payment Information";
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    #payment-error {
+        margin-bottom: 60px;
+    }
+    .online-pmt-info{
+        margin-left: 0;
+        padding-left: 0;
+    }
+}
+
