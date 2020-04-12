@@ -24,18 +24,19 @@
     text-align: center;
     border-bottom: 1px solid black;
     padding: 2px 3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
 
     /*Un comment if ID fields are needed*/
     /*width: 100%;*/
     /*display: inline-block;*/
-    /*text-overflow: ellipsis;*/
-    /*white-space: nowrap;*/
-    /*overflow: hidden;*/
 
 }
 .view-user-btn{
     background-color: var(--zmblue);
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     border: none;
     cursor: pointer;
     padding-top: 5px;
@@ -47,14 +48,14 @@ input[type=submit] {
 
 .rmv-role-btn, .del-usr-btn {
     background-color: var(--zmred);
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     border: none;
     cursor: pointer;
     /*padding-top: 5%;*/
 }
 .add-role-btn {
     background-color: var(--zmgreen);
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     border: none;
     cursor: pointer;
     /*padding-top: 5%;*/

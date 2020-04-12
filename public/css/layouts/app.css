@@ -14,7 +14,8 @@
     --zmblue: #67C8FF;
     --zmdarkblue: #3B5998;
     --zmred: #D65D5D;
-    --zmgreen: #00FFB2
+    --zmgreen: #00FFB2;
+    --zmdarkgreen: #16a085;
 }
 
 .admin-container {
@@ -316,12 +317,6 @@ footer p {
     }
 
 }
- .current.active {
-    background-color: var(--zmgreen);
-}
-
-
-
-/*<li class="nav-item">*/
-/*<a class="nav-link @if(Request::is('about')) active @endif" href="{{ route('frontend.about') }}">About</a>*/
-/*</li>*/
+/* .current.active {*/
+/*    background-color: var(--zmgreen);*/
+/*}*/
