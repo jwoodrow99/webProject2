@@ -11,8 +11,8 @@
                             @isset($product->image)
                                 <img src="{{ asset('storage/' . $product->image) }}"><br>
                             @endisset
-                            {{$product->name}}<br>
-                            &#36;{{$product->price}}<br>
+                            <span class="prod-name">{{$product->name}}</span><br>
+                                <span class="prod-price">&dollar;{{$product->price}}</span><br>
                         </li>
                     </div>
                 </a>

@@ -12,14 +12,14 @@
 }
 .prod-item {
     /*background-color: var(--zmlightblue);*/
-    border: 1px solid;
+    border: 1px solid black;
     padding: 20px;
     font-size: 30px;
     height: 395px;
     width: 345px;
     margin-bottom: 10px;
     margin-top: 10px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     transition: width 0.2s, height 0.2s;
 }
  .prod-item:link{
@@ -41,4 +41,27 @@
  .prod-item:active {
     text-decoration: none;
     color: black;
+}
+ .prod-name {
+     text-align: center;
+     /*background-color: red;*/
+     display: block;
+ }
+ .prod-price {
+     font-weight: bold;
+ }
+
+
+ /*MOBILE NAVIGATION*/
+@media (max-width: 1000px) {
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+        align-items: center;
+    }
+    /*.footer {*/
+    /*    position: fixed;*/
+    /*}*/
+
 }
