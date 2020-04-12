@@ -317,12 +317,6 @@ footer p {
     }
 
 }
- .current.active {
-    background-color: var(--zmgreen);
-}
-
-
-
-/*<li class="nav-item">*/
-/*<a class="nav-link @if(Request::is('about')) active @endif" href="{{ route('frontend.about') }}">About</a>*/
-/*</li>*/
+/* .current.active {*/
+/*    background-color: var(--zmgreen);*/
+/*}*/
