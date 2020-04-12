@@ -13,14 +13,16 @@
     display: block;
     /*padding: 50px;*/
     margin: 10px 0px;
-    background-color: #3f9ae5;
+    background-color: var(--zmblue);
     width: 250px;
     height: 25vh;
+    border-bottom: 1px solid #000000;
 }
 .prod-info{
     width: 100%;
     margin: 10px 0px;
     padding-left: 10px;
+    border-bottom: 1px solid #000000;
 }
 .prod-sum{
     border-left: 1px solid #000000;
@@ -32,7 +34,7 @@
 }
 .prod-price{
     font-weight: bold;
-    color: var(--zmmediumblue);
+    color: var(--zmblue);
     font-size: 1.3em;
 }
 .prod-name {
@@ -43,20 +45,19 @@ ul{
     list-style-type: none;
 }
 li {
-    border-bottom: 1px solid #000000;
+    /*border-bottom: 1px solid #000000;*/
 }
 input[type=submit] {
-    background-color: var(--zmwhite);
-    color: var(--zmmediumblue);
-    border-radius: 5px;
+    background-color: var(--zmred);
+    /*border-radius: 5px;*/
     border: none;
-    padding: 0;
-    font-size: 1em;
+    font-size: 1.2em;
     cursor: pointer;
+    padding: 0 5px;
 }
 .prod-checkout {
-    background-color: var(--zmmediumblue);
-    border-radius: 5px;
+    background-color: var(--zmblue);
+    /*border-radius: 5px;*/
     border: none;
     width: 100px;
     height: 35px;
@@ -65,8 +66,8 @@ input[type=submit] {
     color: #000000;
 }
 .prod-edit {
-    background-color: var(--zmmediumblue);
-    border-radius: 5px;
+    background-color: var(--zmblue);
+    /*border-radius: 5px;*/
     border: none;
     width: 50px;
     height: 17px;
@@ -82,4 +83,38 @@ input[type=submit] {
 .prod-info-seg{
     padding-top: 75px;
     display: block;
+}
+
+@media (max-width: 1000px) {
+    .prod-container {
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+    .item-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .prod-image{
+        width: 100%;
+    }
+    .prod-info {
+        /*background-color: red;*/
+        margin: 0;
+        padding-left: 0;
+    }
+    .prod-info-seg{
+        padding-top: 0px;
+        display: block;
+    }
+    .prod-checkout {
+        margin-bottom: 50px;
+    }
+    .para > span {
+        font-weight: bold;
+    }
+    .prod-sum {
+        border: none;
+    }
 }
