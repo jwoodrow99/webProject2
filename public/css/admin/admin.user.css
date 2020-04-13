@@ -41,8 +41,15 @@
     cursor: pointer;
     padding-top: 5px;
 }
+
+.view-user-btn:hover {
+
+    background-color: var(--zmdarkblue);
+    color: white;
+    transition: .5s ease;
+}
+
 input[type=submit] {
-    /*background-color: var(--zmmediumblue);*/
     color: black;
 }
 

@@ -12,6 +12,14 @@ input[type=submit] {
     cursor: pointer;
     width: 10%;
 }
+
+input[type=submit]:hover {
+
+    background-color: var(--zmdarkblue);
+    color: white;
+    transition: .5s ease;
+}
+
 input[type=text], input[type=email], input[type=number]  {
     margin-left: 50px;
     margin-bottom: 3px;

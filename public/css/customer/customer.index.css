@@ -30,10 +30,18 @@ a > button {
     margin-bottom: 10px;
     border: none;
 }
-.update-info > button > a:link, a:visited, a:hover, a:active {
+.update-info > button > a:link, a:visited, a:active {
     text-decoration: none;
     color: black;
 }
+
+.update-info > a > button:hover {
+
+    background-color: var(--zmdarkblue);
+    color: white;
+    transition: .5s ease;
+}
+
 .cust-info {
     margin-left: 20px;
     text-align: left;

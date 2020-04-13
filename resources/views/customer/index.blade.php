@@ -9,7 +9,7 @@
         @if(!Auth::user()->hasRole('manager'))
             <a href="{{ action('OrderController@index', $customer->id) }}"><button>Your Orders</button></a>{{-- user doesnt have manager role but has access to manager view--}}
         @else
-            <button><a href="{{ action('AdminController@orders') }}">View Orders</a></button>
+            <a href="{{ action('AdminController@orders') }}"><button>View Orders</button></a>
         @endif
         <br/>
         <a href="{{ action('CustomerController@edit', $customer->id) }}"><button>Update Your Information</button></a>
