@@ -90,6 +90,10 @@ class OrderController extends Controller
 
         foreach ($cart as $item){
             $totalPrice += ($item->quantity * $item->product->price);
+
+            $product = Product::findOrFail($item->id);
+            $newQuantity = $product->quantity - $item->quantity;
+            $product->update('quantity', $newQuantity);
         }
 
         $order = new Order();
