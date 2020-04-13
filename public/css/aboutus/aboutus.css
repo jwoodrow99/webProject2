@@ -2,7 +2,7 @@
 
 .cont-img {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
 }
 .cont-img > p {
     padding-right: 50px;
@@ -33,4 +33,29 @@ button {
 button > a:link, a:visited, a:hover, a:active {
     text-decoration: none;
     color: black;
+}
+hr {
+    display: none;
+}
+
+
+/*Mobile Styles*/
+@media (max-width: 1000px) {
+    .cont-img {
+        display: flex;
+        flex-direction: column;
+    }
+    .cont-img > p {
+        padding-right: 0px;
+    }
+    hr {
+        display: block;
+    }
+    img {
+        width: 100%;
+        height: 340px;
+    }
+    .faq {
+        margin-bottom: 50px;
+    }
 }
