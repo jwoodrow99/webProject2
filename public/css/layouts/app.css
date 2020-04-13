@@ -280,6 +280,11 @@ footer p {
         background-color: var(--zmmediumblue);
     }
 
+    .mobile-nav ul{
+        padding: 0px;
+        margin: 0px;
+    }
+
     .dropdown-mobile a:hover {
 
         background-color: var(--zmblue);
