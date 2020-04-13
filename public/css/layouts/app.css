@@ -8,8 +8,8 @@
 
     --zmwhite: #FFFFF4;
     --zmlightblue: #A3D9EF;
-    /*--zmmediumblue: #53C3EF;*/
-    --zmmediumblue: #B2F6FF;
+    --zmmediumblue: #53C3EF;
+    /*--zmmediumblue: #B2F6FF;*/
     /*--zmblue: #5A7ABF;*/
     --zmblue: #67C8FF;
     --zmdarkblue: #3B5998;
@@ -93,20 +93,18 @@ nav > ul.right a {
 }
 
 
-/*.currentNavItem {*/
+.currentNavItem {
 
-/*    background-color: var(--zmmediumblue);*/
-/*}*/
-
-
+    background-color: var(--zmmediumblue);
+}
 
 nav > ul.right > li > a:hover {
-
     color: white;
     background-color: var(--zmdarkblue);
     text-decoration: none;
     transition: .5s ease;
 }
+
 .dropdown-c {
 
     position: relative;
@@ -278,6 +276,11 @@ footer p {
         transition: all .5s ease;
         transform: rotate(-320deg) translate(-10px, -11px);
         background-color: var(--zmmediumblue);
+    }
+
+    .mobile-nav ul{
+        padding: 0px;
+        margin: 0px;
     }
 
     .dropdown-mobile a:hover {

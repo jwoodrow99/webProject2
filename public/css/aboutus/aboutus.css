@@ -21,19 +21,28 @@ img {
     align-items: center;
     margin: 10px 0;
 }
-button {
-    background-color: var(--zmmediumblue);
-    border-radius: 5px;
-    border: none;
-    width: 206px;
-    height: 46px;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-button > a:link, a:visited, a:hover, a:active {
+
+.FAQ a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    background-color: var(--zmblue);
     color: black;
+    border: none;
+    width: 100px;
+    height: 50px;
+    font-size: 1.2em;
+    transition: .5s ease;
 }
+
+.FAQ a:hover {
+    background-color: var(--zmdarkblue);
+    color: black;
+    text-decoration: none;
+    transition: .5s ease;
+}
+
 hr {
     display: none;
 }

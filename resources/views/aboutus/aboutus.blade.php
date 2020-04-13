@@ -1,7 +1,7 @@
 @extends('layouts.app')
 <link href="{{ asset('css/aboutus/aboutus.css') }}" rel="stylesheet">
 @section('content')
-    <h1>ABout Us</h1>
+    <h1>About Us</h1>
     <div class="container">
         <div class="cont-img">
 
@@ -14,7 +14,7 @@
         <p>Curabitur semper orci vitae justo tempus volutpat. Nam laoreet vel lectus eget consequat. Pellentesque imperdiet vitae sem ut vehicula. Aliquam sed volutpat augue. Vestibulum tincidunt est eros, a placerat velit porttitor sit amet. Sed in volutpat urna, vitae auctor libero. Vivamus non dignissim purus, et commodo dui. Vestibulum scelerisque elit nec leo porta tristique a in erat. Aliquam metus nisl, ornare ut condimentum non, semper ac lectus. Donec aliquet metus id odio mattis porttitor quis nec eros. Aenean euismod feugiat tincidunt. Nam fermentum urna nec tristique ornare. Sed turpis mi, aliquet convallis convallis vitae, placerat in eros. Sed pharetra mauris massa, eu fringilla magna volutpat at. Duis quis justo quis lorem sodales commodo ac eget nulla. Proin aliquam lacus at velit sollicitudin cursus. Donec quis dui in urna euismod ultricies. Nunc euismod egestas pharetra. Curabitur semper orci vitae justo tempus volutpat. Nam laoreet vel lectus eget consequat. Pellentesque imperdiet vitae sem ut vehicula. Aliquam sed volutpat augue. Vestibulum tincidunt est eros, a placerat velit porttitor sit amet. Sed in volutpat urna, vitae auctor libero. Vivamus non dignissim purus, et commodo dui. Vestibulum scelerisque elit nec leo porta tristique a in erat. Aliquam metus nisl, ornare ut condimentum non, semper ac lectus. Donec aliquet metus id odio mattis porttitor quis nec eros. Aenean euismod feugiat tincidunt. Nam fermentum urna nec tristique ornare. Sed turpis mi, aliquet convallis convallis vitae, placerat in eros. Sed pharetra mauris massa, eu fringilla magna volutpat at. Duis quis justo quis lorem sodales commodo ac eget nulla. Proin aliquam lacus at velit sollicitudin cursus. Donec quis dui in urna euismod ultricies. Nunc euismod egestas pharetra.
         </p>
         <div class="FAQ">
-            <button><a class="" href="{{url('faq')}}">Our FAQ</a></button>
+            <a href="{{ url('faq') }}">Our FAQ</a>
         </div>
     </div>
 

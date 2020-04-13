@@ -35,43 +35,43 @@
         <!-- Right Side Of Navbar -->
             <ul class="right">
                 <li>
-                    <a class="current" href="{{ url('/') }}">Home</a>
+                    <a class="{{ Request::is('/') ? 'currentNavItem' : '' }}" href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
-                    <a  class="" href="{{ url('product') }}">Products</a>
+                    <a class="{{ Request::segment(1) === 'product' ? 'currentNavItem' : '' }}" href="{{ url('product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('aboutus')}}">About</a>
+                    <a class="{{ Request::is('aboutus') ? 'currentNavItem' : '' }}" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('faq')}}">FAQ</a>
+                    <a class="{{ Request::is('faq') ? 'currentNavItem' : '' }}" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('contactus')}}">Contact Us</a>
+                    <a class="{{ Request::is('contactus') ? 'currentNavItem' : '' }}" href="{{url('contactus')}}">Contact Us</a>
                 </li>
 
             <!-- Authentication Links -->
                 @if(Auth::check())
                     @if(Auth::user()->hasAnyRole(['manager', 'employee']))
                         <li>
-                            <a class="" href="{{ url('admin') }}">Admin</a>
+                            <a class="{{ Request::segment(1) === 'admin' ? 'currentNavItem' : '' }}" href="{{ url('admin') }}">Admin</a>
                         </li>
                     @endif
                 @endif
 
                 @if(Auth::check())
                     <li>
-                        <a class="" href="{{ url('cart') }}">Cart</a>
+                        <a class="{{ Request::segment(1) === 'cart' ? 'currentNavItem' : '' }}" href="{{ url('cart') }}">Cart</a>
                     </li>
                 @endif
 
                 @guest
                     <li>
-                        <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="{{ Request::is('login') ? 'currentNavItem' : '' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                 @if (Route::has('register'))
                     <li>
-                        <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="{{ Request::is('register') ? 'currentNavItem' : '' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
                 @else
@@ -80,7 +80,7 @@
                             {{Auth::user()->name }}
                         </span>
                         <ul class="dropdown-c-content">
-                            <li><a class="" href="{{ url('customer') }}">Profile</a></li>
+                            <li><a class="{{ Request::segment(1) === 'customer' ? 'currentNavItem' : '' }}" href="{{ url('customer') }}">Profile</a></li>
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -111,46 +111,46 @@
             <!-- Right Side Of Navbar -->
             <ul class="dropdown-mobile">
                 <li class="">
-                    <a class="currentNavItem" href="{{ url('/') }}">Home</a>
+                    <a class="{{ Request::is('/') ? 'currentNavItem' : '' }}" href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
-                    <a class="" href="{{ url('product') }}">Products</a>
+                    <a class="{{ Request::segment(1) === 'product' ? 'currentNavItem' : '' }}" href="{{ url('product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('aboutus')}}">About</a>
+                    <a class="{{ Request::is('aboutus') ? 'currentNavItem' : '' }}" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('faq')}}">FAQ</a>
+                    <a class="{{ Request::is('faq') ? 'currentNavItem' : '' }}" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
-                    <a class="" href="{{url('contactus')}}">Contact Us</a>
+                    <a class="{{ Request::is('contactus') ? 'currentNavItem' : '' }}" href="{{url('contactus')}}">Contact Us</a>
                 </li>
                 <!-- Authentication Links -->
                 @if(Auth::check())
                     @if(Auth::user()->hasAnyRole(['manager', 'employee']))
                         <li>
-                            <a class="" href="{{ url('admin') }}">Admin</a>
+                            <a class="{{ Request::segment(1) === 'admin' ? 'currentNavItem' : '' }}" href="{{ url('admin') }}">Admin</a>
                         </li>
                     @endif
                 @endif
 
                 @if(Auth::check())
                     <li>
-                        <a class="" href="{{ url('cart') }}">Cart</a>
+                        <a class="{{ Request::segment(1) === 'cart' ? 'currentNavItem' : '' }}" href="{{ url('cart') }}">Cart</a>
                     </li>
                 @endif
 
                 @guest
                     <li>
-                        <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="{{ Request::is('login') ? 'currentNavItem' : '' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li>
-                            <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="{{ Request::is('register') ? 'currentNavItem' : '' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
-                    <li><a class="" href="{{ url('customer') }}">Profile</a></li>
+                    <li><a class="{{ Request::segment(1) === 'customer' ? 'currentNavItem' : '' }}" href="{{ url('customer') }}">Profile</a></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
