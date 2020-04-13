@@ -28,7 +28,7 @@
                             <input type="submit" value="-">
                         </form>
 
-                        <a href="{{ action('ProductController@edit', $product->id) }}" class="prod-item"><button class="upd-prod-btn">Update</button></a>
+                        <a href="{{ action('ProductController@edit', $product->id) }}" class=""><button class="upd-prod-btn">Update</button></a>
 
                         <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}" >
                             {{ method_field('DELETE') }}

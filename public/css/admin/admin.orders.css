@@ -3,7 +3,7 @@
 
 .heading-container, .rmv-orders-head-containter {
     /*background-color: var(--zmmediumblue);*/
-    width: 90%;
+    width: 100%;
 }
 .order-heading, .rmv-orders-heading {
     display: flex;

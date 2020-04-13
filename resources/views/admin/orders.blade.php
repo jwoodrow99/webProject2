@@ -12,6 +12,7 @@
                 <span class="heading"> Paid</span>
                 <span class="heading"> Picked Up</span>
                 <span class="heading"> View Order</span>
+                <span class="heading"> Delete</span>
         </div>
     </div>
     <div class="order-list">
@@ -52,10 +53,10 @@
         <div class="rmv-orders-head-container">
             <div class="rmv-orders-heading">
                 <span class="rm-heading"> Order Number</span>
-                <span class="rm-heading">Customer</span>
+                <span class="rm-heading"> Customer</span>
                 <span class="rm-heading"> Pickup Date</span>
                 <span class="rm-heading"> Total</span>
-                <span class="rm-heading"> View Button</span>
+                <span class="rm-heading"> View</span>
             </div>
         </div>
         <div class="rmv-order-list">
