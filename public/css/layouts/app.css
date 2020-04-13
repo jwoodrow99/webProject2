@@ -8,8 +8,8 @@
 
     --zmwhite: #FFFFF4;
     --zmlightblue: #A3D9EF;
-    /*--zmmediumblue: #53C3EF;*/
-    --zmmediumblue: #B2F6FF;
+    --zmmediumblue: #53C3EF;
+    /*--zmmediumblue: #B2F6FF;*/
     /*--zmblue: #5A7ABF;*/
     --zmblue: #67C8FF;
     --zmdarkblue: #3B5998;
@@ -93,12 +93,10 @@ nav > ul.right a {
 }
 
 
-/*.currentNavItem {*/
+.currentNavItem {
 
-/*    background-color: var(--zmmediumblue);*/
-/*}*/
-
-
+    background-color: var(--zmmediumblue);
+}
 
 nav > ul.right > li > a:hover {
     color: white;
