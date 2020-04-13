@@ -7,7 +7,7 @@ const cardElement = elements.create('card', { hidePostalCode: true });
 cardElement.mount('#card-element');
 
 const cardHolderName = document.getElementById('name');
-const cardButton = document.getElementById('card-button');
+const cardButton = document.querySelector('.online-pmt-btn');
 const form = document.querySelector('#payment-form');
 const cardHolderAddress = document.querySelector('#address');
 const cardHolderCity = document.querySelector('#city');
@@ -16,7 +16,7 @@ const cardHolderPostal = document.querySelector('#postal');
 const cardHolderPhone = document.querySelector('#phone');
 const cardHolderPickupDate = document.querySelector('#pickupDate');
 
-const payInStore = document.querySelector('#payInStore');
+const payInStore = document.querySelector('.store-pmt-btn');
 
 $.ajaxSetup({
     headers: {

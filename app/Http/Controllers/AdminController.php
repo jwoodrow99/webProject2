@@ -53,7 +53,7 @@ class AdminController extends Controller
 
     public function orders(Request $request){
         $request->user()->authorizeRoles(['manager']);
-        $orders = Order::all();
+        $orders = Order::all()->sortByDesc('pickup_date');
         $trashedOrders = Order::onlyTrashed()->get();
         return view('admin.orders', compact('orders', 'trashedOrders'));
     }
