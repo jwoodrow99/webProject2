@@ -38,13 +38,15 @@
                         @foreach($order->products as $product)
                             <li class="order-item">
                                 <div class="item-unit">
-                                    {{$product->pivot->size}} Box of {{$product->name}}<br>
                                     {{$product->pivot->quantity}} Boxes of {{$product->name}}<br>
+                                     Piece(s) of {{$product->name}} per box<br>
                                 </div>
 {{--                                Pickup Date: {{$order->pickup_date}}<br>--}}
                                 <div class="price">
-                                    <!--Total Price:-->&dollar;{{$product->pivot->price}}<br/>
                                     <!--Unit Price:-->&dollar;{{$product->price}}<br/>
+{{--                                    <!--Total Price:-->&dollar;{{$product->pivot->price}}<br/>--}}
+                                    <!--Total Price:-->{{$product->pivot->size}}<br/>
+
                                 </div>
                             </li>
                             <br/>

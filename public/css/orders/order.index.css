@@ -4,6 +4,7 @@
 .update-info {
     display: block;
     flex: 15%;
+    margin-top: 10%;
 }
 .order-content {
     padding-left: 40px;
@@ -19,15 +20,15 @@ ol > li, ul > li{
 ol > li {
     border-bottom: 1px solid black;
     width: 100%;
-    padding-left: 10px;
+    padding-bottom: 10px;
 }
 .order-id{
     font-weight: bold;
 }
 input[type=submit] {
-    background-color: var(--zmmediumblue);
+    background-color: var(--zmblue);
     color: black;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     border: none;
     font-size: 1em;
     cursor: pointer;
@@ -51,7 +52,7 @@ ol {
 .update-info > button {
     width: 100%;
     text-align: left;
-    background-color: var(--zmmediumblue);
+    background-color: var(--zmblue);
     margin-bottom: 10px;
     border: none;
     cursor: pointer;
@@ -59,4 +60,7 @@ ol {
 .update-info > button > a:link, a:visited, a:hover, a:active {
     text-decoration: none;
     color: black;
+}
+form {
+    margin: 0;
 }
