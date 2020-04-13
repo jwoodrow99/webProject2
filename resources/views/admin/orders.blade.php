@@ -5,19 +5,20 @@
     <h2>All Orders</h2>
     <div class="heading-container">
         <div class="order-heading">
-                <span class="heading"> Order Number</span>
-{{--                <span class="heading"> Customer</span>--}}
+                <span class="heading"> Order #</span>
+                <span class="heading"> Customer</span>
                 <span class="heading"> Pickup Date</span>
                 <span class="heading"> Total</span>
                 <span class="heading"> Paid</span>
                 <span class="heading"> Picked Up</span>
+                <span class="heading"> View Order</span>
         </div>
     </div>
     <div class="order-list">
         @foreach($orders as $order)
             <div class="order">
                 <span class="order-item"> {{$order->id}}</span>
-{{--                <span class="order-item"> {{$order->user->name}}</span>--}}
+                <span class="order-item"> {{$order->user->name}}</span>
                 <span class="order-item"> {{$order->pickup_date}}</span>
                 <span class="order-item"> {{$order->price}}</span>
 
@@ -41,30 +42,32 @@
                     <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
-                        <input type="submit" value="[DELETE]">
+                        <input type="submit" value="Delete">
                     </form>
                 @endif
             </div>
         @endforeach
     </div>
-</div>
-<div class="removed-orders">
     <h2>Removed Orders</h2>
-    <div class="removed-orders-heading">
-        <span class="rm-heading"> Order Number</span>
-        <span class="rm-heading">Customer</span>
-        <span class="rm-heading"> Pickup Date</span>
-        <span class="rm-heading"> Total</span>
-        <span class="rm-heading"> View Button</span>
-    </div>
-    <div class="rm-order-list">
-        @foreach($trashedOrders as $order)
-                <span class="rm-order-item"> {{$order->id}}</span>
-                <span class="rm-order-item"> {{$order->user->name}}</span>
-                <span class="rm-order-item"> {{$order->pickup_date}}</span>
-                <span class="rm-order-item"> {{$order->price}}</span>
-                    <a href="{{ action('OrderController@show', $order->id) }}">VIEW ORDER</a>
-    @endforeach
-    </div>
+        <div class="rmv-orders-head-container">
+            <div class="rmv-orders-heading">
+                <span class="rm-heading"> Order Number</span>
+                <span class="rm-heading">Customer</span>
+                <span class="rm-heading"> Pickup Date</span>
+                <span class="rm-heading"> Total</span>
+                <span class="rm-heading"> View Button</span>
+            </div>
+        </div>
+        <div class="rmv-order-list">
+            @foreach($trashedOrders as $order)
+                <div class="rmv-order">
+                    <span class="rm-order-item"> {{$order->id}}</span>
+                    <span class="rm-order-item"> {{$order->user->name}}</span>
+                    <span class="rm-order-item"> {{$order->pickup_date}}</span>
+                    <span class="rm-order-item"> {{$order->price}}</span>
+                    <span class="rm-order-item"> <a href="{{ action('OrderController@show', $order->id) }}"><button class="order-btn">View Order</button></a></span>
+                </div>
+            @endforeach
+        </div>
 </div>
 @endsection

@@ -1,0 +1,33 @@
+@import "../layouts/app.css";
+
+.edit-cart-container{
+    padding-left: 350px;
+}
+input[type=submit] {
+    background-color: var(--zmblue);
+    /*border-radius: 5px;*/
+    border: none;
+    width: 100px;
+    height: 40px;
+    margin-left: 15%;
+    cursor: pointer;
+}
+.edit-fields {
+    display: flex;
+}
+input[type=text] {
+    margin: 0 0 10px 30px;
+}
+label {
+    padding-top: 5px;
+}
+
+@media (max-width: 1000px) {
+    .edit-cart-container{
+        padding-left: 100px;
+    }
+    input[type=submit] {
+        margin-left: 25%;
+    }
+
+}

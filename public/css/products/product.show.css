@@ -9,7 +9,7 @@
 .prod-img{
     text-align: center;
     font-size: 1.2em;
-    background-color: #3f9ae5;
+    background-color: var(--zmblue);
     padding: 10px;
     width: 40%;
     height: 50vh;
@@ -22,8 +22,8 @@
     margin-left: 50px;
 }
 input[type=submit] {
-    background-color: var(--zmmediumblue);
-    border-radius: 5px;
+    background-color: var(--zmblue);
+    /*border-radius: 5px;*/
     border: none;
     width: 100px;
     height: 35px;
@@ -39,6 +39,33 @@ input[type=number] {
 }
 .prod-price{
     font-weight: bold;
-    color: var(--zmmediumblue);
+    color: var(--zmblue);
     font-size: 1.3em;
+}
+
+
+/*MOBILE NAV*/
+@media (max-width: 1000px) {
+    .prod-container{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .prod-img {
+        width: 100%;
+        /*background-color: red;*/
+    }
+    .prod-info {
+        /*background-color: red;*/
+        width: 100%;
+        margin-left: 0;
+        text-align: justify;
+    }
+
+    .add-to-cart {
+        /*background-color: blue;*/
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
 }

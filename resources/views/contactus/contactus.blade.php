@@ -25,7 +25,7 @@
         <div class="gmap">
 
             <div>
-                <h2>Hours of Operation:</h2>
+                <h2>Hours <span>of Operation:</span></h2>
                 <ol>
                     <li>Monday: Closed</li>
                     <li>Tuesday: 8am-6pm</li>
