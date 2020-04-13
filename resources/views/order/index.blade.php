@@ -54,20 +54,20 @@
                     <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
 
                 @if($order->pickup_date >= now()->toDateString())
-                    <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
-                        <span class="btn-rep"><input type="submit" value="Re-Purchase"></span>
-                    </form>
-
-
-                    @if($order->pickup_date >= now())
                         <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <input type="submit" value="[DELETE]">
+                            <span class="btn-rep"><input type="submit" value="Re-Purchase"></span>
                         </form>
-                    @endif
+                        @if($order->pickup_date >= now())
+                            <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <input type="submit" value="[DELETE]">
+                            </form>
+                        @endif
+                    </form>
+                @endif
                 </li>
                 <br>
             @endforeach
