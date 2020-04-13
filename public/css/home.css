@@ -9,7 +9,14 @@
      height: 86px;
      font-size: 1.5em;
      cursor: pointer;
+     transition: .5s ease;
  }
+
+.shopNowBtn:hover {
+    background-color: var(--zmdarkblue);
+    transition: .5s ease;
+}
+
  .shopNow {
      width: 100%;
      display: flex;

@@ -101,12 +101,12 @@ nav > ul.right a {
 
 
 nav > ul.right > li > a:hover {
-
     color: white;
     background-color: var(--zmdarkblue);
     text-decoration: none;
     transition: .5s ease;
 }
+
 .dropdown-c {
 
     position: relative;
