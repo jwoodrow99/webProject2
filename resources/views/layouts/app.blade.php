@@ -35,19 +35,19 @@
         <!-- Right Side Of Navbar -->
             <ul class="right">
                 <li>
-                    <a class="current @if(Request::is('Home')) active @endif"   href="{{ url('/') }}">Home</a>
+                    <a class="current" href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
-                    <a  href="{{ url('product') }}">Products</a>
+                    <a  class="" href="{{ url('product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="current" onclick="openMenu(event, 'item')" href="{{url('aboutus')}}">About</a>
+                    <a class="" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
-                    <a class="current" onclick="openMenu(event, 'item')" href="{{url('faq')}}">FAQ</a>
+                    <a class="" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
-                    <a class="current" onclick="openMenu(event, 'item')" href="{{url('contactus')}}">Contact Us</a>
+                    <a class="" href="{{url('contactus')}}">Contact Us</a>
                 </li>
 
             <!-- Authentication Links -->
@@ -117,13 +117,13 @@
                     <a class="" href="{{ url('product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="" href="#">About</a>
+                    <a class="" href="{{url('aboutus')}}">About</a>
                 </li>
                 <li>
-                    <a class="" href="#">FAQ</a>
+                    <a class="" href="{{url('faq')}}">FAQ</a>
                 </li>
                 <li>
-                    <a class="" href="#">Contact Us</a>
+                    <a class="" href="{{url('contactus')}}">Contact Us</a>
                 </li>
                 <!-- Authentication Links -->
                 @if(Auth::check())
