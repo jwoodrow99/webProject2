@@ -3,7 +3,7 @@
 li {
     list-style-type: none;
 }
-.re-order-btn, .del-order-btn {
+.packing-slip-btn, .re-order-btn, .del-order-btn {
     background-color: var(--zmblue);
     color: black;
     /*border-radius: 5px;*/
@@ -13,6 +13,9 @@ li {
     width: 100%;
     margin-top: 10px;
 }
+.packing-slip-btn {
+    width: auto;
+}
 .del-order-btn {
     background-color: var(--zmred);
     margin-left: 20px;
@@ -21,3 +24,15 @@ li {
     display: flex;
 }
 
+@media print {
+    .main-nav, .mobile-nav, button, form, footer p:first-of-type {
+        display: none;
+    }
+    @page {
+        size: auto;
+        margin: 0;
+    }
+    .order-container {
+        margin-left: 35px;
+    }
+}

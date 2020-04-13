@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <link href="{{ asset('css/orders/order.show.css') }}" rel="stylesheet">
+
 @section('content')
 <div class="order-container">
 {{--    Status: Picked Up <br/>          --}}
@@ -26,6 +27,13 @@
         @endforeach
     </ul>
     Total Price: &dollar;{{$order->price}}<br>
+
+    @if(Auth::check())
+        @if(Auth::user()->hasAnyRole(['manager', 'employee']))
+            <button class="packing-slip-btn">Print Packing Slip</button>
+        @endif
+    @endif
+
     <div class="order-btns">
         <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
             {{ csrf_field() }}
@@ -42,3 +50,4 @@
     </div>
 </div>
 @endsection
+<script src="{{ asset('js/packingSlip.js') }}" defer></script>

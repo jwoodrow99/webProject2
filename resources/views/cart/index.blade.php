@@ -45,9 +45,9 @@
         <div class="prod-sum">
             <h2>Order Summary</h2>
             <p class="para">
-                Subtotal: &dollar;{{$totalPrice}}<br/>
-                Taxes: &dollar;{{$totalPrice * 0.13}}<br/>
-                <span>Total Price: [SUBTOTAL + TAXES]</span> <br/>
+                Total: &dollar;{{$totalPrice}}<br/>
+{{--                Taxes: &dollar;{{$totalPrice * 0.13}}<br/>--}}
+{{--                <span>Total Price: [SUBTOTAL + TAXES]</span> <br/>--}}
 
             </p>
 
