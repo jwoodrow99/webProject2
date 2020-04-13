@@ -29,7 +29,7 @@
         <!-- Left Side Of Navbar -->
              <ul class="left">
                  <li>
-                     <a class="logo" href="{{ url('/') }}">Home</a>
+                     <a class="logo" href="{{ url('/') }}">Zaccagnini Meats</a>
                  </li>
              </ul>
         <!-- Right Side Of Navbar -->
@@ -98,7 +98,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="left">
                 <li>
-                    <a class="logo" href="{{ url('/') }}">Home</a>
+                    <a class="logo" href="{{ url('/') }}">Zaccagnini Meats</a>
                 </li>
                 <li>
                     <button class="hamburger">

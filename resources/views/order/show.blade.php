@@ -8,7 +8,11 @@
     <h1>Order #{{$order->id}}</h1>
         Order Placed: {{$order->created_at}}<br>
         Pickup Date: {{$order->pickup_date}}<br>
-        Paid: {{$order->paid}}<br>
+    @if($order->paid)
+        PAID<br>
+    @else
+        <span style="background-color: red">NOT PAID</span>
+    @endif
     <ul>
         @foreach($order->products as $product)
             <li>

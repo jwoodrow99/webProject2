@@ -31,7 +31,7 @@ body {
     font-family: 'Baloo Chettan 2', cursive;
 }
 
-.content-wrapper > nav {
+.main-nav {
 
     /*display: flex;*/
     flex-direction: row;
@@ -42,7 +42,7 @@ body {
     padding-right: 20px;
 }
 
-.content-wrapper > nav > ul {
+.main-nav > ul {
 
     display: flex;
     flex-direction: row;
@@ -218,7 +218,7 @@ footer p {
     }
 
     .mobile-nav {
-
+        background-color: var(--zmred);
         display: block;
         padding: 0px;
     }
