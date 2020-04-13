@@ -14,6 +14,7 @@
 
 .shopNowBtn:hover {
     background-color: var(--zmdarkblue);
+    color: white;
     transition: .5s ease;
 }
 
@@ -81,14 +82,13 @@ figcaption {
         padding-bottom: 30px;
     }
     figure img {
-        width: 100%;
-        height: 35vh;
+        width: 70%;
     }
     .fig{
         margin-bottom: 50px;
     }
     figcaption {
         text-align: left;
-        padding-left: 0;
+        padding-left: 15%;
     }
 }

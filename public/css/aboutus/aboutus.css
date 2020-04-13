@@ -7,7 +7,7 @@
 .cont-img > p {
     padding-right: 50px;
 }
-p {
+main > p {
     text-align: justify;
 }
 img {
@@ -38,7 +38,7 @@ img {
 
 .FAQ a:hover {
     background-color: var(--zmdarkblue);
-    color: black;
+    color: white;
     text-decoration: none;
     transition: .5s ease;
 }

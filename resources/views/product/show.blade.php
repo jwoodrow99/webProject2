@@ -28,7 +28,7 @@
                 <label for="size">Number of pieces for <strong>each box</strong> </label>
                 <input name="size" type="number" min="1" max="5" value="1" required="required"> <br>
 
-                <span class="add-to-cart"><input type="submit" value="Add To Cart"></span>
+                <input class="add-to-cart" type="submit" value="Add To Cart">
             </form>
         </div>
     </div>

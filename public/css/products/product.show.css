@@ -43,6 +43,13 @@ input[type=number] {
     font-size: 1.3em;
 }
 
+.add-to-cart:hover {
+
+    background-color: var(--zmdarkblue);
+    color: white;
+    transition: .5s ease;
+}
+
 
 /*MOBILE NAV*/
 @media (max-width: 1000px) {

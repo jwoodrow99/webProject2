@@ -19,7 +19,7 @@
                 <label for="message">Message: </label> <br/>
                 <textarea name="message" required="required"></textarea> <br/>
 
-                <span class="submit"><input type="submit" value="Send"></span>
+                <input class="submit" type="submit" value="Send">
             </form>
         </div>
         <div class="gmap">
