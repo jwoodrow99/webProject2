@@ -2,7 +2,7 @@
 
 .store-pmt-btn, .online-pmt-btn {
     background-color: var(--zmblue);
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     border: none;
     width: 120px;
     height: 36px;
@@ -21,7 +21,7 @@ div > h4 {
     flex-direction: row;
 }
 .bill-inputs > input {
-    margin: 0px 0px 10px 30px;
+    margin: 0 0 10px 30px;
 }
 .bill-labels > label{
     margin-top: 7px;
