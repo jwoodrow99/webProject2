@@ -5,8 +5,8 @@
     flex-direction: row;
 }
 input[type=submit] {
-    background-color: var(--zmmediumblue);
-    border-radius: 5px;
+    background-color: var(--zmblue);
+    /*border-radius: 5px;*/
     border: none;
     width: 153px;
     height: 43px;
@@ -26,7 +26,7 @@ input[type=submit] {
 .update-info > button {
     width: 100%;
     text-align: left;
-    background-color: var(--zmmediumblue);
+    background-color: var(--zmblue);
     margin-bottom: 10px;
     border: none;
 }
@@ -51,4 +51,40 @@ input[type=submit] {
 }
 .acc-header > h1, .cust-label {
     font-weight: bold;
+}
+
+/*Mobile Nav*/
+@media (max-width: 1000px) {
+    .cust-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .update-info{
+        padding: 0;
+        width: 40%;
+        margin-left: 150px;
+    }
+    .cust-container h1 {
+        text-align: center;
+    }
+    .acc-container {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    input[type=submit] {
+        background-color: var(--zmblue);
+        /*border-radius: 5px;*/
+        border: none;
+        width: 153px;
+        height: 43px;
+        font-size: 1.5em;
+        cursor: pointer;
+        margin-left: 0;
+    }
+    .cust-info {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        /*overflow: hidden;*/
+    }
 }

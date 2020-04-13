@@ -3,20 +3,21 @@
 
 @section('content')
 <div class="cust-container">
-
+    <h1>Your Account</h1>
     <div class="update-info">
         @if(!Auth::user()->hasRole('manager'))
             <button><a href="{{ action('OrderController@index', $customer->id) }}">Your Orders</a></button>{{-- user doesnt have manager role but has access to manager view--}}
         @else
-            <a href="{{ action('AdminController@orders') }}">[VIEW ORDERS]</a>
+            <button><a href="{{ action('AdminController@orders') }}">View Orders</a></button>
         @endif
         <br/>
         <button><a href="{{ action('CustomerController@edit', $customer->id) }}">Update Your Information</a></button>
     </div>
 
     <div class="acc-container">
+
         <div  class="acc-header">
-            <h1>Your Account</h1>
+
             <h3>Account Information</h3>
         </div>
         <div class="user-info">
