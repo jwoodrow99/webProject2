@@ -7,12 +7,12 @@
 
     <div class="update-info">
         @if(!Auth::user()->hasRole('manager'))
-            <button><a href="{{ action('OrderController@index', $customer->id) }}">Your Orders</a></button>{{-- user doesnt have manager role but has access to manager view--}}
+            <a href="{{ action('OrderController@index', $customer->id) }}"><button>Your Orders</button></a>{{-- user doesnt have manager role but has access to manager view--}}
         @else
             <button><a href="{{ action('AdminController@orders') }}">View Orders</a></button>
         @endif
         <br/>
-        <button><a href="{{ action('CustomerController@edit', $customer->id) }}">Update Your Information</a></button>
+        <a href="{{ action('CustomerController@edit', $customer->id) }}"><button>Update Your Information</button></a>
     </div>
 
     <div class="acc-container">

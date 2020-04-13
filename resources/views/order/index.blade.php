@@ -1,8 +1,9 @@
 @extends('layouts.app')
 <link href="{{ asset('css/orders/order.index.css') }}" rel="stylesheet">
 @section('content')
-<h1>Your Orders</h1>
+    <h1>Your Orders</h1>
 <div class="order-container">
+
     <div class="update-info">
     {{--    @foreach($customer->customers as $customer)--}}
     {{--    @if(!Auth::user()->hasRole('manager'))--}}
@@ -13,8 +14,8 @@
     {{--    <br/>--}}
     {{--    <button><a href="{{ action('CustomerController@edit', $customer->id) }}">Update Your Information</a></button>--}}
     {{--        @endforeach--}}
-        <button>Your Order</button>
-        <button>Account Information</button>
+{{--        <button>Your Order</button>--}}
+       <a href="{{ url('customer') }}"> <button>Account Information</button></a>
     </div>
     <div class="order-content">
 
@@ -38,14 +39,16 @@
                         @foreach($order->products as $product)
                             <li class="order-item">
                                 <div class="item-unit">
-                                    {{$product->pivot->quantity}} Boxes of {{$product->name}}<br>
+                                     Box(es) of {{$product->name}}<br>
                                      Piece(s) of {{$product->name}} per box<br>
+                                    Price per box<br>
                                 </div>
 {{--                                Pickup Date: {{$order->pickup_date}}<br>--}}
                                 <div class="price">
-                                    <!--Unit Price:-->&dollar;{{$product->price}}<br/>
+                                {{$product->pivot->quantity}}<br/>
 {{--                                    <!--Total Price:-->&dollar;{{$product->pivot->price}}<br/>--}}
                                     <!--Total Price:-->{{$product->pivot->size}}<br/>
+                                    <!--Unit Price:-->&dollar;{{$product->price}}<br/>
 
                                 </div>
                             </li>
