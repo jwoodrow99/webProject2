@@ -1,8 +1,9 @@
 @extends('layouts.app')
 <link href="{{ asset('css/orders/order.index.css') }}" rel="stylesheet">
 @section('content')
-<h1>Your Orders</h1>
+    <h1>Your Orders</h1>
 <div class="order-container">
+
     <div class="update-info">
     {{--    @foreach($customer->customers as $customer)--}}
     {{--    @if(!Auth::user()->hasRole('manager'))--}}
@@ -13,8 +14,8 @@
     {{--    <br/>--}}
     {{--    <button><a href="{{ action('CustomerController@edit', $customer->id) }}">Update Your Information</a></button>--}}
     {{--        @endforeach--}}
-        <button>Your Order</button>
-        <button>Account Information</button>
+{{--        <button>Your Order</button>--}}
+       <a href="{{ url('customer') }}"> <button>Account Information</button></a>
     </div>
     <div class="order-content">
 
@@ -38,13 +39,17 @@
                         @foreach($order->products as $product)
                             <li class="order-item">
                                 <div class="item-unit">
-                                    {{$product->pivot->size}} Box of {{$product->name}}<br>
-                                    {{$product->pivot->quantity}} Boxes of {{$product->name}}<br>
+                                     Box(es) of {{$product->name}}<br>
+                                     Piece(s) of {{$product->name}} per box<br>
+                                    Price per box<br>
                                 </div>
 {{--                                Pickup Date: {{$order->pickup_date}}<br>--}}
                                 <div class="price">
-                                    <!--Total Price:-->&dollar;{{$product->pivot->price}}<br/>
+                                {{$product->pivot->quantity}}<br/>
+{{--                                    <!--Total Price:-->&dollar;{{$product->pivot->price}}<br/>--}}
+                                    <!--Total Price:-->{{$product->pivot->size}}<br/>
                                     <!--Unit Price:-->&dollar;{{$product->price}}<br/>
+
                                 </div>
                             </li>
                             <br/>
@@ -54,20 +59,20 @@
                     <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
 
                 @if($order->pickup_date >= now()->toDateString())
-                    <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
-                        <span class="btn-rep"><input type="submit" value="Re-Purchase"></span>
-                    </form>
-
-
-                    @if($order->pickup_date >= now())
                         <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <input type="submit" value="[DELETE]">
+                            <span class="btn-rep"><input type="submit" value="Re-Purchase"></span>
                         </form>
-                    @endif
+                        @if($order->pickup_date >= now())
+                            <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <input type="submit" value="[DELETE]">
+                            </form>
+                        @endif
+                    </form>
+                @endif
                 </li>
                 <br>
             @endforeach

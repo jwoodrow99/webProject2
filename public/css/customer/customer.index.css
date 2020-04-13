@@ -5,8 +5,8 @@
     flex-direction: row;
 }
 input[type=submit] {
-    background-color: var(--zmmediumblue);
-    border-radius: 5px;
+    background-color: var(--zmred);
+    /*border-radius: 5px;*/
     border: none;
     width: 153px;
     height: 43px;
@@ -20,13 +20,13 @@ input[type=submit] {
     position: relative;
 }
 .update-info{
-    padding-top: 150px;
+    padding-top: 100px;
     /*background-color: #3f9ae5;*/
 }
-.update-info > button {
+a > button {
     width: 100%;
     text-align: left;
-    background-color: var(--zmmediumblue);
+    background-color: var(--zmblue);
     margin-bottom: 10px;
     border: none;
 }
@@ -48,7 +48,51 @@ input[type=submit] {
 }
 .acc-header {
     padding-left: 10px;
+    margin-top: 10px;
 }
-.acc-header > h1, .cust-label {
+.cust-label {
     font-weight: bold;
+}
+
+/*Mobile Nav*/
+@media (max-width: 1000px) {
+    .cust-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .update-info{
+        padding: 0;
+        width: 40%;
+        margin-left: 150px;
+    }
+    .cust-container h1 {
+        text-align: center;
+    }
+    .acc-container {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    input[type=submit] {
+        background-color: var(--zmred);
+        /*border-radius: 5px;*/
+        border: none;
+        width: 153px;
+        height: 43px;
+        font-size: 1.5em;
+        cursor: pointer;
+        margin-left: 0;
+    }
+    .cust-info {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-left: 5px;
+        /*overflow: hidden;*/
+    }
+    .acc-header {
+        margin: 0;
+    }
+    .cust-label {
+        text-align: left;
+    }
 }
