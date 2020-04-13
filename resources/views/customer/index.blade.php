@@ -2,8 +2,9 @@
 <link href="{{ asset('css/customer/customer.index.css') }}" rel="stylesheet">
 
 @section('content')
-<div class="cust-container">
     <h1>Your Account</h1>
+<div class="cust-container">
+
     <div class="update-info">
         @if(!Auth::user()->hasRole('manager'))
             <button><a href="{{ action('OrderController@index', $customer->id) }}">Your Orders</a></button>{{-- user doesnt have manager role but has access to manager view--}}
@@ -17,7 +18,6 @@
     <div class="acc-container">
 
         <div  class="acc-header">
-
             <h3>Account Information</h3>
         </div>
         <div class="user-info">
