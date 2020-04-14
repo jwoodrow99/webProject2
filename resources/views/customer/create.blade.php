@@ -1,26 +1,30 @@
-
 @extends('layouts.app')
+<link href="{{ asset('css/customer/customer.edit.css') }}" rel="stylesheet">
 
 @section('content')
-    <form method="post" action="{{ action('CustomerController@store') }}" enctype="multipart/form-data">
+    <h3>Finish Setting Up Your Account</h3>
+    <div class="update-container">
+        <form method="post" action="{{ action('CustomerController@store') }}" enctype="multipart/form-data">
 
-        {{ csrf_field() }}
+            {{ csrf_field() }}
+            <div class="usr-info">
+                <div class="usr-lbl">
+                    <label for="address">Address</label><br/>
+                    <label for="city">City</label><br/>
+                    <label for="province">Province</label><br/>
+                    <label for="postal">Postal Code</label><br/>
+                    <label for="phone">Phone Number</label><br/>
+                </div>
+                <div class="usr-input">
+                    <input id="address" name="address" type="text" required><br/>
+                    <input id="city" name="city" type="text" required><br/>
+                    <input id="province" name="province" type="text" required><br/>
+                    <input id="postal" name="postal" type="text" required><br/>
+                    <input id="phone" name="phone" type="text" required><br/>
+                </div>
+            </div>
 
-        <label for="address">Address: </label>
-        <input name="address" type="text"><br>
-
-        <label for="city">City: </label>
-        <input name="city" type="text"><br>
-
-        <label for="province">Province: </label>
-        <input name="province" type="text"><br>
-
-        <label for="postal">Postal: </label>
-        <input name="postal" type="text"><br>
-
-        <label for="phone">Phone: </label>
-        <input name="phone" type="text"><br>
-
-        <input type="submit" value="Create!">
-    </form>
+            <input type="submit" value="Create!">
+        </form>
+    </div>
 @endsection

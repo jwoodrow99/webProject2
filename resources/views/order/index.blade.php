@@ -56,11 +56,10 @@
                         @endforeach
                     </ul>
                     <span class="total">Total: &dollar;{{$order->price}}</span><br>
-                    <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
+{{--                    <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">--}}
 
                 @if($order->pickup_date >= now()->toDateString())
-                        <form method="POST" action="{{ action('OrderController@destroy', $order->id) }}">
-                            {{ method_field('DELETE') }}
+                        <form method="POST" action="{{ action('OrderController@reorder', $order->id) }}">
                             {{ csrf_field() }}
                             <span class="btn-rep"><input type="submit" value="Re-Purchase"></span>
                         </form>
@@ -71,7 +70,7 @@
                                 <input type="submit" value="[DELETE]">
                             </form>
                         @endif
-                    </form>
+{{--                    </form>--}}
                 @endif
                 </li>
                 <br>

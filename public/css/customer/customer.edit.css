@@ -20,7 +20,7 @@ input[type=submit]:hover {
     transition: .5s ease;
 }
 
-input[type=text], input[type=email], input[type=number]  {
+input[type=text], input[type=email], input[type=number], input[type=tel]  {
     margin-left: 50px;
     margin-bottom: 3px;
 }

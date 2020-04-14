@@ -27,7 +27,11 @@ class CustomerController extends Controller
         $request->user()->authorizeRoles(['customer']);
         $currentUser = Auth::user();
         $customer = Customer::where('user_id', $currentUser->id)->first();
-        return view('customer.index', compact('customer'));
+        if ($currentUser->customer == null) {
+            return view('customer.create');
+        } else {
+            return view('customer.index', compact('customer'));
+        }
     }
 
     /**

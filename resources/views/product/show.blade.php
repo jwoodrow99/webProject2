@@ -23,10 +23,10 @@
                 <input type="hidden" name="product_id" value="{{$product->id}}">
 
                 <label for="quantity">Number of Boxes </label>
-                <input name="quantity" type="number" min="1" max="10" value="1" required="required"> <br>
+                <input name="quantity" type="number" min="1" max="90" value="1" required="required"> <br>
 
                 <label for="size">Number of pieces for <strong>each box</strong> </label>
-                <input name="size" type="number" min="1" max="5" value="1" required="required"> <br>
+                <input name="size" type="number" min="10" max="40" value="20" required="required"> <br>
 
                 <input class="add-to-cart" type="submit" value="Add To Cart">
             </form>

@@ -51,7 +51,11 @@ class OrderController extends Controller
         $request->user()->authorizeRoles(["customer"]);
         $currentUser = Auth::user();
 
-        return view('order.create', compact("currentUser"));
+        if ($currentUser->customer == null) {
+            return view('customer.create');
+        } else {
+            return view('order.create', compact("currentUser"));
+        }
     }
 
     public function reorder(Request $request, $id){
@@ -91,9 +95,10 @@ class OrderController extends Controller
         foreach ($cart as $item){
             $totalPrice += ($item->quantity * $item->product->price);
 
-            $product = Product::findOrFail($item->id);
+            $product = Product::findOrFail($item->product_id);
             $newQuantity = $product->quantity - $item->quantity;
-            $product->update('quantity', $newQuantity);
+            $product->update(['quantity' => $newQuantity]);
+//            dd($newQuantity, $product, $item);
         }
 
         $order = new Order();
@@ -124,8 +129,8 @@ class OrderController extends Controller
                 $product = Product::findOrFail($item->product_id);
                 if ($product->quantity >= $item->quantity){
                     $order->products()->attach($product, ["size" => $item->size, "quantity" => $item->quantity, "price" => $product->price*$item->quantity]);
-                    $reducedAmmount = $product->ammount - $item->quantity;
-                    $product->update(['quantity', $reducedAmmount]);
+//                    $reducedAmmount = $product->ammount - $item->quantity;
+//                    $product->update(['quantity' => $reducedAmmount]);
                 }
             }
 

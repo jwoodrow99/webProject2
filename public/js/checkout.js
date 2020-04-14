@@ -46,7 +46,7 @@ function postPaymentId(paymentId) {
         window.location.replace(`confirmed/${data.order.id}`);
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-        document.querySelector('#payment-error').textContent = jqXHR.responseJSON.message + ' Please refresh if you wish to try again.';
+        document.querySelector('#payment-error').textContent = jqXHR.responseJSON.message + ' Please refresh to try again.';
     });
 }
 
