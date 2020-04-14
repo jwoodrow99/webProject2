@@ -12,7 +12,10 @@
                                 <img src="{{ asset('storage/' . $product->image) }}"><br>
                             @endisset
                             <span class="prod-name">{{$product->name}}</span><br>
-                                <span class="prod-price">&dollar;{{$product->price}}</span><br>
+                            <span class="prod-price">&dollar;{{$product->price}}</span><br>
+                            @if($product->quantity == 0)
+                                <span class="prod-price" style="color: red">Sold Out</span><br>
+                            @endif
                         </li>
                     </div>
                 </a>

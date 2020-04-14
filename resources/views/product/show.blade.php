@@ -28,7 +28,11 @@
                 <label for="size">Number of pieces for <strong>each box</strong> </label>
                 <input name="size" type="number" min="10" max="40" value="20" required="required"> <br>
 
-                <input class="add-to-cart" type="submit" value="Add To Cart">
+                @if($product->quantity > 0)
+                    <input class="add-to-cart" type="submit" value="Add To Cart">
+                @else
+                    <input class="add-to-cart" type="button" value="Sold Out" disabled>
+                @endif
             </form>
         </div>
     </div>
